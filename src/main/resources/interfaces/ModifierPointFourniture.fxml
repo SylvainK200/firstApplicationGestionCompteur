@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="24.0" layoutY="40.0" prefHeight="21.0" prefWidth="118.0" text="Type d'énergie :" />
+      <Label layoutX="24.0" layoutY="78.0" prefHeight="21.0" prefWidth="105.0" text="EAN :" />
+      <Label layoutX="24.0" layoutY="122.0" prefHeight="21.0" prefWidth="105.0" text="Fournisseur :" />
+      <Label layoutX="24.0" layoutY="165.0" prefHeight="21.0" prefWidth="105.0" text="Type de Contrat :" />
+      <TextField fx:id="TextTypeEnergie" layoutX="239.0" layoutY="37.0" />
+      <TextField fx:id="TextEAN" layoutX="239.0" layoutY="75.0" />
+      <ComboBox fx:id="ComboboxFournisseur" layoutX="239.0" layoutY="119.0" prefHeight="26.0" prefWidth="160.0" />
+      <ComboBox fx:id="ComboboxTypeContrat" layoutX="239.0" layoutY="162.0" prefHeight="26.0" prefWidth="160.0" />
+      <Button fx:id="ButtonAnnuler" layoutX="164.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Annuler" />
+      <Label layoutX="388.0" layoutY="16.0" text="Bienvenus : " textFill="#095dc4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelNomClient" layoutX="479.0" layoutY="16.0" prefHeight="17.0" prefWidth="82.0" text="Nom_client" />
+      <MenuButton fx:id="ButtonCompte" layoutX="502.0" layoutY="37.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="Compte" textFill="#ed1212">
+         <items>
+            <MenuItem fx:id="MenuParametres" mnemonicParsing="false" text="Paramètres" />
+            <MenuItem fx:id="MenuSeDeconnecter" mnemonicParsing="false" text="Se Deconnecter" />
+         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MenuButton>
+      <Button fx:id="ButtonValider" layoutX="283.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Valider" />
+      <Button fx:id="ButtonRetour" layoutX="399.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Retour" />
+   </children>
+</AnchorPane>

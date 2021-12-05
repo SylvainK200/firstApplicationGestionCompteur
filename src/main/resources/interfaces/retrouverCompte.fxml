@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="478.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.RetrouverCompte">
+   <children>
+      <Button fx:id="verify_question" layoutX="460.0" layoutY="267.0" mnemonicParsing="false" onAction="#verifierQuestion" text="verify question" />
+      <Button fx:id="quitter" layoutX="459.0" layoutY="373.0" mnemonicParsing="false" onAction="#quitterPage" prefHeight="26.0" prefWidth="94.0" text="Quitter" />
+      <Label layoutX="60.0" layoutY="185.0" text="Question secrete" />
+      <Label layoutX="63.0" layoutY="249.0" text="reponse secrete" />
+      <Label layoutX="63.0" layoutY="320.0" text="Nouveau mot de passe" />
+      <Label layoutX="65.0" layoutY="359.0" text="Confirmer mot de passe" />
+      <TextArea fx:id="question_secrete" layoutX="208.0" layoutY="147.0" prefHeight="69.0" prefWidth="200.0" />
+      <TextArea fx:id="reponse_secrete" layoutX="208.0" layoutY="223.0" prefHeight="70.0" prefWidth="200.0" />
+      <Button fx:id="valider" layoutX="460.0" layoutY="324.0" mnemonicParsing="false" onAction="#validerMotDePasse" prefHeight="26.0" prefWidth="94.0" text="valider" />
+      <Text layoutX="73.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Changer votre mot de passe">
+         <font>
+            <Font name="Algerian" size="32.0" />
+         </font>
+      </Text>
+      <Label layoutX="65.0" layoutY="98.0" text="identifiant" />
+      <TextField fx:id="identifiant" layoutX="208.0" layoutY="94.0" prefHeight="26.0" prefWidth="200.0" />
+      <PasswordField fx:id="new_password" layoutX="208.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0" promptText="Entrer mot de passe" />
+      <PasswordField fx:id="confirm_password" layoutX="208.0" layoutY="355.0" prefHeight="26.0" prefWidth="200.0" promptText="Confirmer mot de passe" />
+   </children>
+</AnchorPane>

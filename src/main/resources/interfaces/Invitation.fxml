@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.InvitationController">
+   <children>
+      <VBox layoutX="52.0" layoutY="53.0" prefHeight="203.0" prefWidth="802.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="153.0" text="Invitation Envoyées :" textFill="#103dd2">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="TableInvitation" prefHeight="176.0" prefWidth="696.0">
+              <columns>
+                <TableColumn prefWidth="149.0" text="Destinataire " />
+                <TableColumn prefWidth="135.0" text="Portefeuille" />
+                  <TableColumn prefWidth="108.0" text="Accès" />
+                  <TableColumn prefWidth="205.0" text="Statut " />
+                  <TableColumn prefWidth="204.0" text="Date D'envoie" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <Label layoutX="744.0" layoutY="14.0" text="Bienvenus : " textFill="#095dc4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelNomClient" layoutX="844.0" layoutY="14.0" prefHeight="17.0" prefWidth="105.0" text="Nom_client" />
+      <MenuButton fx:id="ButtonCompte" layoutX="863.0" layoutY="38.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Compte" textFill="#ed1212">
+         <items>
+            <MenuItem fx:id="MenuParametres" mnemonicParsing="false" text="Paramètres" />
+            <MenuItem fx:id="MenuSeDeconnecter" mnemonicParsing="false" text="Se Deconnecter" />
+         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MenuButton>
+      <Button fx:id="ButtonAjouterInvitation" layoutX="172.0" layoutY="267.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Ajouter invitation " />
+      <Button fx:id="ButtonSupprimerInvitation" layoutX="372.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Supprimer Invitation " />
+      <VBox layoutX="43.0" layoutY="343.0" prefHeight="203.0" prefWidth="816.0">
+         <children>
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="156.0" text="Expéditeur " />
+                <TableColumn prefWidth="219.0" text="Portefeuille " />
+                  <TableColumn prefWidth="122.0" text="Accès " />
+                  <TableColumn prefWidth="117.0" text="Statut " />
+                  <TableColumn prefWidth="201.0" text="Date Réçu " />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <Label layoutX="52.0" layoutY="314.0" prefHeight="25.0" prefWidth="153.0" text="Invitation Réçu  :" textFill="#103dd2">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="ButtonModificationnvitation" layoutX="172.0" layoutY="553.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Modifier invitation" />
+      <Button fx:id="ButtonSupprimerInvitationRecu" layoutX="372.0" layoutY="553.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Supprimer invitation " />
+   </children>
+</AnchorPane>

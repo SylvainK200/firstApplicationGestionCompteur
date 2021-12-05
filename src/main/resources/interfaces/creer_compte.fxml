@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="598.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.CreerCompte">
+   <children>
+      <TextField fx:id="nom" layoutX="91.0" layoutY="160.0" promptText="nom" />
+      <TextField fx:id="number" layoutX="333.0" layoutY="160.0" promptText="number" />
+      <Text layoutX="92.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom " />
+      <Text layoutX="333.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro" />
+      <TextField fx:id="identifiant" layoutX="91.0" layoutY="218.0" promptText="identifiant" />
+      <Text layoutX="92.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identifiant" />
+      <TextField fx:id="adresse_mail" layoutX="333.0" layoutY="219.0" promptText="adresse mail" />
+      <Text layoutX="334.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse mail" />
+      <Text layoutX="92.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
+      <Text layoutX="334.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confimation mot de passe" />
+      <TextField fx:id="question_secrete" layoutX="91.0" layoutY="349.0" promptText="question secrète" />
+      <Text layoutX="92.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question secrète" />
+      <TextField fx:id="reponse_question_secrete" layoutX="333.0" layoutY="349.0" promptText="repnse question secrète" />
+      <Text layoutX="334.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse questoin secrète" />
+      <Button fx:id="creer_compte" layoutX="394.0" layoutY="544.0" mnemonicParsing="false" onAction="#creerCompte" text="Créer compte" />
+      <Button fx:id="retour" layoutX="522.0" layoutY="545.0" mnemonicParsing="false" onAction="#retourDeLaCreation" text="Retour" />
+      <Text layoutX="128.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creer votre compte">
+         <font>
+            <Font name="Algerian" size="32.0" />
+         </font>
+      </Text>
+      <TextField fx:id="street" layoutX="92.0" layoutY="412.0" promptText="Rue" />
+      <TextField fx:id="city" layoutX="334.0" layoutY="412.0" promptText="ville" />
+      <Text layoutX="92.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rue" wrappingWidth="41.712890625" />
+      <Text layoutX="343.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ville" />
+      <TextField fx:id="postal_code" layoutX="91.0" layoutY="467.0" promptText="code postal" />
+      <Text layoutX="92.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Postal " />
+      <ComboBox fx:id="type_utilisateur" layoutX="333.0" layoutY="467.0" prefWidth="150.0" promptText="Type Utilisateur" />
+      <PasswordField fx:id="mot_de_passe" layoutX="92.0" layoutY="285.0" promptText="mot de passe" />
+      <PasswordField fx:id="confirmation_mot_de_passe" layoutX="335.0" layoutY="287.0" promptText="confirmation mot de passe" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.AjouterPointFournitureController">
+   <children>
+      <Label layoutX="14.0" layoutY="30.0" prefHeight="21.0" prefWidth="118.0" text="Type d'énergie :" />
+      <Label layoutX="14.0" layoutY="68.0" prefHeight="21.0" prefWidth="105.0" text="EAN :" />
+      <Label layoutX="14.0" layoutY="112.0" prefHeight="21.0" prefWidth="105.0" text="Fournisseur :" />
+      <Label layoutX="14.0" layoutY="155.0" prefHeight="21.0" prefWidth="105.0" text="Type de Contrat :" />
+      <TextField fx:id="TextTypeEnergie" layoutX="216.0" layoutY="27.0" prefHeight="26.0" prefWidth="173.0" />
+      <TextField fx:id="TextEAN" layoutX="216.0" layoutY="65.0" prefHeight="26.0" prefWidth="173.0" />
+      <ComboBox fx:id="ComboboxFournisseur" layoutX="216.0" layoutY="109.0" prefHeight="26.0" prefWidth="173.0" />
+      <ComboBox fx:id="ComboboxTypeContrat" layoutX="216.0" layoutY="152.0" prefHeight="26.0" prefWidth="173.0" />
+      <Button fx:id="ButtonAnnuler" layoutX="154.0" layoutY="206.0" mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="105.0" text="Annuler" />
+      <Label layoutX="378.0" layoutY="6.0" text="Bienvenus : " textFill="#095dc4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelNomClient" layoutX="469.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Nom_client" />
+      <MenuButton fx:id="ButtonCompte" layoutX="514.0" layoutY="27.0" mnemonicParsing="false" text="Compte" textFill="#ed1212">
+         <items>
+            <MenuItem fx:id="MenuParametres" mnemonicParsing="false" text="Paramètres" />
+            <MenuItem fx:id="MenuSeDeconnecter" mnemonicParsing="false" text="Se Deconnecter" />
+         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MenuButton>
+      <Button fx:id="ButtonAjouter" layoutX="273.0" layoutY="206.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="105.0" text="Ajouter" />
+      <Button fx:id="ButtonRetour" layoutX="389.0" layoutY="206.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="105.0" text="Retour" />
+   </children>
+</AnchorPane>
