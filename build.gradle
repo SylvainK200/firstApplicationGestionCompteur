@@ -23,10 +23,10 @@ task processPackageResources(type: Copy) {
 
 
 application {
-    mainClass = 'sample.Main'
+    mainClass = 'Gui.Main'
 }
 
-mainClassName = 'sample.Main'
+mainClassName = 'Gui.Main'
 //11.0.2
 
 javafx {
@@ -67,7 +67,7 @@ configurations {
 
 jar {
     manifest {
-        attributes["Main-Class"] = 'sample.Main'
+        attributes["Main-Class"] = 'Gui.Main'
     }
     duplicatesStrategy = 'include'
     // This line of code recursively collects and copies all of a project's files

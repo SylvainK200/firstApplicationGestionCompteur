@@ -1,7 +1,7 @@
 package controller.ModelTabs;
 
-import Gui.Controllers.Methods.GeneralMethods;
-import Gui.Controllers.Methods.GeneralMethodsImpl;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -9,7 +9,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Objects;
-import static Gui.FacilitatorProviderLinkClient.extractConsommations;
+
+import static Gui.Main.extractConsommations;
 
 public class MenuPrincipalTable {
     private String ean_18;

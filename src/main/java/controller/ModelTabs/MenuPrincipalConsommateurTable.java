@@ -1,7 +1,7 @@
 package controller.ModelTabs;
 
-import Gui.Controllers.Methods.GeneralMethods;
-import Gui.Controllers.Methods.GeneralMethodsImpl;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.text.DateFormat;

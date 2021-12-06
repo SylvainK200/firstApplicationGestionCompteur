@@ -1,6 +1,6 @@
 package controller.controllerInterfaces;
 
-import Gui.FacilitatorProviderLinkClient;
+import Gui.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +12,8 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 
-import static Gui.Controllers.Methods.GeneralMethodsImpl.API_URL;
+import static controller.Methods.GeneralMethodsImpl.API_URL;
+
 
 public class CreerCompte {
     @FXML
@@ -96,8 +97,8 @@ public class CreerCompte {
                     Response response = client.newCall(request).execute();
                     if (response.isSuccessful()){
                         System.out.println("Enregistrement termine");
-                        FacilitatorProviderLinkClient.stage.close();
-                        FacilitatorProviderLinkClient.showPages("login.fxml");
+                        Main.stage.close();
+                        Main.showPages("login.fxml");
 
                     }
                     response.close();
@@ -118,8 +119,8 @@ public class CreerCompte {
 
     @FXML
     void retourDeLaCreation(ActionEvent event) {
-        FacilitatorProviderLinkClient.stage.close();
-        FacilitatorProviderLinkClient.showPages("login.fxml");
+        Main.stage.close();
+        Main.showPages("interfaces/login.fxml");
     }
 
 }

@@ -6,17 +6,18 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.MenuPrincipaleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.MenuPrincipaleController">
    <children>
       <MenuBar layoutX="2.0" layoutY="67.0" prefHeight="28.0" prefWidth="654.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Accueil" />
-            <Menu mnemonicParsing="false" text="Portefeuille" />
-            <Menu mnemonicParsing="false" text="Points de fourniture" />
-            <Menu mnemonicParsing="false" text="Consommation" />
-            <Menu mnemonicParsing="false" text="Invitations" />
+          <Menu fx:id="acceuil" mnemonicParsing="false" onAction="#allerAcceuil" text="Accueil" />
+            <Menu fx:id="portefeuille" mnemonicParsing="false" onAction="#allerPortefeuille" text="Portefeuille" />
+            <Menu fx:id="pointFourniture" mnemonicParsing="false" onAction="#allerPointFourniture" text="Points de fourniture" />
+            <Menu fx:id="consommation" mnemonicParsing="false" onAction="#allerConsommation" text="Consommation" />
+            <Menu fx:id="invitation" mnemonicParsing="false" onAction="#allerInvitation" text="Invitations" />
         </menus>
       </MenuBar>
       <Label layoutX="541.0" layoutY="44.0" text="Bienvenus : " textFill="#095dc4">
@@ -34,5 +35,10 @@
             <Font size="14.0" />
          </font>
       </MenuButton>
+      <AnchorPane layoutY="96.0" prefHeight="601.0" prefWidth="965.0">
+         <children>
+            <StackPane fx:id="centerStackPane" layoutX="107.0" layoutY="99.0" prefHeight="601.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

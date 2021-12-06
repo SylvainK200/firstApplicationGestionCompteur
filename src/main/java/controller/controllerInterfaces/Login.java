@@ -69,12 +69,12 @@ public class Login {
                     {
                         currentprovider = user;
                         System.out.println("current provider :" + currentprovider.toString());
-                        Main.showPages("MenuPrincipale.fxml");
+                        Main.showPages("MenuPrincipaleController.fxml");
                         response.close();
                     }else {
                         currentClient = user;
                         System.out.println("current provider :" + currentClient.toString());
-                        Main.showPages("client/MenuPrincipaleConsommateur.fxml");
+                        Main.showPages("MenuPrincipaleController.fxml");
                         response.close();
                     }
 

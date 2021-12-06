@@ -14,7 +14,6 @@ public class Main extends Application {
 
     public static JSONObject currentClient ;
     public static JSONObject currentprovider;
-    public static JSONObject current_supply_point;
     public static Stage  stage = new Stage();
     public static void main(String[] args){
         launch(args);
@@ -22,7 +21,7 @@ public class Main extends Application {
     public static void showPages (String page ){
 
         try {
-            Parent root = FXMLLoader.load(Main.class.getResource("" + page));
+            Parent root = FXMLLoader.load(Main.class.getResource("/interfaces/" + page));
             stage.setScene(new Scene(root));
             stage.show();
         }catch (Exception e )
