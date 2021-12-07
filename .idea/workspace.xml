@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalConsommateurTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalConsommateurTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/CreerCompte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/CreerCompte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

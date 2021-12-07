@@ -36,7 +36,7 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
     private MenuButton MenuCompte;
 
     @FXML
-    private MenuButton MenuParametres;
+    private MenuItem MenuParametres;
 
     @FXML
     private MenuItem  MenuSeDeconnecter;

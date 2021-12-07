@@ -13,7 +13,9 @@
 
 <AnchorPane prefHeight="449.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.Login">
    <children>
-      <TextField fx:id="identifiant" layoutX="239.0" layoutY="159.0" promptText="login" />
+      <TextField fx:id="identifiant" layoutX="239.0" layoutY="159.0" promptText="login"/>
+      <PasswordField fx:id="mot_de_passe" layoutX="239.0" layoutY="228.0" promptText="mot de passe"/>
+      <ComboBox fx:id="type_utilisateur" layoutX="238.0" layoutY="282.0" prefWidth="150.0" promptText="Type Utilisateur"/>
       <Label layoutX="131.0" layoutY="160.0" text="Identifiant">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -29,7 +31,7 @@
       <Text fx:id="creer_compte" layoutX="239.0" layoutY="424.0" onMouseClicked="#creerCompte" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: blue;" text="Creer un compte" wrappingWidth="148.79999999999995" />
       <ImageView fitHeight="98.0" fitWidth="152.0" layoutX="250.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@photos/login.png" />
+            <Image url="@photos/login.png"/>
          </image>
       </ImageView>
       <Text layoutX="213.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue">
@@ -37,7 +39,5 @@
             <Font name="Algerian" size="36.0" />
          </font>
       </Text>
-      <ComboBox fx:id="type_utilisateur" layoutX="238.0" layoutY="282.0" prefWidth="150.0" promptText="Type Utilisateur" />
-      <PasswordField fx:id="mot_de_passe" layoutX="239.0" layoutY="228.0" promptText="mot de passe" />
    </children>
 </AnchorPane>

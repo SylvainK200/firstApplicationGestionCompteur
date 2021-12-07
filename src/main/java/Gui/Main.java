@@ -4,11 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends Application {
 
@@ -30,7 +33,16 @@ public class Main extends Application {
         }
 
     }
-
+    public static Parent loadPane(String page){
+        Parent root = null ;
+        try{
+            root = FXMLLoader.load(Main.class.getResource("/interfaces/"+page+".fxml"));
+        }catch (Exception e){
+            e.printStackTrace();
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,"Erreur de chargement de la page");
+        }
+        return root;
+    }
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage=primaryStage;
