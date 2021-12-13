@@ -1,5 +1,6 @@
 package controller.controllerInterfaces;
 
+import Gui.Main;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -53,7 +54,8 @@ public  class ModifierPointFournitureController  implements Initializable {
 
     @FXML
     void retour(ActionEvent event) {
-
+        Main.ajouterInteractionAuClic(ButtonRetour);
+        Main.newStage.close();
     }
 
     @FXML

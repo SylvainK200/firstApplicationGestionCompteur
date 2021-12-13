@@ -1,5 +1,6 @@
 package controller.controllerInterfaces;
 
+import Gui.Main;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -8,18 +9,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public  class InvitationController  implements Initializable {
-
-    @FXML
-    private Label LabelNomClient;
-
-    @FXML
-    private MenuButton ButtonCompte;
-
-    @FXML
-    private MenuItem MenuParametres;
-
-    @FXML
-    private MenuItem MenuSeDeconnecter;
 
     @FXML
     private Button ButtonAjouterInvitation;
@@ -35,20 +24,24 @@ public  class InvitationController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
+
     }
 
     @FXML
     void ajouterInvitation(ActionEvent event) {
+        Main.ajouterInteractionAuClic(ButtonAjouterInvitation);
 
     }
 
     @FXML
     void modifierInvitation(ActionEvent event) {
+        Main.ajouterInteractionAuClic(ButtonModificationnvitation);
 
     }
 
     @FXML
     void supprimerInvitation(ActionEvent event) {
+        Main.ajouterInteractionAuClic(ButtonSupprimerInvitation);
 
     }
 
