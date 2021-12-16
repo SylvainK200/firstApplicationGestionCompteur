@@ -1,5 +1,6 @@
 package controller.ModelTabs;
 
+import Gui.Main;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import org.json.JSONArray;
@@ -10,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static Gui.Main.extractConsommations;
 
 public class MenuPrincipalTable {
     private String ean_18;
@@ -41,7 +41,7 @@ public class MenuPrincipalTable {
         JSONArray consommationValues = generalMethods.find("supplyPoint");
         if (contract_supply.get("supplyPoint") instanceof  JSONObject)
         {
-            ArrayList<JSONObject> consommations = extractConsommations(consommationValues,contract_supply.getJSONObject("supplyPoint").getLong("id")) ;
+            ArrayList<JSONObject> consommations = Main.extractConsommations(consommationValues,contract_supply.getJSONObject("supplyPoint").getLong("id")) ;
             if (consommations.size()>0){
                 consommation = consommations.get(consommations.size()-1).getDouble("value");
             }

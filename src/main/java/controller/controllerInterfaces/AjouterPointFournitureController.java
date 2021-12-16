@@ -1,24 +1,26 @@
 package controller.controllerInterfaces;
 
+import Gui.Main;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javax.swing.*;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public  class AjouterPointFournitureController  implements Initializable {
     @FXML
-    private TextField TextTypeEnergie;
-
-    @FXML
     private TextField TextEAN;
 
     @FXML
-    private ComboBox ComboboxFournisseur;
-
-    @FXML
-    private ComboBox ComboboxTypeContrat;
+    private ComboBox<String> comboboxPortefeuille;
 
     @FXML
     private Button ButtonAnnuler;
@@ -40,22 +42,48 @@ public  class AjouterPointFournitureController  implements Initializable {
 
     @FXML
     private Button ButtonRetour;
+    JSONObject pointDeFourniture;
+
+    JSONArray wallets;
+    GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
-
+        wallets= generalMethods.find("wallet/name/"+Main.currentClient.getString("identifiant"));
+        for (Object f : wallets){
+            if (f instanceof  JSONObject){
+                comboboxPortefeuille.getItems().add(((JSONObject)f).getString("name"));
+            }
+        }
     }
     @FXML
     void ajouter(ActionEvent event) {
+        String ean = TextEAN.getText();
+        JSONObject pointFourniture = generalMethods.findUnique("PointFourniture/ean/"+ean);
+        JSONObject j  = new JSONObject() ;
+        if (pointFourniture !=null){
+            String comboboxPorteFeuille  = comboboxPortefeuille.getValue();
+            Iterator<Object> it = wallets.iterator();
+            while(it.hasNext()){
+                j = (JSONObject) it.next();
+                if (j.getString("name").equals(comboboxPorteFeuille)){
+                    break;
+                }
+            }
+            pointFourniture.getJSONArray("wallets").put(j);
+        }else{
+            JOptionPane.showMessageDialog(null,"ce point de fourniture avec ean = "+ ean +"n'existe pas dans le systeme");
+        }
 
     }
 
+
     @FXML
     void annuler(ActionEvent event) {
-
+        comboboxPortefeuille.setValue("");
     }
 
     @FXML
     void retour(ActionEvent event) {
-
+        Main.newStage.close();
     }
 }

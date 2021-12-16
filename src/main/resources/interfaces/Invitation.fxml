@@ -19,26 +19,26 @@
             </Label>
             <TableView fx:id="TableInvitation" prefHeight="176.0" prefWidth="696.0">
               <columns>
-                <TableColumn prefWidth="149.0" text="Destinataire " />
-                <TableColumn prefWidth="135.0" text="Portefeuille" />
-                  <TableColumn prefWidth="108.0" text="Accès" />
-                  <TableColumn prefWidth="205.0" text="Statut " />
-                  <TableColumn prefWidth="204.0" text="Date D'envoie" />
+                <TableColumn fx:id="destinataire" prefWidth="149.0" text="Destinataire " />
+                <TableColumn fx:id="portefeuille" prefWidth="135.0" text="Portefeuille" />
+                  <TableColumn fx:id="acces" prefWidth="108.0" text="Accès" />
+                  <TableColumn fx:id="statut" prefWidth="205.0" text="Statut " />
+                  <TableColumn fx:id="date_envoie" prefWidth="204.0" text="Date D'envoie" />
               </columns>
             </TableView>
          </children>
       </VBox>
-      <Button fx:id="ButtonAjouterInvitation" layoutX="474.0" layoutY="267.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Ajouter invitation " />
-      <Button fx:id="ButtonSupprimerInvitation" layoutX="674.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Supprimer Invitation " />
+      <Button fx:id="ButtonAjouterInvitation" layoutX="474.0" layoutY="267.0" mnemonicParsing="false" onAction="#ajouterInvitation" prefHeight="26.0" prefWidth="169.0" text="Ajouter invitation " />
+      <Button fx:id="ButtonSupprimerInvitation" layoutX="674.0" layoutY="268.0" mnemonicParsing="false" onAction="#supprimerInvitation" prefHeight="26.0" prefWidth="169.0" text="Supprimer Invitation " />
       <VBox layoutX="43.0" layoutY="343.0" prefHeight="203.0" prefWidth="816.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tableInvitationRecu" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="156.0" text="Expéditeur " />
-                <TableColumn prefWidth="219.0" text="Portefeuille " />
-                  <TableColumn prefWidth="122.0" text="Accès " />
-                  <TableColumn prefWidth="117.0" text="Statut " />
-                  <TableColumn prefWidth="201.0" text="Date Réçu " />
+                <TableColumn fx:id="destinataire" prefWidth="156.0" text="Expéditeur " />
+                <TableColumn fx:id="portefeuille" prefWidth="219.0" text="Portefeuille " />
+                  <TableColumn fx:id="acces" prefWidth="122.0" text="Accès " />
+                  <TableColumn fx:id="statut" prefWidth="117.0" text="Statut " />
+                  <TableColumn fx:id="date_envoie" prefWidth="201.0" text="Date validation" />
               </columns>
             </TableView>
          </children>
@@ -48,7 +48,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="ButtonModificationnvitation" layoutX="488.0" layoutY="553.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Modifier invitation" />
-      <Button fx:id="ButtonSupprimerInvitationRecu" layoutX="688.0" layoutY="553.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="169.0" text="Supprimer invitation " />
+      <Button fx:id="ButtonModificationnvitation" layoutX="488.0" layoutY="553.0" mnemonicParsing="false" onAction="#modifierInvitation" prefHeight="26.0" prefWidth="169.0" text="Modifier invitation" />
+      <Button fx:id="ButtonSupprimerInvitationRecu" layoutX="688.0" layoutY="553.0" mnemonicParsing="false" onAction="#supprimerInvitation_recu" prefHeight="26.0" prefWidth="169.0" text="Supprimer invitation " />
    </children>
 </AnchorPane>

@@ -53,7 +53,7 @@ dependencies {
 //    compile "org.openjfx:javafx-graphics:11.0.1:win"
 //    compile "org.openjfx:javafx-graphics:11.0.1:linux"
 //    compile "org.openjfx:javafx-graphics:11.0.1:mac"
-
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
     implementation ("org.testfx:testfx-junit5:4.0.16-alpha")
     testImplementation "org.hamcrest:hamcrest-junit:2.0.0.0"
 

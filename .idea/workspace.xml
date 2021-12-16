@@ -5,26 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ComboBoxClasses/ComboLocalisation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/ConsommationTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/PointDeFournitureTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/PortefeuilleTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/InvitationTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Methods/GeneralMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Methods/GeneralMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ConsommationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ConsommationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterInvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterInvitationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterPointFournitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterPointFournitureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPointFournitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPointFournitureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPointFournitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPointFournitureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPortefeuilleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPortefeuilleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterInvitation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterInvitation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/Consommation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/Consommation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterPointFourniture.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPointFourniture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipalePortefeuille.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipalePortefeuille.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPointFourniture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPortefeuille.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPortefeuille.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
