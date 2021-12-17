@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/InvitationTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/photos/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/photos/login.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterInvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterInvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterPointFournitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/AjouterPointFournitureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterInvitation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterInvitation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/AjouterPointFourniture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/AllContract.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/HistoriqueTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalConsommateurTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/NewContractTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/NewContractTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/UserTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="sample" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sample" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sample" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -81,7 +93,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/interfaces" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.15" />
@@ -90,11 +102,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/interfaces" />
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/java/controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/interfaces" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">

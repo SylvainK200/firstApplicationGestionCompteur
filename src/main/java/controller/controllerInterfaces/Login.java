@@ -33,25 +33,17 @@ public class Login {
     @FXML
     private Button connect_button;
     @FXML
-    private ComboBox<String> type_utilisateur;
-    @FXML
     private Text mot_de_passe_perdu;
 
     @FXML
     private Text creer_compte;
     public void initialize(){
-        type_utilisateur.getItems().addAll("Consommateur","Fournisseur");
     }
     @FXML
     void connect(ActionEvent event) {
-        if (Objects.nonNull(type_utilisateur.getValue()) && type_utilisateur.getValue()!="") {
-           String url = "" ;
-           if (type_utilisateur.getValue().equals("Consommateur")){
-               url = API_URL+"/user/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
-           }
-           else {
-               url = API_URL + "/provider/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
-           }
+
+               String url = API_URL+"/user/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
+
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
 
@@ -65,18 +57,9 @@ public class Login {
                 JSONObject user = new JSONObject(response.body().string());
                 if (!user.isEmpty()) {
                     Main.stage.close();
-                    if (this.type_utilisateur.getValue().equals("Fournisseur"))
-                    {
-                        currentprovider = user;
-                        System.out.println("current provider :" + currentprovider.toString());
-                        Main.showPages("MenuPrincipaleController.fxml");
-                        response.close();
-                    }else {
                         currentClient = user;
-                        System.out.println("current provider :" + currentClient.toString());
                         Main.showPages("MenuPrincipaleController.fxml");
                         response.close();
-                    }
 
                 }
             } catch (JSONException e) {
@@ -85,9 +68,6 @@ public class Login {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Veuillez choisir le type d'utilisateur \n que vous etes");
-        }
         }
     @FXML
     void creerCompte(MouseEvent event) {

@@ -3,16 +3,12 @@ package Gui;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import controller.Methods.GeneralMethods;
-import controller.ModelTabs.HistoriqueTable;
-import controller.ModelTabs.UserTest;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONArray;
@@ -30,16 +26,6 @@ public class Main extends Application {
     public static Stage newStage;
     public static void main(String[] args) throws JsonProcessingException {
 
-        UserTest userTest = new UserTest("kouemo","sylvain");
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(userTest);
-        System.out.println(json);
-        JSONArray array = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name","kouemal");
-        array.put(json);
-        array.put(jsonObject);
-        System.out.println(array);
         launch(args);
     }
 

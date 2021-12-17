@@ -5,14 +5,12 @@ import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,12 +18,7 @@ import java.util.ResourceBundle;
 import static Gui.Main.currentClient;
 
 
-// normalement ici quand l'utilisateur se connecter affiche directement
-// ce menu principale et si y a qulqu'un envoyer une invitation
-// directement doit être afficher un message
-// avec message de confirmation si oui ou non  il accepte l'invitation
-//
-public  class MenuPrincipaleController  implements Initializable {
+public  class MenuPrincipaleController {
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @FXML
     private MenuItem deconnecter;
@@ -38,7 +31,7 @@ public  class MenuPrincipaleController  implements Initializable {
     private Button acceuil;
 
     @FXML
-    private StackPane centerStackPane;
+    private AnchorPane centerStackPane;
 
     @FXML
     private Button consommation;
@@ -103,10 +96,10 @@ public  class MenuPrincipaleController  implements Initializable {
     @FXML
     void goToPortefeuille(ActionEvent event) {
         portefeuille.setStyle("-fx-background-color:white;");
+        Main.stage.close();
         try{
-            Parent fxml  = Main.loadPane("ModifierPortefeuille");
-            centerStackPane.getChildren().removeAll();
-            centerStackPane.getChildren().addAll(fxml);
+            Main.showPages("ModifierPortefeuille");
+
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,14 +114,19 @@ public  class MenuPrincipaleController  implements Initializable {
     void goToParametres(){
 
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
+
+    public void initialize(){
+        consommation.setStyle("-fx-background-color:gray;");
+        portefeuille.setStyle("-fx-background-color:gray;");
+        pointDeFourniture.setStyle("-fx-background-color:gray;");
+        invitations.setStyle("-fx-background-color:gray;");
         LabelNomClient.setText(currentClient.getString("name"));
         acceuil.setStyle("-fx-background-color:white;");
         try{
             Parent fxml  = Main.loadPane("MenuPrincipalePortefeuille");
             centerStackPane.getChildren().removeAll();
             centerStackPane.getChildren().addAll(fxml);
+
         }catch (Exception e) {
             e.printStackTrace();
         }

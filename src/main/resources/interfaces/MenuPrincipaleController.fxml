@@ -28,7 +28,7 @@
       </MenuButton>
       <AnchorPane layoutY="96.0" prefHeight="601.0" prefWidth="965.0">
          <children>
-            <StackPane fx:id="centerStackPane" layoutX="107.0" layoutY="99.0" prefHeight="601.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="centerStackPane" layoutX="107.0" layoutY="99.0" prefHeight="601.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-1.0" prefHeight="59.0" prefWidth="877.0">
