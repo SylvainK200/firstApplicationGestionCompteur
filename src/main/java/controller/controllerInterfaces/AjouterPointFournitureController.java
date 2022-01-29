@@ -44,7 +44,7 @@ public  class AjouterPointFournitureController  implements Initializable {
     private Button ButtonRetour;
     JSONObject pointDeFourniture;
 
-    JSONArray wallets;
+    JSONArray wallets = new JSONArray();
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){

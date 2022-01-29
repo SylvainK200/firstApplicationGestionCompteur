@@ -102,7 +102,9 @@ public  class MenuPointFournitureController  implements Initializable {
         administrateur.setCellValueFactory(new PropertyValueFactory<PointDeFournitureTable,String>("administrateur"));
         ObservableList items = FXCollections.observableArrayList();
 
-        JSONArray listOfWallets = generalMethods.find("contractSupplyPoint/wallet/identifiant/"+ currentClient.getString("identifiant"));
+        JSONArray listOfWallets  = new JSONArray();
+
+        listOfWallets = generalMethods.find("contractSupplyPoint/wallet/identifiant/"+ currentClient.getString("identifiant"));
 
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
