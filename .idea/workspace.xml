@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ConsommationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ConsommationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/InvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipalePortefeuilleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPointFournitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/ModifierPointFournitureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/Consommation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/Consommation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/Invitation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPointFourniture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipalePortefeuille.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipalePortefeuille.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPointFourniture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/ModifierPointFourniture.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
