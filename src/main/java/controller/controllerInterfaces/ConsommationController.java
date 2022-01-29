@@ -18,8 +18,7 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-public  class ConsommationController  implements Initializable {
-
+public  class ConsommationController   {
 
     @FXML
     private ComboBox<String> ComboboxEAN;
@@ -38,11 +37,10 @@ public  class ConsommationController  implements Initializable {
     @FXML
     private TableColumn<ConsommationTable, String> type_energie;
 
-    GeneralMethods generalMethods = new GeneralMethodsImpl();
     FilteredList<ConsommationTable> consommationTables;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
+    GeneralMethods generalMethods = new GeneralMethodsImpl();
+    public void initialize(){
         consommateur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("consommateur"));
         date_lecture.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("date_lecture"));
         fournisseur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("fournisseur"));

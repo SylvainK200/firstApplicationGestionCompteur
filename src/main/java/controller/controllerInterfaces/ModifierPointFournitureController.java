@@ -1,6 +1,8 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -10,7 +12,9 @@ import java.util.ResourceBundle;
 
 // ici quand il appyer sur le button modifier
 // dans le menu principale de point de fournitures
-public  class ModifierPointFournitureController  implements Initializable {
+public  class ModifierPointFournitureController {
+
+    GeneralMethods generalMethods = new GeneralMethodsImpl();
     @FXML
     private TextField TextTypeEnergie;
 
@@ -27,9 +31,6 @@ public  class ModifierPointFournitureController  implements Initializable {
     private Button ButtonAnnuler;
 
     @FXML
-    private Label LabelNomClient;
-
-    @FXML
     private MenuButton ButtonCompte;
 
     @FXML
@@ -43,8 +44,8 @@ public  class ModifierPointFournitureController  implements Initializable {
 
     @FXML
     private Button ButtonRetour;
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
+
+    public void initialize(){
 
     }
     @FXML
@@ -62,4 +63,7 @@ public  class ModifierPointFournitureController  implements Initializable {
     void valider(ActionEvent event) {
 
     }
+
+
+
 }

@@ -6,20 +6,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.MenuPrincipalePortefeuilleController">
-   <children>
-      <TableView fx:id="TablesAffichagesPortefeuille" layoutX="14.0" layoutY="59.0" prefHeight="433.0" prefWidth="1043.0">
-        <columns>
-          <TableColumn prefWidth="303.0" text="Nom" />
-          <TableColumn minWidth="0.0" prefWidth="474.0" text="Adresse" />
-            <TableColumn prefWidth="263.0" text="Nombre de compte" />
-        </columns>
-      </TableView>
-      <Button fx:id="ButtonAjouter" layoutX="250.0" layoutY="509.0" mnemonicParsing="false" onAction="#ajouterPOrtefeuille" prefHeight="26.0" prefWidth="145.0" text="Ajouter" />
-      <Button fx:id="ButtonModifier" layoutX="417.0" layoutY="509.0" mnemonicParsing="false" onAction="#modifierPortefeuille" prefHeight="26.0" prefWidth="145.0" text="Modifier" />
-      <Button fx:id="ButtonSupprimer" layoutX="587.0" layoutY="509.0" mnemonicParsing="false" onAction="#supprimerPortefeuille" prefHeight="26.0" prefWidth="145.0" text="Supprimer" />
-      <Label layoutX="18.0" layoutY="30.0" prefHeight="17.0" prefWidth="169.0" text="Rechercher Portefeuille :" />
-      <TextField fx:id="TextPorteuille" layoutX="211.0" layoutY="26.0" prefHeight="26.0" prefWidth="206.0" />
-   </children>
+    <children>
+        <TableView fx:id="TablesAffichagesPortefeuille" layoutX="14.0" layoutY="59.0" prefHeight="433.0" prefWidth="1043.0">
+            <columns>
+                <TableColumn fx:id="nom" prefWidth="303.0" text="Nom" />
+                <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="474.0" text="Adresse" />
+                <TableColumn fx:id="nombre_compte" prefWidth="263.0" text="Nombre de compte" />
+            </columns>
+        </TableView>
+        <Button fx:id="ButtonAjouterPortefeuille" layoutX="250.0" layoutY="509.0" mnemonicParsing="false" onAction="#ajouterPOrtefeuille" prefHeight="26.0" prefWidth="145.0" text="Ajouter" />
+        <Button fx:id="ButtonModifier" layoutX="417.0" layoutY="509.0" mnemonicParsing="false" onAction="#modifierPortefeuille" prefHeight="26.0" prefWidth="145.0" text="Modifier" />
+        <Button fx:id="ButtonSupprimer" layoutX="587.0" layoutY="509.0" mnemonicParsing="false" onAction="#supprimerPortefeuille" prefHeight="26.0" prefWidth="145.0" text="Supprimer" />
+        <Label layoutX="18.0" layoutY="30.0" prefHeight="17.0" prefWidth="169.0" text="Rechercher Portefeuille :" />
+        <TextField fx:id="TextPorteuille" layoutX="211.0" layoutY="26.0" prefHeight="26.0" prefWidth="206.0" />
+    </children>
 </AnchorPane>

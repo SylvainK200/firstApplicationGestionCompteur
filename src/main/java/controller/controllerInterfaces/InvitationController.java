@@ -52,18 +52,35 @@ public class InvitationController {
     private TableColumn<InvitationTable, String> destinataire;
 
     @FXML
-    private TableColumn<InvitationTable, String> portefeuille;
+    private TableColumn<InvitationTable, String> portefeuille_invitation;
 
     @FXML
     private TableColumn<InvitationTable, String> statut;
-    GeneralMethods generalMethods = new GeneralMethodsImpl();
+
+
+    @FXML
+    private TableColumn<InvitationTable, String> acces_recu;
+
+    @FXML
+    private TableColumn<InvitationTable, String> date_envoie_recu;
+
+    @FXML
+    private TableColumn<InvitationTable, String> destinataire_recu;
+
+    @FXML
+    private TableColumn<InvitationTable, String> portefeuille_recu;
+
+    @FXML
+    private TableColumn<InvitationTable, String> statut_recu;
     public static List<InvitationTable> invitationEnvoyees = new ArrayList();
     public static List<InvitationTable> invitationRecues = new ArrayList<>();
+    public GeneralMethods generalMethods = new GeneralMethodsImpl();
+
     void initialiserTableInvitationEnvoyee(){
         acces.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("acces"));
         date_envoie.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("date_envoie"));
         destinataire.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("destinataire"));
-        portefeuille.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
+        portefeuille_invitation.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
         statut.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
 
         JSONArray invitations = generalMethods.find("invite/user/statut/"+Main.currentClient.getString("identifiant")+"/"+"envoyee");
@@ -73,27 +90,27 @@ public class InvitationController {
             if (!client.isEmpty()){
                 invitationEnvoyees.add(new InvitationTable(client,true));
 
-        }
+            }
         }
         TableInvitation.getItems().addAll(invitationEnvoyees);
 
     }
 
     void initialiserTableInvitationRecu(){
-        acces.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("acces"));
-        date_envoie.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("date_envoie"));
-        destinataire.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("destinataire"));
-        portefeuille.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
-        statut.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
+        acces_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("acces"));
+        date_envoie_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("date_envoie"));
+        destinataire_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("destinataire"));
+        portefeuille_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
+        statut_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
 
         JSONArray invitations = generalMethods.find("invite/user/statut/" + Main.currentClient.getString("identifiant")+"/"+"recu");
         for (int i =0;i<invitations.length();i++){
             JSONObject invitation = invitations.getJSONObject(i);
             if (!invitation.isEmpty()){
                 invitationRecues.add(new InvitationTable(invitation,false));
+            }
+            tableInvitationRecu.getItems().addAll(invitationRecues);
         }
-        tableInvitationRecu.getItems().addAll(invitationRecues);
-    }
     }
     @FXML
     void ajouterInvitation(ActionEvent event) {
@@ -145,6 +162,7 @@ public class InvitationController {
         this.generalMethods.deleteObject("invite/"+id);
 
     }
+
     public void initialize(){
         initialiserTableInvitationEnvoyee();
         initialiserTableInvitationRecu();

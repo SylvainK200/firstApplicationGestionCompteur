@@ -21,10 +21,10 @@ import java.util.ResourceBundle;
 
 import static Gui.Main.*;
 
-public  class MenuPrincipalePortefeuilleController  implements Initializable {
+public  class MenuPrincipalePortefeuilleController  {
     public static  String nomPortefeuilleAModifier;
     @FXML
-    private Button   ButtonAjouter;
+    private Button   ButtonAjouterPortefeuille;
 
     @FXML
     private Button ButtonModifier;
@@ -43,16 +43,14 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
 
     @FXML
     private TableColumn<PortefeuilleTable, String> nom;
-
+    GeneralMethods generalMethods = new GeneralMethodsImpl();
     @FXML
     private TableColumn<PortefeuilleTable, String> nombre_compte;
     private FilteredList<PortefeuilleTable> portefeuilleTables;
-    GeneralMethods generalMethods = new GeneralMethodsImpl();
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(){
 
         nom.setCellValueFactory(new PropertyValueFactory<PortefeuilleTable,String>("nom"));
-        adresse.setCellValueFactory(new PropertyValueFactory<PortefeuilleTable,String>("addresse"));
+        adresse.setCellValueFactory(new PropertyValueFactory<PortefeuilleTable,String>("adresse"));
         nombre_compte.setCellValueFactory(new PropertyValueFactory<PortefeuilleTable,String>("nombreCompteur"));
 
         ObservableList items = FXCollections.observableArrayList();
@@ -71,7 +69,7 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
             }
         }
         portefeuilleTables = new FilteredList<>(items,p->true);
-        TextPorteuille.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
+        TextPorteuille.textProperty().addListener((ObservableValue<?extends String> observable, String oldValue, String newValue)->{
 
             portefeuilleTables.setPredicate(portefeuilleTable->{
                 if(newValue == null || newValue.isEmpty()){
@@ -80,7 +78,7 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
 
                 if(portefeuilleTable.getNom().toLowerCase().contains(newValue.toLowerCase())||
                         portefeuilleTable.getAdresse().toLowerCase().contains(newValue.toLowerCase())
-                        ) return true;
+                ) return true;
 
                 return false;
             });
@@ -94,7 +92,7 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
 
     @FXML
     void ajouterPOrtefeuille(ActionEvent event) {
-        ajouterInteractionAuClic(ButtonAjouter);
+        ajouterInteractionAuClic(ButtonAjouterPortefeuille);
         ouvrirNouvellePage("AjouterPointFourniture");
     }
 
@@ -123,5 +121,7 @@ public  class MenuPrincipalePortefeuilleController  implements Initializable {
         ajouterInteractionAuClic(ButtonSupprimer);
         // A revoir si c'est possible de supprimer un portefeuille
     }
+
+
 
 }
