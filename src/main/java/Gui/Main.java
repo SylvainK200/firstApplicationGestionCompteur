@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class Main extends Application {
     public static JSONObject currentClient ;
     public static JSONObject currentprovider;
     public static Stage  stage = new Stage();
-    public static Stage newStage;
+    public static Stage newStage = new Stage();
     public static void main(String[] args) throws JsonProcessingException {
 
         launch(args);
@@ -37,10 +38,17 @@ public class Main extends Application {
     }
     public static void ouvrirNouvellePage(String page){
         Parent newParent = loadPane(page);
-        newStage.setScene(new Scene(newParent));
-        newStage.initOwner(stage);
-        newStage.showAndWait();
-    }
+        newStage = new Stage();
+        System.out.println("well loaded");
+        if (Objects.isNull(newParent)){
+            System.out.println("loadPane a un souci");
+        }else{
+            newStage.setScene(new Scene(newParent));
+            newStage.initOwner(stage);
+            newStage.showAndWait();
+
+        }
+           }
     public static void showPages (String page ){
 
         try {
@@ -59,6 +67,7 @@ public class Main extends Application {
             root = FXMLLoader.load(Main.class.getResource("/interfaces/"+page+".fxml"));
         }catch (Exception e){
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE,"Erreur de chargement de la page");
+            e.printStackTrace();
         }
         return root;
     }

@@ -14,7 +14,9 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public  class AjouterInvitationController  implements Initializable {
@@ -65,15 +67,15 @@ public  class AjouterInvitationController  implements Initializable {
         String role ;
         boolean ecriture = roleEcriture.isSelected();
         boolean lecture = roleLecture.isSelected();
-        role = show("lecture",ecriture);
+        role = show("lecture",lecture);
         if (ecriture && lecture){
             role+=show("-ecriture",ecriture);
         }
         role = show("ecriture",ecriture);
-        Date actualDate = new Date();
+        LocalDateTime actualDate = LocalDateTime.now();
         JSONObject invitation = new JSONObject();
         invitation.put("name",identifiant.getText());
-        invitation.put("dateInvitation",actualDate);
+        invitation.put("dateInvitation", DateTimeFormatter.ofPattern("yyyy-mm-dd", Locale.ENGLISH).format(actualDate));
         JSONObject wallet = generalMethods.findUnique("wallet/name/"+ComboboxPortefeuille.getValue());
         if (wallet.isEmpty()){
             JOptionPane.showMessageDialog(null,"Cet identifiant n'existe pas dans le systeme");
@@ -82,7 +84,7 @@ public  class AjouterInvitationController  implements Initializable {
             invitation.put("user",Main.currentClient);
             invitation.put("droitAcces",role);
             invitation.put("statutInvitation","envoyee");
-
+            System.out.println(invitation);
             JSONObject json = generalMethods.createObject(invitation,"invite");
             if (json.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Envoie de l'invitation echoue");
@@ -115,7 +117,7 @@ public  class AjouterInvitationController  implements Initializable {
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        JSONArray wallets = generalMethods.find("invite/user/"+ Main.currentClient.getString("identifiant"));
+        JSONArray wallets = generalMethods.find("wallet/identifiant/"+ Main.currentClient.getString("identifiant"));
         for (int i = 0 ; i<wallets.length();i++){
             ComboboxPortefeuille.getItems().add(wallets.getJSONObject(i).getString("name"));
         }

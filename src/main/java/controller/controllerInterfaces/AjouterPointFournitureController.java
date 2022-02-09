@@ -44,16 +44,19 @@ public  class AjouterPointFournitureController  implements Initializable {
     private Button ButtonRetour;
     JSONObject pointDeFourniture;
 
-    JSONArray wallets = new JSONArray();
+    JSONArray wallets;
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
         wallets= generalMethods.find("wallet/name/"+Main.currentClient.getString("identifiant"));
-        for (Object f : wallets){
-            if (f instanceof  JSONObject){
-                comboboxPortefeuille.getItems().add(((JSONObject)f).getString("name"));
+        if (wallets!=null){
+            for (Object f : wallets){
+                if (f instanceof  JSONObject){
+                    comboboxPortefeuille.getItems().add(((JSONObject)f).getString("name"));
+                }
             }
         }
+
     }
     @FXML
     void ajouter(ActionEvent event) {

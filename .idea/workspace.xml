@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="39602310-4c1b-41e6-ac08-de1b8e13ea87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/photos/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/photos/login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/AllContract.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/HistoriqueTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/MenuPrincipalConsommateurTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/NewContractTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/NewContractTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModelTabs/UserTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controllerInterfaces/MenuPrincipaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/MenuPrincipaleController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaces/login.fxml" afterDir="false" />
+    </list>
+>>>>>>> parent of c30fb6a (commit pour la premiere mise a jour projet abdel)
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,9 +97,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../energyManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />

@@ -54,14 +54,7 @@ public  class MenuPrincipalePortefeuilleController  {
         nombre_compte.setCellValueFactory(new PropertyValueFactory<PortefeuilleTable,String>("nombreCompteur"));
 
         ObservableList items = FXCollections.observableArrayList();
-        JSONArray listOfWallets = new JSONArray();
-        try {
-            listOfWallets = generalMethods.find("wallet/identifiant/"+ currentClient.getString("identifiant"));
-        }
-        catch (Exception e ) {
-            System.out.println("erreur d'execution de la methode");
-        }
-
+        JSONArray listOfWallets = generalMethods.find("wallet/identifiant/"+ currentClient.getString("identifiant"));
 
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){

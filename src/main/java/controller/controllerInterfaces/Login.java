@@ -42,8 +42,8 @@ public class Login {
     @FXML
     void connect(ActionEvent event) {
 
-               String url = API_URL+"/user/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
-
+        String url = API_URL+"user/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
+        System.out.println(url);
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
 
@@ -53,7 +53,7 @@ public class Login {
                     .build();
             try {
                 Response response = client.newCall(request).execute();
-
+                System.out.println("bonne execution");
                 JSONObject user = new JSONObject(response.body().string());
                 if (!user.isEmpty()) {
                     Main.stage.close();

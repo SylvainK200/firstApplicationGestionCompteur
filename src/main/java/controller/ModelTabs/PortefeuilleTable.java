@@ -17,6 +17,7 @@ public class PortefeuilleTable {
         try{
             JSONObject home = wallet.getJSONObject("home");
             if (!home.isEmpty()){
+
             adresse = home.getString("city")+"-"+ home.getString("street");
             }
         }catch (Exception e ){

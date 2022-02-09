@@ -4,6 +4,8 @@ import Gui.Main;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import controller.ModelTabs.InvitationTable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,8 +74,8 @@ public class InvitationController {
 
     @FXML
     private TableColumn<InvitationTable, String> statut_recu;
-    public static List<InvitationTable> invitationEnvoyees = new ArrayList();
-    public static List<InvitationTable> invitationRecues = new ArrayList<>();
+    public static ObservableList<InvitationTable> invitationEnvoyees = FXCollections.observableArrayList();
+    public static ObservableList<InvitationTable> invitationRecues = FXCollections.observableArrayList();
     public GeneralMethods generalMethods = new GeneralMethodsImpl();
 
     void initialiserTableInvitationEnvoyee(){

@@ -12,15 +12,19 @@ import javax.swing.*;
 import static controller.ModelTabs.NewContractTable.JSON;
 
 public class GeneralMethodsImpl implements GeneralMethods{
-    public  static String API_URL = "https://energy-management-be.herokuapp.com/energy-management";
+    //public  static String API_URL = "https://energy-management-be.herokuapp.com/energy-management";
+    public  static String API_URL = "http://localhost:8085/energy-management/";
+
     @Override
     public JSONObject createObject(JSONObject contract, String url) {
+
+        System.out.println("CREATE : Contact de la route "+url);
         JSONObject resp = new JSONObject();
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         RequestBody formBody = RequestBody.create(JSON, contract.toString());
         Request request = new Request.Builder()
-                .url(API_URL +"/"+ url)
+                .url(API_URL + url)
                 .post(formBody)
                 .build();
         try {
@@ -36,12 +40,14 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONObject updateObject(JSONObject contract,String url) {
+
+        System.out.println("UPDATE : Contact de la route "+url);
         JSONObject resp = new JSONObject();
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         RequestBody formBody = RequestBody.create(JSON, contract.toString());
         Request request = new Request.Builder()
-                .url(API_URL +"/"+ url)
+                .url(API_URL + url)
                 .put(formBody)
                 .build();
         try {
@@ -58,10 +64,12 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONObject deleteObject (String url) {
+
+        System.out.println("DELETE : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
-                .url(API_URL+"/"+url)
+                .url(API_URL+url)
                 .method("DELETE", null)
                 .build();
 
@@ -75,18 +83,19 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONObject findUnique(String url){
+        System.out.println("FINDUNIQUE : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
-                .url(API_URL+"/"+url)
+                .url(API_URL+url)
                 .method("GET", null)
                 .build();
-        JSONObject result = null;
+        JSONObject result = new JSONObject();
         try {
             Response response = client.newCall(request).execute();
             String res = response.body().string();
             System.out.println("resultat "+res);
-            if (response.isSuccessful())
+            if (response.isSuccessful() && res!="")
             {
                 result= new JSONObject(res);
             }
@@ -99,10 +108,11 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONArray find(String url){
+        System.out.println("FIND : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
-                .url(API_URL+"/"+url)
+                .url(API_URL+url)
                 .method("GET", null)
                 .build();
         JSONArray result = null;
@@ -110,7 +120,7 @@ public class GeneralMethodsImpl implements GeneralMethods{
             Response response = client.newCall(request).execute();
             String res = response.body().string();
             System.out.println(res);
-            if (res !=null)
+            if (res !="")
             {
                 result= new JSONArray(res);
             }

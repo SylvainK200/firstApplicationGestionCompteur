@@ -11,7 +11,7 @@ public class ConsommationTable {
     public String type_compteur;
     public String consommateur;
     public String Fournisseur;
-    public String dateCloture;
+    public String date_lecture;
     public String ean;
     private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     public ConsommationTable(JSONObject contract_supply_point){
@@ -19,7 +19,7 @@ public class ConsommationTable {
         type_compteur = "mono-horaire";
         consommateur = Main.currentClient.getString("name");
         Fournisseur = contract_supply_point.getJSONObject("provider").getString("company_name");
-        dateCloture = df.format(contract_supply_point.getLong("date_end"));
+        date_lecture= contract_supply_point.getString("date_end");
         ean = contract_supply_point.getJSONObject("supplyPoint").getString("ean_18");
     }
 
@@ -43,7 +43,7 @@ public class ConsommationTable {
         return Fournisseur;
     }
 
-    public String getDateCloture() {
-        return dateCloture;
+    public String getDate_lecture() {
+        return date_lecture;
     }
 }

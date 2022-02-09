@@ -13,12 +13,12 @@ public class InvitationTable {
     public String acces;
     public String statut;
     public String date_envoie;
-    private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    private DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
     public InvitationTable(JSONObject invitation, boolean f){
         id = invitation.getLong("id");
         if (f){
             destinataire = invitation.getString("name");
-            date_envoie= df.format(invitation.getLong("dateInvitation"));
+            date_envoie= invitation.getString("dateInvitation");
         }
         else{
             destinataire = invitation.getJSONObject("user").getString("name");
@@ -26,7 +26,7 @@ public class InvitationTable {
         }
         portefeuille = invitation.getJSONObject("wallet").getString("name");
         acces = invitation.getString("droitAcces");
-        statut = invitation.getString("decision");
+        statut = invitation.getString("statutInvitation");
     }
 
     public long getId() {

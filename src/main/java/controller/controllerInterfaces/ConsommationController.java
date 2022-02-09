@@ -18,8 +18,17 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-public  class ConsommationController   {
 
+public  class ConsommationController  {
+
+    @FXML
+    private Button ButtonRetour;
+    @FXML
+    private Button ButtonVisualisation;
+    @FXML
+    private DatePicker ComboboxDateDebut;
+    @FXML
+    private DatePicker ComboboxDateFin;
     @FXML
     private ComboBox<String> ComboboxEAN;
     @FXML
@@ -48,8 +57,7 @@ public  class ConsommationController   {
         type_energie.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("type_energie"));
         ObservableList items = FXCollections.observableArrayList();
 
-        JSONArray listOfWallets = new JSONArray();
-        listOfWallets = generalMethods.find("contractSupplyPoint/wallet/identifiant/"+ Main.currentClient.getString("identifiant"));
+        JSONArray listOfWallets = generalMethods.find("contractSupplyPoint/wallet/identifiant/"+ Main.currentClient.getString("identifiant"));
 
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
