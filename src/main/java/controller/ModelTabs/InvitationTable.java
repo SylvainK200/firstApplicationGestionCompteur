@@ -22,7 +22,7 @@ public class InvitationTable {
         }
         else{
             destinataire = invitation.getJSONObject("user").getString("name");
-            date_envoie = df.format(invitation.getLong("dateValidation"));
+            date_envoie = invitation.getString("dateValidation");
         }
         portefeuille = invitation.getJSONObject("wallet").getString("name");
         acces = invitation.getString("droitAcces");

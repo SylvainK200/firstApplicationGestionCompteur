@@ -12,7 +12,7 @@ import javax.swing.*;
 import static controller.ModelTabs.NewContractTable.JSON;
 
 public class GeneralMethodsImpl implements GeneralMethods{
-    //public  static String API_URL = "https://energy-management-be.herokuapp.com/energy-management";
+    //public  static String API_URL = "https://energy-management-be.herokuapp.com/energy-management/";
     public  static String API_URL = "http://localhost:8085/energy-management/";
 
     @Override
@@ -53,7 +53,7 @@ public class GeneralMethodsImpl implements GeneralMethods{
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()){
-                JOptionPane.showMessageDialog(null,"Operation d'enregistrement reussie");
+                JOptionPane.showMessageDialog(null,"Operation de mise a jour reussie");
                 return new JSONObject(response.body().string());
             }
             response.close();
@@ -132,4 +132,58 @@ public class GeneralMethodsImpl implements GeneralMethods{
         return result;
     }
 
+    /*@Override
+    public JSONArray findManyWithBody(JSONObject body, String url){
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        RequestBody formBody = RequestBody.create(JSON, body.toString());
+
+        Request request = new Request.Builder()
+                .url(API_URL+url)
+                .method("GET",formBody)
+                .build();
+        JSONArray result = null;
+        try {
+            Response response = client.newCall(request).execute();
+            String res = response.body().string();
+            System.out.println(res);
+            if (res !="")
+            {
+                result= new JSONArray(res);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public JSONObject findWithBody(JSONObject body, String url){
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        RequestBody formBody = RequestBody.create(JSON, body.toString());
+
+        Request request = new Request.Builder()
+                .url(API_URL+url)
+                .method("GET",formBody)
+                .build();
+        JSONObject result = null;
+        try {
+            Response response = client.newCall(request).execute();
+            String res = response.body().string();
+            System.out.println(res);
+            if (res !="")
+            {
+                result= new JSONObject(res);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+*/
 }

@@ -63,7 +63,7 @@ public  class MenuPointFournitureController  implements Initializable {
     @FXML
     void ajoutPointFourniture(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonAjouterPointFourniture);
-        Main.ouvrirNouvellePage("AjouterPointFourniture");
+        Main.ouvrirNouvellePage("AjouterPointFourniture", "Ajouter Point de fourniture");
 
     }
 
@@ -82,7 +82,7 @@ public  class MenuPointFournitureController  implements Initializable {
 
         else {
             pointFournitureAModifier = menuPointFourniture.getSelectionModel().getSelectedItem().ean;
-            ouvrirNouvellePage("ModifierPointFourniture");
+            ouvrirNouvellePage("ModifierPointFourniture", "Modifier Point de fourniture");
         }
     }
 
@@ -104,11 +104,11 @@ public  class MenuPointFournitureController  implements Initializable {
 
         JSONArray listOfWallets = generalMethods.find("contractSupplyPoint/wallet/identifiant/"+ currentClient.getString("identifiant"));
 
-        for (Object j : listOfWallets){
+        /*for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 items.add(new PointDeFournitureTable((JSONObject) j));
             }
-        }
+        }*/
         pointFournitureTables = new FilteredList<>(items, p->true);
         rechercher.textProperty().addListener((ObservableValue<?extends String> observable, String oldValue, String newValue)->{
 

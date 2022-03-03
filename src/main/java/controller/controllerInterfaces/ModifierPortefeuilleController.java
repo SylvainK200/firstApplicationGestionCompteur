@@ -4,6 +4,8 @@ import Gui.Main;
 import controller.ComboBoxClasses.ComboLocalisation;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
+import controller.ModelTabs.PortefeuilleTable;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -12,9 +14,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
+import static Gui.Main.currentClient;
+import static controller.controllerInterfaces.MenuPrincipaleController.listPortefeuille;
+import static controller.controllerInterfaces.MenuPrincipaleController.portefeuilles;
+
 public class ModifierPortefeuilleController  implements  Initializable{
 
     @FXML
@@ -46,7 +51,6 @@ public class ModifierPortefeuilleController  implements  Initializable{
         Main.ajouterInteractionAuClic(button_valider);
         wallet.remove("name");
         wallet.put("name",nom.getText());
-        JSONObject user = wallet.getJSONObject("user");
         wallet.remove("home");
         JSONObject home = new JSONObject();
         home.put("id",localisation.getValue().getId());
@@ -54,18 +58,31 @@ public class ModifierPortefeuilleController  implements  Initializable{
         home.put("city",localisation.getValue().getCity());
         home.put("postal_code",localisation.getValue().getPostal_code());
         home.put("number",localisation.getValue().getNumber());
-        home.put("user",user);
+        //home.put("user",user);
         wallet.put("home",home);
         generalMethods.updateObject(wallet,"wallet");
 
+        List<PortefeuilleTable> portefeuilleTables = new ArrayList<>();
+        System.out.println("Requete aboutissant aux elts");
+        JSONArray elts = generalMethods.find("wallet/identifiant/"+ currentClient.getString("identifiant"));
+        Iterator it = elts.iterator();
+        while (it.hasNext()){
+            portefeuilleTables.add(new PortefeuilleTable((JSONObject) it.next()));
+        }
+        listPortefeuille.removeAll(listPortefeuille);
+        listPortefeuille.addAll(portefeuilleTables);
+        portefeuilles.removeAll(portefeuilles);
+        portefeuilles.addAll(listPortefeuille);
+        System.out.println(listPortefeuille.size());
+        System.out.println(portefeuilles.size());
     }
     @Override
     public void initialize(URL url, ResourceBundle rb){
         LabelNomClient.setText(Main.currentClient.getString("name"));
-        wallet  = generalMethods.findUnique("wallet/name/"+MenuPrincipalePortefeuilleController.nomPortefeuilleAModifier);
-        nom.setText(wallet.getString("name"));
+        nom.setText(MenuPrincipaleController.portefeuilleAModifier.getNom());
+        wallet  = generalMethods.findUnique("wallet/name/"+MenuPrincipaleController.portefeuilleAModifier.getNom());
         List<ComboLocalisation> localisations = new ArrayList<>();
-        JSONArray homes = Main.currentClient.getJSONArray("homes");
+        JSONArray homes = generalMethods.find("home/user/"+Main.currentClient.getString("identifiant"));
         for (Object h : homes){
             if (h instanceof JSONObject){
                localisations.add(new ComboLocalisation((JSONObject) h));

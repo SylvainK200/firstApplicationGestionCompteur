@@ -14,14 +14,28 @@ public class ConsommationTable {
     public String date_lecture;
     public String ean;
     private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-    public ConsommationTable(JSONObject contract_supply_point){
-        type_energie = contract_supply_point.getJSONObject("supplyPoint").getString("energy");
+    public String quantiteConsommee;
+    public String numero_compteur;
+    public ConsommationTable(JSONObject historical){
+        type_energie =historical.getJSONObject("supplyPoint").getString("energy");
         type_compteur = "mono-horaire";
         consommateur = Main.currentClient.getString("name");
-        Fournisseur = contract_supply_point.getJSONObject("provider").getString("company_name");
-        date_lecture= contract_supply_point.getString("date_end");
-        ean = contract_supply_point.getJSONObject("supplyPoint").getString("ean_18");
+        Fournisseur = historical.getJSONObject("supplyPoint").getJSONObject("pointFourniture").getJSONObject("provider").getString("company_name");
+        date_lecture= historical.getString("date");
+        ean = historical.getJSONObject("supplyPoint").getString("ean_18");
+        quantiteConsommee = historical.getDouble("consommation")+"";
+        numero_compteur = historical.getJSONObject("supplyPoint").getLong("id")+"";
     }
+
+    public String getQuantiteConsommee() {
+        return quantiteConsommee;
+    }
+
+    public String getNumero_compteur() {
+        return numero_compteur;
+    }
+
+
 
     public String getEan() {
         return ean;

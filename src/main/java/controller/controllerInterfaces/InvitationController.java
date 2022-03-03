@@ -1,6 +1,7 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
+import com.sun.glass.ui.Clipboard;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import controller.ModelTabs.InvitationTable;
@@ -117,7 +118,7 @@ public class InvitationController {
     @FXML
     void ajouterInvitation(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonAjouterInvitation);
-        Main.ouvrirNouvellePage("AjouterInvitation");
+        Main.ouvrirNouvellePage("AjouterInvitation","Ajouter Invitation");
 
     }
 
@@ -145,7 +146,7 @@ public class InvitationController {
         }
 
 
-        Main.ouvrirNouvellePage("ModifierInvitation");
+        Main.ouvrirNouvellePage("ModifierInvitation","Modifier Invitation");
     }
 
     @FXML

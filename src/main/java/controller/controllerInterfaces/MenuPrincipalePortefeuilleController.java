@@ -86,7 +86,7 @@ public  class MenuPrincipalePortefeuilleController  {
     @FXML
     void ajouterPOrtefeuille(ActionEvent event) {
         ajouterInteractionAuClic(ButtonAjouterPortefeuille);
-        ouvrirNouvellePage("AjouterPointFourniture");
+        ouvrirNouvellePage("AjouterPointFourniture","Ajouter Point de fourniture");
     }
 
     @FXML
@@ -105,7 +105,7 @@ public  class MenuPrincipalePortefeuilleController  {
 
         else {
             nomPortefeuilleAModifier = TablesAffichagesPortefeuille.getSelectionModel().getSelectedItem().nom;
-            ouvrirNouvellePage("ModifierPortefeuille");
+            ouvrirNouvellePage("ModifierPortefeuille","Ajouter Point de fourniture");
         }
     }
 

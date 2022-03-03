@@ -1,6 +1,8 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,14 +14,14 @@ import javafx.scene.text.Text;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.swing.*;
 import java.util.Objects;
 
-import static Gui.Main.currentClient;
-import static Gui.Main.currentprovider;
+import static Gui.Main.*;
 import static controller.Methods.GeneralMethodsImpl.API_URL;
 
 public class Login {
@@ -30,15 +32,17 @@ public class Login {
     @FXML
     private PasswordField mot_de_passe;
 
-    @FXML
+   /* @FXML
     private Button connect_button;
     @FXML
     private Text mot_de_passe_perdu;
 
     @FXML
-    private Text creer_compte;
+    private Text creer_compte;*/
     public void initialize(){
     }
+
+    public static JSONArray invitationsClient = new JSONArray();
     @FXML
     void connect(ActionEvent event) {
 
@@ -56,9 +60,15 @@ public class Login {
                 System.out.println("bonne execution");
                 JSONObject user = new JSONObject(response.body().string());
                 if (!user.isEmpty()) {
-                    Main.stage.close();
+                        invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
+                        Main.stage.close();
                         currentClient = user;
-                        Main.showPages("MenuPrincipaleController.fxml");
+
+                    if (invitationsClient.length()>0){
+                            Main.showPages("invitationVersClient.fxml");
+                        }else{
+                            Main.showPages("MenuPrincipaleController.fxml");
+                        }
                         response.close();
 
                 }

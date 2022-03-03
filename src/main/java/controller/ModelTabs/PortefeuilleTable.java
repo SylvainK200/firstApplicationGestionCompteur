@@ -10,7 +10,7 @@ public class PortefeuilleTable {
 
     public String nom;
     public String adresse;
-    public double nombreCompteur;
+    public int nombreCompteur;
 
     public  PortefeuilleTable(JSONObject wallet){
         nom = wallet.getString("name");
@@ -27,7 +27,7 @@ public class PortefeuilleTable {
         }
 
         // Creer route pour avoir le nombre de contrat pour un porte feuille
-        nombreCompteur = 4;
+        nombreCompteur = wallet.getJSONArray("pointFournitures").length();
     }
 
     public String getNom() {
@@ -38,7 +38,7 @@ public class PortefeuilleTable {
         return adresse;
     }
 
-    public double getNombreCompteur() {
+    public int getNombreCompteur() {
         return nombreCompteur;
     }
 }

@@ -20,7 +20,7 @@ public  class AjouterPointFournitureController  implements Initializable {
     private TextField TextEAN;
 
     @FXML
-    private ComboBox<String> comboboxPortefeuille;
+    private ComboBox<String> comboboxPorteFeuille;
 
     @FXML
     private Button ButtonAnnuler;
@@ -48,11 +48,12 @@ public  class AjouterPointFournitureController  implements Initializable {
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        wallets= generalMethods.find("wallet/name/"+Main.currentClient.getString("identifiant"));
+        wallets= generalMethods.find("wallet/identifiant/"+Main.currentClient.getString("identifiant"));
         if (wallets!=null){
+            System.out.println(wallets.length());
             for (Object f : wallets){
                 if (f instanceof  JSONObject){
-                    comboboxPortefeuille.getItems().add(((JSONObject)f).getString("name"));
+                    comboboxPorteFeuille.getItems().add(((JSONObject)f).getString("name"));
                 }
             }
         }
@@ -64,7 +65,7 @@ public  class AjouterPointFournitureController  implements Initializable {
         JSONObject pointFourniture = generalMethods.findUnique("PointFourniture/ean/"+ean);
         JSONObject j  = new JSONObject() ;
         if (pointFourniture !=null){
-            String comboboxPorteFeuille  = comboboxPortefeuille.getValue();
+            String comboboxPorteFeuille  = this.comboboxPorteFeuille.getValue();
             Iterator<Object> it = wallets.iterator();
             while(it.hasNext()){
                 j = (JSONObject) it.next();
@@ -82,7 +83,7 @@ public  class AjouterPointFournitureController  implements Initializable {
 
     @FXML
     void annuler(ActionEvent event) {
-        comboboxPortefeuille.setValue("");
+        comboboxPorteFeuille.setValue("");
     }
 
     @FXML

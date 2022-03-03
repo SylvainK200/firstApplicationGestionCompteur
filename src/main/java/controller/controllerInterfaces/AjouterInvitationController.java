@@ -90,8 +90,9 @@ public  class AjouterInvitationController  implements Initializable {
                 JOptionPane.showMessageDialog(null,"Envoie de l'invitation echoue");
             }else{
                 JOptionPane.showMessageDialog(null,"Creation invitation reussie");
-                InvitationController.invitationRecues.add(new InvitationTable(json,true));
 
+                MenuPrincipaleController.invitationEnvoyes.add(new InvitationTable(json,true));
+                MenuPrincipaleController.invitationEnvoyees.add(new InvitationTable(json,true));
             }
         }
 
