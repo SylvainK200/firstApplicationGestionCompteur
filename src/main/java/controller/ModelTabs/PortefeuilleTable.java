@@ -25,9 +25,9 @@ public class PortefeuilleTable {
                     "Proble avec l'objet home du JSONObject dans le fichier PortefeuilleTable.java\n\n"
                             +e.getMessage());
         }
-
-        // Creer route pour avoir le nombre de contrat pour un porte feuille
-        nombreCompteur = wallet.getJSONArray("pointFournitures").length();
+        if(!wallet.isNull("pointFournitures")){
+            nombreCompteur = wallet.getJSONArray("pointFournitures").length();
+        }
     }
 
     public String getNom() {

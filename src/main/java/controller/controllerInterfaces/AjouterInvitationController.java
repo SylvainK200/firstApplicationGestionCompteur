@@ -61,6 +61,7 @@ public  class AjouterInvitationController  implements Initializable {
         this.invitationTableElement = invitationTableElement;
     }
 
+    public JSONArray portefeuillesDispo;
     @FXML
     void ajouterInvitation(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonValider);
@@ -77,8 +78,9 @@ public  class AjouterInvitationController  implements Initializable {
         invitation.put("name",identifiant.getText());
         invitation.put("dateInvitation", DateTimeFormatter.ofPattern("yyyy-mm-dd", Locale.ENGLISH).format(actualDate));
         JSONObject wallet = generalMethods.findUnique("wallet/name/"+ComboboxPortefeuille.getValue());
-        if (wallet.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Cet identifiant n'existe pas dans le systeme");
+        JSONObject user = generalMethods.findUnique("user/identifiant/"+identifiant.getText());
+        if (user.isEmpty()){
+            Main.afficherAlert("Cet identifiant n'existe pas dans le systeme");
         }else{
             invitation.put("wallet",wallet);
             invitation.put("user",Main.currentClient);
@@ -87,9 +89,9 @@ public  class AjouterInvitationController  implements Initializable {
             System.out.println(invitation);
             JSONObject json = generalMethods.createObject(invitation,"invite");
             if (json.isEmpty()){
-                JOptionPane.showMessageDialog(null,"Envoie de l'invitation echoue");
+                Main.afficherAlert("Envoie de l'invitation echoue");
             }else{
-                JOptionPane.showMessageDialog(null,"Creation invitation reussie");
+                Main.afficherAlert("Creation invitation reussie");
 
                 MenuPrincipaleController.invitationEnvoyes.add(new InvitationTable(json,true));
                 MenuPrincipaleController.invitationEnvoyees.add(new InvitationTable(json,true));
@@ -118,9 +120,10 @@ public  class AjouterInvitationController  implements Initializable {
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        JSONArray wallets = generalMethods.find("wallet/identifiant/"+ Main.currentClient.getString("identifiant"));
-        for (int i = 0 ; i<wallets.length();i++){
-            ComboboxPortefeuille.getItems().add(wallets.getJSONObject(i).getString("name"));
+        portefeuillesDispo = MenuPrincipaleController.listWalletUsable;
+       // JSONArray wallets = generalMethods.find("wallet/identifiant/"+ Main.currentClient.getString("identifiant"));
+        for (int i = 0 ; i<portefeuillesDispo.length();i++){
+            ComboboxPortefeuille.getItems().add(portefeuillesDispo.getJSONObject(i).getString("name"));
         }
         if (invitationTableElement!=null){
             ComboboxPortefeuille.getSelectionModel().select(invitationTableElement.getPortefeuille());

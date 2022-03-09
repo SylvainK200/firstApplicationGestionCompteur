@@ -48,7 +48,9 @@ public class InvitationClientController {
         invitant.setCellValueFactory(new PropertyValueFactory<InvitationClientTable,String>("invitant"));
         droitAcces.setCellValueFactory(new PropertyValueFactory<InvitationClientTable,String>("droitAcces"));
 
-        JSONArray invitationArray = generalMethods.find("invite/receive/user/"+ Main.currentClient.getString("identifiant")+"/envoyee");
+
+       JSONArray invitationArray = generalMethods.find("invite/receive/user/"+ Main.currentClient.getString("identifiant")+"/envoyee");
+
         invitationArray.forEach(inv->{
             JSONObject invitation = (JSONObject)inv;
             String invitant = invitation.getJSONObject("user").getString("identifiant");
@@ -60,13 +62,15 @@ public class InvitationClientController {
 
         });
         tableInvitation.getItems().addAll(invitations);
-    }
+           }
 
     @FXML
     void accepter(ActionEvent event) {
+
         invitations.forEach(
                 invitation->{
                     if (invitation.select.isSelected()){
+                        System.out.println("Selected");
                         JSONObject json = new JSONObject();
                         json.put("invite",Main.currentClient.getString("identifiant"));
                         json.put("invitant",invitation.getInvitant());

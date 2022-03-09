@@ -42,7 +42,7 @@ public class ModifierPortefeuilleController  implements  Initializable{
     @FXML
     void annuler(ActionEvent event) {
         Main.ajouterInteractionAuClic(button_annuler);
-        nom.setText(MenuPrincipalePortefeuilleController.nomPortefeuilleAModifier);
+        //nom.setText(MenuPrincipaleController.nomPortefeuilleAModifier);
 
     }
 
@@ -58,7 +58,7 @@ public class ModifierPortefeuilleController  implements  Initializable{
         home.put("city",localisation.getValue().getCity());
         home.put("postal_code",localisation.getValue().getPostal_code());
         home.put("number",localisation.getValue().getNumber());
-        //home.put("user",user);
+
         wallet.put("home",home);
         generalMethods.updateObject(wallet,"wallet");
 

@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public  class ConsommationController  {
@@ -62,7 +63,7 @@ public  class ConsommationController  {
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 items.add(new ConsommationTable((JSONObject) j));
-                ComboboxEAN.getItems().add(((JSONObject)j).getJSONObject("supplyPoint").getString("ean_18"));
+                ComboboxEAN.getItems().add(((JSONObject)j).getJSONObject("supplyPoint").getString("name"));
             }
         }
         consommationTables = new FilteredList<>(items, p->true);
@@ -74,7 +75,7 @@ public  class ConsommationController  {
                 if(newValue == null || newValue.isEmpty()){
                     return true;
                 }
-                if(consommationTable.getEan().toLowerCase().contains(newValue.toLowerCase())) return true;
+                if(consommationTable.getName().toLowerCase().contains(newValue.toLowerCase())) return true;
                 return false;
             });
             TableConsommation.getItems().clear();
@@ -90,6 +91,15 @@ public  class ConsommationController  {
     }
     @FXML
     void visualiser(ActionEvent event) {
+        ArrayList<ConsommationTable> consommations = new ArrayList<>();
+        consommationTables.forEach(conso->
+        {
+            consommations.add(conso);
+        });
+        Visualisation.consommations = consommations;
+        Visualisation.numeroCompteur = ComboboxEAN.getValue();
+
+        Main.showPages("visualization.fxml");
 
     }
 

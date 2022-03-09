@@ -1,5 +1,6 @@
 package controller.Methods;
 
+import javafx.scene.control.Alert;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -53,7 +54,13 @@ public class GeneralMethodsImpl implements GeneralMethods{
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()){
-                JOptionPane.showMessageDialog(null,"Operation de mise a jour reussie");
+
+                String title = "Mise a jour";
+                String label = "Operation de Mise a jour reussie";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(title);
+                alert.setContentText(label);
+                alert.show();
                 return new JSONObject(response.body().string());
             }
             response.close();

@@ -1,6 +1,8 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
+import controller.Methods.GeneralMethods;
+import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,14 +18,6 @@ import static controller.Methods.GeneralMethodsImpl.API_URL;
 
 
 public class CreerCompte {
-    @FXML
-    private TextField street;
-
-    @FXML
-    private TextField city;
-
-    @FXML
-    private TextField postal_code;
     @FXML
     private TextField nom;
 
@@ -50,10 +44,9 @@ public class CreerCompte {
 
     @FXML
     private Button creer_compte;
-    @FXML
-    private ComboBox<String> type_utilisateur;
+    private GeneralMethods generalMethods = new GeneralMethodsImpl();
     public void initialize(){
-        type_utilisateur.getItems().addAll("Consommateur","Fournisseur");
+
     }
     @FXML
     private Button retour;
@@ -67,50 +60,18 @@ public class CreerCompte {
                 .put("reponse_secrete",reponse_question_secrete.getText())
                 .put("identifiant",identifiant.getText())
                 .put("name",nom.getText())
-                .put("street",street.getText())
-                .put("number",number.getText())
-                .put("city",city.getText())
-                .put("postal_code",postal_code.getText());
+                .put("number",number.getText());
         return json;
     }
 
     @FXML
     void creerCompte(ActionEvent event) {
         if (confirmation_mot_de_passe.getText().equals(mot_de_passe.getText()))
-        { OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
+        {
             JSONObject jsonObject= this.fabriquerJson();
-            if (this.type_utilisateur.getValue() !=null){
-
-                String url = "/user";
-                if (this.type_utilisateur.getValue() == "Fournisseur"){
-                    jsonObject.remove("name");
-                    jsonObject.put("company_name",nom.getText());
-                    url  = "/provider";
-                }
-                RequestBody formBody = RequestBody.create(JSON, jsonObject.toString());
-                Request request = new Request.Builder()
-                        .url(API_URL +url)
-                        .post(formBody)
-                        .build();
-                try {
-                    Response response = client.newCall(request).execute();
-                    if (response.isSuccessful()){
-                        System.out.println("Enregistrement termine");
-                        Main.stage.close();
-                        Main.showPages("login.fxml");
-
-                    }
-                    response.close();
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }else {
-                JOptionPane.showMessageDialog(null,"Choisissez le type d'utilisateur \n que vous etes");
-            }
-
+            JSONObject user =generalMethods.createObject(jsonObject,"user");
+            Main.stage.close();
+            Main.showPages("login.fxml");
          }
         else{
             JOptionPane.showMessageDialog(null,"le mot de passe et sa confirmation ne sont pas identiques");
@@ -120,7 +81,7 @@ public class CreerCompte {
     @FXML
     void retourDeLaCreation(ActionEvent event) {
         Main.stage.close();
-        Main.showPages("interfaces/login.fxml");
+        Main.showPages("login.fxml");
     }
 
 }

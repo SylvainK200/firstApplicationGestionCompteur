@@ -22,28 +22,6 @@ public  class AjouterPointFournitureController  implements Initializable {
     @FXML
     private ComboBox<String> comboboxPorteFeuille;
 
-    @FXML
-    private Button ButtonAnnuler;
-
-    @FXML
-    private Label LabelNomClient;
-
-    @FXML
-    private MenuButton ButtonCompte;
-
-    @FXML
-    private MenuItem MenuParametres;
-
-    @FXML
-    private MenuItem MenuSeDeconnecter;
-
-    @FXML
-    private Button ButtonAjouter;
-
-    @FXML
-    private Button ButtonRetour;
-    JSONObject pointDeFourniture;
-
     JSONArray wallets;
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override

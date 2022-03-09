@@ -10,7 +10,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONArray;
@@ -25,11 +27,42 @@ import java.util.logging.Logger;
 public class Main extends Application {
 
     public static JSONObject currentClient ;
-    public static JSONObject currentprovider;
     public static Stage  stage = new Stage();
     public static Stage newStage = new Stage();
     public static String firstpage = "login.fxml";
     public static GeneralMethods generalMethods = new GeneralMethodsImpl();
+
+
+    public static void afficherAlert (String contentText){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,contentText, ButtonType.OK);
+        alert.showAndWait();;
+    }
+    public static void startForTests(Stage primaryStage) throws Exception{
+        stage=primaryStage;
+        showPages("login.fxml");
+        /*String title = "...";
+        String header = "header";
+        String label = "label";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(label);
+        alert.show();*/
+    }
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        stage=primaryStage;
+        showPages(firstpage);
+       /* String title = "...";
+        String header = "header";
+        String label = "label";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(label);
+        alert.show();*/
+        //return alert;
+    }
     public static void main(String[] args) throws JsonProcessingException {
 
         launch(args);
@@ -86,16 +119,9 @@ public class Main extends Application {
         }
         return root;
     }
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        stage=primaryStage;
-        showPages(firstpage);
-    }
 
-    public static void startForTests(Stage primaryStage) throws Exception{
-        stage=primaryStage;
-        showPages("login.fxml");
-    }
+
+
     public static ArrayList<JSONObject> extractConsommations(JSONArray consommationValue, long idSupplyPoint)
     {
         ArrayList<JSONObject> consommations = new ArrayList<>();

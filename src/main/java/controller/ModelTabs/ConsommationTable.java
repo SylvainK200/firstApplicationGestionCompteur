@@ -13,10 +13,12 @@ public class ConsommationTable {
     public String Fournisseur;
     public String date_lecture;
     public String ean;
+    public String name;
     private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     public String quantiteConsommee;
     public String numero_compteur;
     public ConsommationTable(JSONObject historical){
+        name= historical.getJSONObject("supplyPoint").getString("name");
         type_energie =historical.getJSONObject("supplyPoint").getString("energy");
         type_compteur = "mono-horaire";
         consommateur = Main.currentClient.getString("name");
@@ -34,7 +36,9 @@ public class ConsommationTable {
     public String getNumero_compteur() {
         return numero_compteur;
     }
-
+    public String getName(){
+        return this.name;
+    }
 
 
     public String getEan() {

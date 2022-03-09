@@ -137,7 +137,15 @@ public  class MenuPrincipaleController {
     }
     @FXML
     void visualiser(ActionEvent event) {
+        ArrayList<ConsommationTable> consommations = new ArrayList<>();
+        consommationTables.forEach(conso->
+        {
+            consommations.add(conso);
+        });
+        Visualisation.consommations = consommations;
+        Visualisation.numeroCompteur = ComboboxEAN.getValue();
 
+        Main.showPages("visualization.fxml");
     }
 
 
@@ -146,15 +154,9 @@ public  class MenuPrincipaleController {
 
 
     // controller pour les points de fourniture
-  /*  @FXML
-    private Button ButtonAjouterPointFourniture;
-*/
     @FXML
     private TableColumn<PointDeFournitureTable, String> administrateur;
 
-   /* @FXML
-    private Button buttonModifierPointFourniture;
-*/
     @FXML
     private Button buttonSupprimerPointFourniture;
 
@@ -167,11 +169,6 @@ public  class MenuPrincipaleController {
     @FXML
     private TableColumn<PointDeFournitureTable, String> nom_portefeuille;
 
-   /* @FXML
-    private TableColumn<PointDeFournitureTable, String> numero_compteur;
-
-    @FXML
-    private TableColumn<PointDeFournitureTable, String> ouvert;*/
 
     @FXML
     private TextField rechercher;
@@ -216,15 +213,16 @@ public  class MenuPrincipaleController {
                 pointFournitureWallet.put("ean",pointDeFournitureTable.getEan());
                 pointFournitureWallet.put("walletname",pointDeFournitureTable.getNom_portefeuille());
                 JSONObject wallet = generalMethods.updateObject(pointFournitureWallet,"wallet/removePointFourniture");
-                JOptionPane.showMessageDialog(null,"Suppression reussie d'un point de fourniture pour un portefeuille");
+
+                Main.afficherAlert("Suppression reussie d'un point de fourniture pour un portefeuille");
                 if(wallet != null) {
                     menuPointFourniture.getItems().remove(pointDeFournitureTable);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Vous n'avez pas des acces en ecriture sur ce portefeuille");
+                Main.afficherAlert("Vous n'avez pas des acces en ecriture sur ce portefeuille");
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Veuillez choisir un element");
+            Main.afficherAlert("Veuillez choisir un element");
         }
     }
     FilteredList<PointDeFournitureTable> pointFournitureTables;
@@ -343,12 +341,13 @@ public  class MenuPrincipaleController {
             generalMethods.updateObject(o,"wallet/addPointFourniture");
             initializePointFourniture();
         }else{
-            JOptionPane.showMessageDialog(null,"Vous n'avez pas le droit d'ecriture sur ce portefeuille");
+            Main.afficherAlert("Vous n'avez pas le droit d'ecriture sur ce portefeuille");
         }
 
     }
     private FilteredList<PortefeuilleTable> portefeuilleTables;
     public static List<PortefeuilleTable> listPortefeuille = new ArrayList<>();
+    public JSONArray listOfWallets;
     public static ObservableList<PortefeuilleTable> portefeuilles = FXCollections.observableArrayList(listPortefeuille);
     public void initializePortefeuille(){
 
@@ -378,7 +377,7 @@ public  class MenuPrincipaleController {
         );
 
 
-        JSONArray listOfWallets  = new JSONArray();
+        listOfWallets  = new JSONArray();
         JSONArray listOfWallets1 ;
         listOfWallets1 = generalMethods.find("wallet/visibleWallet/identifiant/"+ currentClient.getString("identifiant"));
         listOfWallets1.forEach(w->{
@@ -458,7 +457,8 @@ public  class MenuPrincipaleController {
                 ouvrirNouvellePage("ModifierPortefeuille","Modifier Portefeuille");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Vous n'avez pas acces a ce portefeuille en ecriture");
+                Main.afficherAlert("Vous n'avez pas acces a ce portefeuille en ecriture");
+
             }
 
         }
@@ -490,7 +490,7 @@ public  class MenuPrincipaleController {
                     TablesAffichagesPortefeuille.getItems().remove(port);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Vous n'avez pas acces a ce portefeuile en ecriture");
+                    Main.afficherAlert("Vous n'avez pas acces a ce portefeuile en ecriture");
                 }
 
         }
@@ -558,7 +558,7 @@ public  class MenuPrincipaleController {
 
     public static ObservableList<InvitationTable> invitationEnvoyees = FXCollections.observableArrayList(invitationEnvoyes);
     public static ObservableList<InvitationTable> invitationRecues = FXCollections.observableArrayList(invitationRecus);
-
+    public static  JSONArray listWalletUsable = new JSONArray();
 
     void initialiserTableInvitationEnvoyee(){
         acces.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("acces"));
@@ -619,6 +619,7 @@ public  class MenuPrincipaleController {
     }
     @FXML
     void ajouterInvitation(ActionEvent event) {
+        listWalletUsable = listOfWallets;
         Main.ajouterInteractionAuClic(ButtonAjouterInvitation);
         Main.ouvrirNouvellePage("AjouterInvitation","Ajouter Invitation");
 

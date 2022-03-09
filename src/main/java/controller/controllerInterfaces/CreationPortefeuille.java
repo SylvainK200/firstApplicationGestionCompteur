@@ -76,24 +76,25 @@ public class CreationPortefeuille {
             home.put("number",Integer.parseInt(numero.getText()));
             home.put("city",ville.getText());
             home.put("postal_code",codePostal.getText());
+            home.put("user",currentClient);
             JSONObject createdHome = generalMethods.createObject(home,"home");
             portefeuille.put("name",nomPortefeuille.getText());
             portefeuille.put("type",typePortefeuille.getText());
             portefeuille.put("amout_ceiling",montantPlafond.getText());
             portefeuille.put("client",currentClient.getString("identifiant"));
             portefeuille.put("home",createdHome);
-
         }
+
+        portefeuille.put("visibleByClient",true);
         JSONObject createdPortefeuille = generalMethods.createObject(portefeuille,"wallet");
-        Main.retourSurOperationDeCreation(createdPortefeuille,"portefeuille");
-        if (createdPortefeuille !=null){
-            System.out.println(createdPortefeuille);
+        Main.afficherAlert("Creation reussie");
+        if (createdPortefeuille !=null && !createdPortefeuille.isEmpty()){
             MenuPrincipaleController.portefeuilles.add(new PortefeuilleTable(createdPortefeuille));
         }
     }
 
     public void initialize(){
-        JSONArray homes = generalMethods.find("/home/user/"+currentClient.getString("identifiant"));
+        JSONArray homes = generalMethods.find("home/user/"+currentClient.getString("identifiant"));
         for (int i = 0; i<homes.length(); i++){
             maisons.getItems().add(new ComboLocalisation((JSONObject) homes.get(i)));
         }
