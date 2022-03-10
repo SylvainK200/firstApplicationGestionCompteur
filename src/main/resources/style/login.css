@@ -1,0 +1,22 @@
+button-login:hover{
+    -fx-background-color: rgb(0,100,200);
+}
+
+.connect{
+    -fx-background-color:rgb(10, 114, 184);
+    -fx-font-size:18;
+    -fx-font-style: bold;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect:dropshadow(gaussian,rgb(56, 56, 56),4,0.5,1.0,1.0);
+    -fx-text-fill:white;
+    -fx-font-family:'Abyssinica SIL';
+}
+
+.bienvenu
+{
+    -fx-font-style:bold;
+    -fx-font-size:40;
+    -fx-font-family:'Abyssinica SIL';
+}
+

@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.CreationPortefeuille">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="600.0" styleClass="principalCaracteristics" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.CreationPortefeuille">
    <children>
-      <TextField fx:id="nomPortefeuille" layoutX="55.0" layoutY="115.0" prefHeight="24.0" prefWidth="184.0" promptText="Nom" />
-      <TextField fx:id="typePortefeuille" layoutX="55.0" layoutY="168.0" prefHeight="24.0" prefWidth="184.0" promptText="Type" />
-      <TextField fx:id="montantPlafond" layoutX="54.0" layoutY="222.0" prefHeight="24.0" prefWidth="184.0" promptText="Montant plafond" />
-      <TextField fx:id="rue" layoutX="334.0" layoutY="117.0" prefHeight="24.0" prefWidth="184.0" promptText="Rue" />
-      <TextField fx:id="numero" layoutX="334.0" layoutY="170.0" prefHeight="24.0" prefWidth="184.0" promptText="Numero" />
-      <TextField fx:id="ville" layoutX="333.0" layoutY="224.0" prefHeight="24.0" prefWidth="184.0" promptText="Ville" />
-      <TextField fx:id="codePostal" layoutX="332.0" layoutY="291.0" prefHeight="24.0" prefWidth="184.0" promptText="Code Postal" />
-      <Label layoutX="66.0" layoutY="50.0" prefHeight="30.0" prefWidth="150.0" text="Portefeuille">
+      <TextField fx:id="nomPortefeuille" layoutX="64.0" layoutY="97.0" prefHeight="24.0" prefWidth="184.0" promptText="Nom" styleClass="formulaire" />
+      <TextField fx:id="typePortefeuille" layoutX="64.0" layoutY="150.0" prefHeight="24.0" prefWidth="184.0" promptText="Type" styleClass="formulaire" />
+      <TextField fx:id="montantPlafond" layoutX="63.0" layoutY="204.0" prefHeight="24.0" prefWidth="184.0" promptText="Montant plafond" styleClass="formulaire" />
+      <TextField fx:id="rue" layoutX="343.0" layoutY="99.0" prefHeight="24.0" prefWidth="184.0" promptText="Rue" styleClass="formulaire" />
+      <TextField fx:id="numero" layoutX="343.0" layoutY="152.0" prefHeight="24.0" prefWidth="184.0" promptText="Numero" styleClass="formulaire" />
+      <TextField fx:id="ville" layoutX="342.0" layoutY="206.0" prefHeight="24.0" prefWidth="184.0" promptText="Ville" styleClass="formulaire" />
+      <TextField fx:id="codePostal" layoutX="341.0" layoutY="273.0" prefHeight="24.0" prefWidth="184.0" promptText="Code Postal" styleClass="formulaire" />
+      <Label layoutX="53.0" layoutY="28.0" prefHeight="55.0" prefWidth="226.0" styleClass="bienvenu" text="Portefeuille">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="388.0" layoutY="50.0" text="Maison">
+      <Label layoutX="346.0" layoutY="28.0" styleClass="bienvenu" text="Maison">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="maisons" layoutX="55.0" layoutY="291.0" prefHeight="24.0" prefWidth="184.0" />
-      <Button fx:id="buttonEnregistrer" layoutX="85.0" layoutY="350.0" mnemonicParsing="false" onAction="#enregistrerPortefeuille" text="Enregistrer" />
-      <Button fx:id="buttonAnnuler" layoutX="388.0" layoutY="350.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+      <JFXComboBox fx:id="maisons" layoutX="64.0" layoutY="273.0" prefHeight="24.0" prefWidth="184.0" promptText="Maison" />
+      <Button fx:id="buttonEnregistrer" layoutX="94.0" layoutY="332.0" mnemonicParsing="false" onAction="#enregistrerPortefeuille" prefHeight="36.0" prefWidth="139.0" styleClass="ajouter" text="Enregistrer" />
+      <Button fx:id="buttonAnnuler" layoutX="361.0" layoutY="332.0" mnemonicParsing="false" onAction="#annuler" prefHeight="33.0" prefWidth="115.0" styleClass="annuler" text="Annuler" />
    </children>
+   <stylesheets>
+      <URL value="@../style/autres.css" />
+      <URL value="@../style/login.css" />
+   </stylesheets>
 </AnchorPane>

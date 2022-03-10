@@ -1,0 +1,63 @@
+
+.deconnect{
+    -fx-text-fill:rgba(196, 44, 6, 0.685);
+}
+.principalCaracteristics{
+    -fx-font-family:'Abyssinica SIL';
+    -fx-font-size:15;
+
+}
+.modifier{
+    -fx-background-color : rgba(189, 189, 189, 0.986);
+    -fx-font-size:18;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect:dropshadow(gaussian,black,4,0.5,1.0,1.0);
+    -fx-text-fill:rgb(31, 31, 31);
+    -fx-font-family:'Abyssinica SIL';
+}
+
+.ajouter{
+    -fx-background-color:rgb(10, 114, 184);
+    -fx-font-size:18;
+    -fx-font-style: bold;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect:dropshadow(gaussian,rgb(56, 56, 56),4,0.5,1.0,1.0);
+    -fx-text-fill:white;
+    -fx-font-family:'Abyssinica SIL';
+}
+
+/*
+ce style peut etre utilise pour le bouton supprimer aussi
+*/
+.annuler
+{
+    -fx-background-color:#d48a1a;
+    -fx-font-size:16;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect:dropshadow(gaussian,black,4,0.5,1.0,1.0);
+    -fx-text-fill:rgb(44, 44, 44);
+    -fx-font-family:'Abyssinica SIL';
+}
+
+.labels {
+    -fx-font-size : 18 ; 
+    -fx-font-family:'Abyssinica SIL';
+
+}
+
+.formulaire
+{
+    -fx-background-radius: 9px;
+    -fx-border-radius : 9px;
+}
+
+.titre {
+    -fx-text-fill : rgb(231, 163, 73); 
+    -fx-font-size : 33;
+    -fx-font-style : Bold italic; 
+    -fx-effect:dropshadow(gaussian,black,4,0.4,1.0,1.0);
+    -fx-font-family:'Abyssinica SIL';
+ }

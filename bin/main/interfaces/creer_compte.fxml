@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -7,30 +8,34 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="449.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.CreerCompte">
+<AnchorPane prefHeight="418.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.CreerCompte">
    <children>
-      <TextField fx:id="nom" layoutX="47.0" layoutY="121.0" promptText="nom" />
-      <TextField fx:id="number" layoutX="289.0" layoutY="121.0" promptText="number" />
-      <Text layoutX="48.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom " />
-      <Text layoutX="289.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro" />
-      <TextField fx:id="identifiant" layoutX="47.0" layoutY="179.0" promptText="identifiant" />
-      <Text layoutX="48.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identifiant" />
-      <TextField fx:id="adresse_mail" layoutX="289.0" layoutY="180.0" promptText="adresse mail" />
-      <Text layoutX="290.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse mail" />
-      <Text layoutX="48.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
-      <Text layoutX="290.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confimation mot de passe" />
-      <TextField fx:id="question_secrete" layoutX="47.0" layoutY="310.0" promptText="question secrète" />
-      <Text layoutX="48.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question secrète" />
-      <TextField fx:id="reponse_question_secrete" layoutX="289.0" layoutY="310.0" promptText="repnse question secrète" />
-      <Text layoutX="290.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse questoin secrète" />
-      <Button fx:id="creer_compte" layoutX="79.0" layoutY="366.0" mnemonicParsing="false" onAction="#creerCompte" text="Créer compte" />
-      <Button fx:id="retour" layoutX="316.0" layoutY="366.0" mnemonicParsing="false" onAction="#retourDeLaCreation" prefHeight="24.0" prefWidth="101.0" text="Retour" />
-      <Text layoutX="97.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creer votre compte">
+      <TextField fx:id="nom" layoutX="47.0" layoutY="121.0" promptText="nom" styleClass="formulaire" />
+      <TextField fx:id="number" layoutX="263.0" layoutY="121.0" promptText="Numéro" styleClass="formulaire" />
+      <Text layoutX="48.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Nom " />
+      <Text layoutX="263.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Numéro" />
+      <TextField fx:id="identifiant" layoutX="47.0" layoutY="179.0" promptText="identifiant" styleClass="formulaire" />
+      <Text layoutX="48.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Identifiant" />
+      <TextField fx:id="adresse_mail" layoutX="263.0" layoutY="180.0" promptText="adresse mail" styleClass="formulaire" />
+      <Text layoutX="264.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Adresse mail" />
+      <Text layoutX="48.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Mot de passe" />
+      <Text layoutX="263.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Confimation mot de passe" wrappingWidth="220.5078125" />
+      <TextField fx:id="question_secrete" layoutX="47.0" layoutY="310.0" promptText="question secrète" styleClass="formulaire" />
+      <Text layoutX="48.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Question secrète" />
+      <TextField fx:id="reponse_question_secrete" layoutX="263.0" layoutY="310.0" prefHeight="24.0" prefWidth="171.0" promptText="repnse question secrète" styleClass="formulaire" />
+      <Text layoutX="264.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="labels" text="Réponse questoin secrète" />
+      <Button fx:id="creer_compte" layoutX="80.0" layoutY="355.0" mnemonicParsing="false" onAction="#creerCompte" styleClass="connect" text="Créer compte" />
+      <Button fx:id="retour" layoutX="258.0" layoutY="355.0" mnemonicParsing="false" onAction="#retourDeLaCreation" prefHeight="36.0" prefWidth="134.0" styleClass="annuler" text="Retour" />
+      <Text layoutX="58.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bienvenu" text="Creer votre compte">
          <font>
-            <Font name="Algerian" size="32.0" />
+            <Font name="Abyssinica SIL" size="32.0" />
          </font>
       </Text>
-      <PasswordField fx:id="mot_de_passe" layoutX="48.0" layoutY="246.0" promptText="mot de passe" />
-      <PasswordField fx:id="confirmation_mot_de_passe" layoutX="291.0" layoutY="248.0" promptText="confirmation mot de passe" />
+      <PasswordField fx:id="mot_de_passe" layoutX="48.0" layoutY="246.0" promptText="mot de passe" styleClass="formulaire" />
+      <PasswordField fx:id="confirmation_mot_de_passe" layoutX="265.0" layoutY="248.0" promptText="confirmation mot de passe" styleClass="formulaire" />
    </children>
+   <stylesheets>
+      <URL value="@../style/login.css" />
+      <URL value="@../style/autres.css" />
+   </stylesheets>
 </AnchorPane>

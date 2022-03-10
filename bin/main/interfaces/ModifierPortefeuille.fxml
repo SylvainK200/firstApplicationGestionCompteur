@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.ModifierPortefeuilleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="382.0" styleClass="principalCaracteristics" stylesheets="@../style/autres.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.ModifierPortefeuilleController">
    <children>
-      <Label layoutX="138.0" layoutY="17.0" text="Bienvenu(e) " textFill="#095dc4">
+      <Label layoutX="97.0" layoutY="28.0" styleClass="labels" text="Bienvenu(e) " textFill="#095dc4">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="LabelNomClient" layoutX="231.0" layoutY="18.0" prefHeight="17.0" prefWidth="82.0" text="Nom_client" />
-      <Label layoutX="49.0" layoutY="78.0" prefHeight="17.0" prefWidth="114.0" text="Nom " />
-      <Label layoutX="55.0" layoutY="135.0" prefHeight="17.0" prefWidth="103.0" text="Localisation" />
-      <TextField fx:id="nom" layoutX="169.0" layoutY="75.0" prefHeight="24.0" prefWidth="202.0" />
-      <Button fx:id="button_annuler" layoutX="118.0" layoutY="205.0" mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="91.0" text="Annuler" />
-      <Button fx:id="button_valider" layoutX="255.0" layoutY="205.0" mnemonicParsing="false" onAction="#valider" prefHeight="26.0" prefWidth="91.0" text="Valider" />
-      <ComboBox fx:id="localisation" layoutX="169.0" layoutY="132.0" prefHeight="24.0" prefWidth="202.0" promptText="maison" />
+      <Label fx:id="LabelNomClient" layoutX="213.0" layoutY="33.0" prefHeight="17.0" prefWidth="82.0" text="Nom_client" />
+      <Label layoutX="25.0" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" styleClass="labels" text="Nom " />
+      <TextField fx:id="nom" layoutX="135.0" layoutY="75.0" prefHeight="24.0" prefWidth="202.0" styleClass="formulaire" />
+      <Label layoutX="21.0" layoutY="135.0" prefHeight="17.0" prefWidth="103.0" styleClass="labels" text="Localisation" />
+      <ComboBox fx:id="localisation" layoutX="136.0" layoutY="132.0" prefHeight="24.0" prefWidth="202.0" promptText="maison" />
+      <Button fx:id="button_valider" layoutX="53.0" layoutY="205.0" mnemonicParsing="false" onAction="#valider" prefHeight="36.0" prefWidth="128.0" styleClass="ajouter" text="Valider" />
+      <Button fx:id="button_annuler" layoutX="204.0" layoutY="205.0" mnemonicParsing="false" onAction="#annuler" prefHeight="33.0" prefWidth="128.0" styleClass="annuler" text="Annuler" />
    </children>
 </AnchorPane>

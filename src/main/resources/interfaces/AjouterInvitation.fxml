@@ -7,17 +7,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.AjouterInvitationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="462.0" styleClass="principalCaracteristics" stylesheets="@../style/autres.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.AjouterInvitationController">
    <children>
       <CheckBox fx:id="roleLecture" layoutX="126.0" layoutY="139.0" mnemonicParsing="false" text="Lecture " />
       <CheckBox fx:id="roleEcriture" layoutX="126.0" layoutY="108.0" mnemonicParsing="false" text="Ecriture" />
-      <Button fx:id="ButtonAnnuler" layoutX="296.0" layoutY="73.0" mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="103.0" text="Annuler" />
-      <Button fx:id="ButtonRetour" layoutX="296.0" layoutY="110.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="103.0" text="Retour" />
-      <Label layoutX="34.0" layoutY="35.0" prefHeight="17.0" prefWidth="92.0" text="Portefeuille " />
+      <Button fx:id="ButtonAnnuler" layoutX="312.0" layoutY="73.0" mnemonicParsing="false" onAction="#annuler" prefHeight="33.0" prefWidth="111.0" styleClass="annuler" text="Annuler" />
+      <Button fx:id="ButtonRetour" layoutX="317.0" layoutY="125.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="111.0" styleClass="modifier" text="Retour" />
+      <Label layoutX="13.0" layoutY="35.0" prefHeight="24.0" prefWidth="103.0" styleClass="labels" text="Portefeuille " />
       <ComboBox fx:id="ComboboxPortefeuille" layoutX="126.0" layoutY="31.0" prefWidth="150.0" />
-      <Label layoutX="51.0" layoutY="126.0" prefHeight="17.0" prefWidth="65.0" text="Rôle  :" />
-      <Button fx:id="ButtonValider" layoutX="296.0" layoutY="36.0" mnemonicParsing="false" onAction="#ajouterInvitation" prefHeight="26.0" prefWidth="103.0" text="Valider" />
-      <TextField fx:id="identifiant" layoutX="126.0" layoutY="68.0" prefHeight="24.0" prefWidth="150.0" />
-      <Label layoutX="34.0" layoutY="72.0" text="Identifiant" />
+      <Label layoutX="51.0" layoutY="126.0" prefHeight="17.0" prefWidth="65.0" styleClass="labels" text="Rôle  :" />
+      <Button fx:id="ButtonValider" layoutX="312.0" layoutY="25.0" mnemonicParsing="false" onAction="#ajouterInvitation" prefHeight="36.0" prefWidth="111.0" styleClass="ajouter" text="Valider" />
+      <TextField fx:id="identifiant" layoutX="126.0" layoutY="68.0" prefHeight="24.0" prefWidth="150.0" styleClass="formulaire" />
+      <Label layoutX="18.0" layoutY="72.0" styleClass="labels" text="Identifiant" />
    </children>
 </AnchorPane>

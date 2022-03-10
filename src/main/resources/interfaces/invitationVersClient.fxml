@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.InvitationClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="870.0" styleClass="principalCaracteristics" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.InvitationClientController">
    <children>
       <TableView fx:id="tableInvitation" layoutX="85.0" layoutY="116.0" prefHeight="320.0" prefWidth="727.0">
         <columns>
@@ -22,25 +23,29 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <JFXButton fx:id="buttonRefuser" layoutX="268.0" layoutY="464.0" onAction="#refuser" text="Refuser">
+      <JFXButton fx:id="buttonRefuser" layoutX="268.0" layoutY="464.0" onAction="#refuser" prefHeight="33.0" prefWidth="150.0" styleClass="annuler" text="Refuser">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="buttonAccepter" layoutX="517.0" layoutY="464.0" onAction="#accepter" text="Accepter">
+      <JFXButton fx:id="buttonAccepter" layoutX="517.0" layoutY="464.0" onAction="#accepter" prefHeight="36.0" prefWidth="150.0" styleClass="ajouter" text="Accepter">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <Label layoutX="92.0" layoutY="72.0" text="Invitations">
+      <Label layoutX="288.0" layoutY="42.0" styleClass="bienvenu" text="Invitations">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <JFXButton fx:id="buttonPageSuivante" layoutX="682.0" layoutY="530.0" onAction="#allerMenuPrincipal" text="Page suivante &gt;&gt;">
+      <JFXButton fx:id="buttonPageSuivante" layoutX="676.0" layoutY="530.0" onAction="#allerMenuPrincipal" styleClass="labels" text="Page suivante &gt;&gt;">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
    </children>
+   <stylesheets>
+      <URL value="@../style/autres.css" />
+      <URL value="@../style/login.css" />
+   </stylesheets>
 </AnchorPane>
