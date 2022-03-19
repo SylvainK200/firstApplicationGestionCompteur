@@ -5,12 +5,10 @@ import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -18,13 +16,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.swing.*;
-import java.util.Objects;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 import static Gui.Main.*;
 import static controller.Methods.GeneralMethodsImpl.API_URL;
 
-public class Login {
+public class Login implements Initializable {
+
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @FXML
     private TextField identifiant;
@@ -32,14 +34,9 @@ public class Login {
     @FXML
     private PasswordField mot_de_passe;
 
-   /* @FXML
-    private Button connect_button;
-    @FXML
-    private Text mot_de_passe_perdu;
+    public void initialize(URL location, ResourceBundle resources){
 
-    @FXML
-    private Text creer_compte;*/
-    public void initialize(){
+        Main.logOperation(logger,"Ouverture de la page loggin","");
     }
 
     public static JSONArray invitationsClient = new JSONArray();
@@ -63,7 +60,7 @@ public class Login {
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
                         Main.stage.close();
                         currentClient = user;
-
+                        Main.logOperation(logger,"Authentification reussie","");
                     if (invitationsClient.length()>0){
                             Main.showPages("invitationVersClient.fxml");
                         }else{
@@ -74,7 +71,6 @@ public class Login {
                 }
             } catch (JSONException e) {
                 System.out.println("reponse vide");
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -90,5 +86,4 @@ public class Login {
         Main.stage.close();
         Main.showPages("retrouverCompte.fxml");
     }
-
 }

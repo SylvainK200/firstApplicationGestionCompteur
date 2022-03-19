@@ -9,13 +9,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import javax.swing.*;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public  class AjouterPointFournitureController  implements Initializable {
+
+    private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
     private TextField TextEAN;
 
@@ -26,9 +27,9 @@ public  class AjouterPointFournitureController  implements Initializable {
     GeneralMethods generalMethods = new GeneralMethodsImpl();
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        Main.logOperation(logger,"Ouverture de la page de modification d'un point de fourniture","");
         wallets= generalMethods.find("wallet/identifiant/"+Main.currentClient.getString("identifiant"));
         if (wallets!=null){
-            System.out.println(wallets.length());
             for (Object f : wallets){
                 if (f instanceof  JSONObject){
                     comboboxPorteFeuille.getItems().add(((JSONObject)f).getString("name"));
@@ -53,7 +54,8 @@ public  class AjouterPointFournitureController  implements Initializable {
             }
             pointFourniture.getJSONArray("wallets").put(j);
         }else{
-            JOptionPane.showMessageDialog(null,"ce point de fourniture avec ean = "+ ean +"n'existe pas dans le systeme");
+            Main.logOperation(logger,"","ce point de fourniture avec ean = "+ ean +"n'existe pas dans le systeme pour effecture l'ajout");
+            Main.afficherAlert("ce point de fourniture avec ean = "+ ean +"n'existe pas dans le systeme");
         }
 
     }
@@ -61,7 +63,8 @@ public  class AjouterPointFournitureController  implements Initializable {
 
     @FXML
     void annuler(ActionEvent event) {
-        comboboxPorteFeuille.setValue("");
+        comboboxPorteFeuille.setValue(null);
+        comboboxPorteFeuille.setPromptText("portefeuille");
     }
 
     @FXML

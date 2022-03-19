@@ -5,7 +5,6 @@ import controller.ComboBoxClasses.ComboLocalisation;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import controller.ModelTabs.PortefeuilleTable;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -15,12 +14,14 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.*;
+import java.util.logging.Logger;
 
 import static Gui.Main.currentClient;
 import static controller.controllerInterfaces.MenuPrincipaleController.listPortefeuille;
 import static controller.controllerInterfaces.MenuPrincipaleController.portefeuilles;
 
 public class ModifierPortefeuilleController  implements  Initializable{
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @FXML
     private Label LabelNomClient;
@@ -42,7 +43,6 @@ public class ModifierPortefeuilleController  implements  Initializable{
     @FXML
     void annuler(ActionEvent event) {
         Main.ajouterInteractionAuClic(button_annuler);
-        //nom.setText(MenuPrincipaleController.nomPortefeuilleAModifier);
 
     }
 
@@ -53,29 +53,32 @@ public class ModifierPortefeuilleController  implements  Initializable{
         wallet.put("name",nom.getText());
         wallet.remove("home");
         JSONObject home = new JSONObject();
-        home.put("id",localisation.getValue().getId());
-        home.put("street",localisation.getValue().getStreet());
-        home.put("city",localisation.getValue().getCity());
-        home.put("postal_code",localisation.getValue().getPostal_code());
-        home.put("number",localisation.getValue().getNumber());
+        if (localisation.getValue()!=null){
+            home.put("id",localisation.getValue().getId());
+            home.put("street",localisation.getValue().getStreet());
+            home.put("city",localisation.getValue().getCity());
+            home.put("postal_code",localisation.getValue().getPostal_code());
+            home.put("number",localisation.getValue().getNumber());
+            wallet.put("home",home);
+            generalMethods.updateObject(wallet,"wallet");
 
-        wallet.put("home",home);
-        generalMethods.updateObject(wallet,"wallet");
+            List<PortefeuilleTable> portefeuilleTables = new ArrayList<>();
+            System.out.println("Requete aboutissant aux elts");
+            JSONArray elts = generalMethods.find("wallet/identifiant/"+ currentClient.getString("identifiant"));
+            Iterator it = elts.iterator();
+            while (it.hasNext()){
+                portefeuilleTables.add(new PortefeuilleTable((JSONObject) it.next()));
+            }
+            listPortefeuille.removeAll(listPortefeuille);
+            listPortefeuille.addAll(portefeuilleTables);
+            portefeuilles.removeAll(portefeuilles);
+            portefeuilles.addAll(listPortefeuille);
 
-        List<PortefeuilleTable> portefeuilleTables = new ArrayList<>();
-        System.out.println("Requete aboutissant aux elts");
-        JSONArray elts = generalMethods.find("wallet/identifiant/"+ currentClient.getString("identifiant"));
-        Iterator it = elts.iterator();
-        while (it.hasNext()){
-            portefeuilleTables.add(new PortefeuilleTable((JSONObject) it.next()));
+        }else{
+            Main.afficherAlert("Vous n'avez pas choisi la maison correspondante a votre portefeuille");
         }
-        listPortefeuille.removeAll(listPortefeuille);
-        listPortefeuille.addAll(portefeuilleTables);
-        portefeuilles.removeAll(portefeuilles);
-        portefeuilles.addAll(listPortefeuille);
-        System.out.println(listPortefeuille.size());
-        System.out.println(portefeuilles.size());
-    }
+
+           }
     @Override
     public void initialize(URL url, ResourceBundle rb){
         LabelNomClient.setText(Main.currentClient.getString("name"));

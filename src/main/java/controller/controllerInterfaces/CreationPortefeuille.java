@@ -9,17 +9,19 @@ import controller.Methods.GeneralMethodsImpl;
 import controller.ModelTabs.PortefeuilleTable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.swing.*;
-import java.util.function.Consumer;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 import static Gui.Main.currentClient;
 
-public class CreationPortefeuille {
+public class CreationPortefeuille implements Initializable {
+    private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
     private TextField codePostal;
     @FXML
@@ -68,7 +70,6 @@ public class CreationPortefeuille {
             home.put("postal_code",maisons.getValue().getPostal_code());
             home.put("number",maisons.getValue().getNumber());
             portefeuille.put("home",home);
-            System.out.println("portefeuille : "+portefeuille);
 
         }else{
             JSONObject home = new JSONObject();
@@ -87,17 +88,18 @@ public class CreationPortefeuille {
 
         portefeuille.put("visibleByClient",true);
         JSONObject createdPortefeuille = generalMethods.createObject(portefeuille,"wallet");
+        Main.logOperation(logger,"Creation reussie de portefeuille","");
         Main.afficherAlert("Creation reussie");
         if (createdPortefeuille !=null && !createdPortefeuille.isEmpty()){
             MenuPrincipaleController.portefeuilles.add(new PortefeuilleTable(createdPortefeuille));
         }
     }
 
-    public void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         JSONArray homes = generalMethods.find("home/user/"+currentClient.getString("identifiant"));
         for (int i = 0; i<homes.length(); i++){
             maisons.getItems().add(new ComboLocalisation((JSONObject) homes.get(i)));
         }
     }
-
 }

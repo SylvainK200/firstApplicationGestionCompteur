@@ -1,8 +1,6 @@
 package Gui;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import javafx.animation.TranslateTransition;
@@ -31,8 +29,18 @@ public class Main extends Application {
     public static Stage newStage = new Stage();
     public static String firstpage = "login.fxml";
     public static GeneralMethods generalMethods = new GeneralMethodsImpl();
-
-
+    public static Logger LOGGER = Logger.getLogger(Main.class.getName());
+    public static void logOperation(Logger logger,String operationWarning, String operationSevere ){
+        if(operationWarning.equals("")){
+                logger.log(Level.SEVERE,operationSevere);
+            }
+            else if (operationSevere == ""){
+                logger.log(Level.WARNING,operationWarning);
+            }else if (!operationSevere.equals("") && !operationWarning.equals("")){
+                logger.log(Level.SEVERE,operationSevere);
+                logger.log(Level.WARNING,operationWarning);
+            }
+    }
     public static void afficherAlert (String contentText){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,contentText, ButtonType.OK);
         alert.showAndWait();;
@@ -40,28 +48,13 @@ public class Main extends Application {
     public static void startForTests(Stage primaryStage) throws Exception{
         stage=primaryStage;
         showPages("login.fxml");
-        /*String title = "...";
-        String header = "header";
-        String label = "label";
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(label);
-        alert.show();*/
+       
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage=primaryStage;
         showPages(firstpage);
-       /* String title = "...";
-        String header = "header";
-        String label = "label";
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(label);
-        alert.show();*/
-        //return alert;
+       logOperation(LOGGER,"operation warning","SEVERE Warnings");
     }
     public static void main(String[] args) throws JsonProcessingException {
 
@@ -132,12 +125,5 @@ public class Main extends Application {
         }
 
         return consommations;
-    }
-    public static void retourSurOperationDeCreation(JSONObject json,String description){
-        if (json!=null){
-            JOptionPane.showMessageDialog(null,"Creation de "+description+" reussie");
-        }else{
-            JOptionPane.showMessageDialog(null, "Creation de "+description+ " echouee");
-        }
     }
 }

@@ -29,6 +29,15 @@ public class InvitationTable {
         statut = invitation.getString("statutInvitation");
     }
 
+    public InvitationTable(InvitationTable inv){
+        this.id = inv.id;
+        this.acces = inv.acces;
+        this.statut = inv.statut;
+        this.date_envoie = inv.date_envoie;
+        this.portefeuille = inv.portefeuille;
+        this.destinataire = inv.destinataire;
+    }
+
     public long getId() {
         return id;
     }

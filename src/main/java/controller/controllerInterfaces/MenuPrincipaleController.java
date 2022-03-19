@@ -16,6 +16,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,9 +26,11 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.swing.*;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +38,9 @@ import static Gui.Main.*;
 import static Gui.Main.ajouterInteractionAuClic;
 
 
-public  class MenuPrincipaleController {
+public  class MenuPrincipaleController implements Initializable {
+    private Logger logger = Logger.getLogger(this.getClass().getName());
+
     GeneralMethods generalMethods = new GeneralMethodsImpl();
 
     @FXML
@@ -51,15 +56,7 @@ public  class MenuPrincipaleController {
     }
 
 
-    public void initialize(){
-        invitationsValides = generalMethods.find("invite/receive/user/"+currentClient.getString("identifiant")+"/recu");
-        LabelNomClient.setText(currentClient.getString("name"));
-        initializePortefeuille();
-        initializeInvitations();
-        initializePointFourniture();
-        initializeConsommations();
-        //initializeModifierPointFourniture();
-    }
+
 
     //controller pour les consommations
 
@@ -87,7 +84,6 @@ public  class MenuPrincipaleController {
 
 
     public void initializeConsommations(){
-       /// consommateur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("consommateur"));
         date_lecture.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("date_lecture"));
         fournisseur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("fournisseur"));
         type_compteur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("type_compteur"));
@@ -102,10 +98,8 @@ public  class MenuPrincipaleController {
         listOfWallets1.forEach(wal->{
             listOfWallets.put(wal);
         });
-       /* invitationsValides.forEach(inv->{
-            JSONObject invitation = (JSONObject) inv;
-            listOfWallets.put(invitation.getJSONObject("wallet"));
-        });*/
+
+        items.clear();
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 items.add(new ConsommationTable((JSONObject) j));
@@ -175,31 +169,6 @@ public  class MenuPrincipaleController {
 
     @FXML
     private TableColumn<PointDeFournitureTable, String> type_energy;
-    public static String pointFournitureAModifier;
-   /* @FXML
-    void ajoutPointFourniture(ActionEvent event) {
-        Main.ajouterInteractionAuClic(ButtonAjouterPointFourniture);
-        Main.ouvrirNouvellePage("AjouterPointFourniture","Ajouter Point de Fourniture");
-
-    }
-
-    @FXML
-    void modifierPointFourniture(ActionEvent event) {
-        Main.ajouterInteractionAuClic(buttonModifierPointFourniture);
-        if(menuPointFourniture.getSelectionModel().getSelectedItem() == null){
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setTitle("Absence de selection element");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Vous n'avez selectionne aucun element dans le tableau ");
-
-            alert1.showAndWait();
-        }
-        else {
-            pointFournitureAModifier = menuPointFourniture.getSelectionModel().getSelectedItem().ean;
-            ouvrirNouvellePage("ModifierPointFourniture", "Modifier Point de fourniture");
-        }
-    }
-*/
     @FXML
     void supprimerPointFourniture(ActionEvent event) {
 
@@ -213,12 +182,13 @@ public  class MenuPrincipaleController {
                 pointFournitureWallet.put("ean",pointDeFournitureTable.getEan());
                 pointFournitureWallet.put("walletname",pointDeFournitureTable.getNom_portefeuille());
                 JSONObject wallet = generalMethods.updateObject(pointFournitureWallet,"wallet/removePointFourniture");
-
+                Main.logOperation(logger,"Suppression reussie d'un point de fourniture pour un portefeuille","");
                 Main.afficherAlert("Suppression reussie d'un point de fourniture pour un portefeuille");
                 if(wallet != null) {
                     menuPointFourniture.getItems().remove(pointDeFournitureTable);
                 }
             }else{
+                Main.logOperation(logger,"","Suppression echouee car non acces ");
                 Main.afficherAlert("Vous n'avez pas des acces en ecriture sur ce portefeuille");
             }
         }else{
@@ -251,6 +221,7 @@ public  class MenuPrincipaleController {
             if(((JSONObject)wallet).getJSONArray("pointFournitures").length()>0){
                 JSONArray pointFournitures = ((JSONObject)wallet).getJSONArray("pointFournitures");
                 pointFournitures.forEach(point ->{
+                    System.out.println("point : "+point + "\n"+ " wallet : " +wallet);
                     items.add(new PointDeFournitureTable((JSONObject) point , (JSONObject) wallet));
                 });
             }
@@ -338,9 +309,11 @@ public  class MenuPrincipaleController {
         o.put("username",username);
 
         if(Main.getPermission(walletName, username)){
+            Main.logOperation(logger,"Ajout d'un point de fourniture a un portefeuille","");
             generalMethods.updateObject(o,"wallet/addPointFourniture");
             initializePointFourniture();
         }else{
+            Main.logOperation(logger,"","Ajout echoue car acces en lecture");
             Main.afficherAlert("Vous n'avez pas le droit d'ecriture sur ce portefeuille");
         }
 
@@ -389,7 +362,7 @@ public  class MenuPrincipaleController {
                 listOfWallets.put(wallet);
             }
         });
-
+        portefeuilles.clear();
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 portefeuilles.add(new PortefeuilleTable((JSONObject) j));
@@ -457,6 +430,7 @@ public  class MenuPrincipaleController {
                 ouvrirNouvellePage("ModifierPortefeuille","Modifier Portefeuille");
             }
             else{
+                Main.logOperation(logger,"","Vous n'avez pas acces a ce portefeuille en ecriture");
                 Main.afficherAlert("Vous n'avez pas acces a ce portefeuille en ecriture");
 
             }
@@ -490,14 +464,14 @@ public  class MenuPrincipaleController {
                     TablesAffichagesPortefeuille.getItems().remove(port);
                 }
                 else{
+                    Main.logOperation(logger,"suppression impossible acces a ce portefeuile en lecture sur le portefeuille","");
                     Main.afficherAlert("Vous n'avez pas acces a ce portefeuile en ecriture");
                 }
 
         }
 
 
-        // A revoir si c'est possible de supprimer un portefeuille
-    }
+       }
 
 
 
@@ -568,12 +542,12 @@ public  class MenuPrincipaleController {
         statut.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
 
         JSONArray invitations = generalMethods.find("invite/user/statut/"+Main.currentClient.getString("identifiant")+"/"+"envoyee");
+        invitationEnvoyes.clear();
         for (int i =0;i<invitations.length();i++){
             // formation de chaque ligne du tableau a remplir
             JSONObject client = invitations.getJSONObject(i);
             if (!client.isEmpty()){
                 invitationEnvoyes.add(new InvitationTable(client,true));
-               // invitationEnvoyees.add(new InvitationTable(client,true))
             }
         }
         TableInvitation.getItems().addAll(invitationEnvoyes);
@@ -607,10 +581,11 @@ public  class MenuPrincipaleController {
         destinataire_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("destinataire"));
         portefeuille_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
         statut_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
-
+        invitationRecues.clear();
         JSONArray invitations = generalMethods.find("invite/user/statut/" + Main.currentClient.getString("identifiant")+"/"+"recu");
         for (int i =0;i<invitations.length();i++){
             JSONObject invitation = invitations.getJSONObject(i);
+
             if (!invitation.isEmpty()){
                 invitationRecues.add(new InvitationTable(invitation,false));
             }
@@ -624,7 +599,7 @@ public  class MenuPrincipaleController {
         Main.ouvrirNouvellePage("AjouterInvitation","Ajouter Invitation");
 
     }
-
+    public static InvitationTable invitationAModifier;
     @FXML
     void modifierInvitation(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonModificationnvitation);
@@ -641,6 +616,7 @@ public  class MenuPrincipaleController {
 
             AjouterInvitationController controller = loader.getController();
             controller.setInvitationTableElement(tableInvitationRecu.getSelectionModel().getSelectedItem());
+            invitationAModifier = tableInvitationRecu.getSelectionModel().getSelectedItem();
             controller.setDialogStage(dialogStage);
             dialogStage.showAndWait();
 
@@ -659,6 +635,7 @@ public  class MenuPrincipaleController {
         long id = inv.getId();
         generalMethods.deleteObject("invite/"+id);
         TableInvitation.getItems().remove(inv);
+        Main.logOperation(logger,"Suppression Invitation","");
     }
 
     @FXML
@@ -667,6 +644,8 @@ public  class MenuPrincipaleController {
         InvitationTable inv = tableInvitationRecu.getSelectionModel().getSelectedItem();
         long id = inv.getId();
         this.generalMethods.deleteObject("invite/"+id);
+        tableInvitationRecu.getItems().remove(inv);
+        Main.logOperation(logger,"Suppression Invitation recue","");
 
     }
 
@@ -675,4 +654,14 @@ public  class MenuPrincipaleController {
         initialiserTableInvitationRecu();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+            invitationsValides = generalMethods.find("invite/receive/user/"+currentClient.getString("identifiant")+"/recu");
+            LabelNomClient.setText(currentClient.getString("name"));
+            initializePortefeuille();
+            initializeInvitations();
+            initializePointFourniture();
+            initializeConsommations();
+
+    }
 }

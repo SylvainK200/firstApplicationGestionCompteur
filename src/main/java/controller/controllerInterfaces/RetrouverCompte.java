@@ -3,6 +3,7 @@ package controller.controllerInterfaces;
 import Gui.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
@@ -15,22 +16,18 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
 import static controller.Methods.GeneralMethodsImpl.API_URL;
 import static controller.controllerInterfaces.CreerCompte.JSON;
 
-public class RetrouverCompte {
+public class RetrouverCompte implements Initializable {
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @FXML
     private TextField identifiant;
-
-    @FXML
-    private Button verify_question;
-
-    @FXML
-    private Button quitter;
-
-    @FXML
-    private TextArea question_secrete;
     @FXML
     private TextArea reponse_secrete;
 
@@ -43,16 +40,11 @@ public class RetrouverCompte {
     @FXML
     private Button valider;
     private JSONObject currentUser;
-    public void initialize(){
-        new_password.setDisable(true);
-        confirm_password.setDisable(true);
-        valider.setDisable(true);
-    }
+
     @FXML
     void quitterPage(ActionEvent event) {
         Main.stage.close();
         Main.showPages("login.fxml");
-
     }
 
     @FXML
@@ -72,7 +64,7 @@ public class RetrouverCompte {
             try {
                 Response response = client.newCall(request).execute();
                 if (response.isSuccessful()){
-                    System.out.println("Enregistrement termine");
+                    Main.logOperation(logger,"Reinitialisation du mot de passe reussie","");
                     Main.stage.close();
                     Main.showPages("login.fxml");
 
@@ -80,12 +72,13 @@ public class RetrouverCompte {
                 response.close();
             }
             catch (Exception e){
-                e.printStackTrace();
+                Main.logOperation(logger,"","Erreur de reinitialisation du mot de passe");
             }
 
         }else
         {
-            JOptionPane.showMessageDialog(null,"le mot de passe et sa confirmation sont differents");
+            Main.logOperation(logger,"","Votre mot de passe et sa confirmation sont differents");
+         Main.afficherAlert("Votre mot de passe et sa confirmation sont differents");
         }
 
     }
@@ -105,7 +98,7 @@ public class RetrouverCompte {
             currentUser= user;
             if (user.get("reponse_secrete").equals(reponse_secrete.getText()))
             {
-
+                Main.logOperation(logger,"verification de la question et sa reponse reussie ","");
                 new_password.setDisable(false);
                 confirm_password.setDisable(false);
                 valider.setDisable(false);
@@ -113,9 +106,17 @@ public class RetrouverCompte {
             response.close();
 
         }catch (Exception e ){
-            e.printStackTrace();
+            Main.logOperation(logger,"","Echec de verification de question et son mot de passe");
         }
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+            Main.logOperation(logger,"Ouverture de la page de reinitialisation du mot de passe ","");
+            new_password.setDisable(true);
+            confirm_password.setDisable(true);
+            valider.setDisable(true);
+
+    }
 }

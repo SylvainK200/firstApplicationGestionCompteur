@@ -5,19 +5,20 @@ import controller.Methods.GeneralMethods;
 import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import okhttp3.*;
 import org.json.JSONObject;
 
-import javax.swing.*;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
-import static controller.Methods.GeneralMethodsImpl.API_URL;
 
-
-public class CreerCompte {
+public class CreerCompte implements Initializable {
+    private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
     private TextField nom;
 
@@ -45,9 +46,6 @@ public class CreerCompte {
     @FXML
     private Button creer_compte;
     private GeneralMethods generalMethods = new GeneralMethodsImpl();
-    public void initialize(){
-
-    }
     @FXML
     private Button retour;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
@@ -69,12 +67,14 @@ public class CreerCompte {
         if (confirmation_mot_de_passe.getText().equals(mot_de_passe.getText()))
         {
             JSONObject jsonObject= this.fabriquerJson();
-            JSONObject user =generalMethods.createObject(jsonObject,"user");
+            generalMethods.createObject(jsonObject,"user");
+            Main.logOperation(logger,"Creation de compte reussie","");
             Main.stage.close();
             Main.showPages("login.fxml");
          }
         else{
-            JOptionPane.showMessageDialog(null,"le mot de passe et sa confirmation ne sont pas identiques");
+            Main.logOperation(logger,"","le mot de passe et sa confirmation ne sont pas identiques");
+            Main.afficherAlert("le mot de passe et sa confirmation ne sont pas identiques");
         }
     }
 
@@ -84,4 +84,8 @@ public class CreerCompte {
         Main.showPages("login.fxml");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Main.logOperation(logger,"Ouverture de la page Creation de compte","");
+    }
 }
