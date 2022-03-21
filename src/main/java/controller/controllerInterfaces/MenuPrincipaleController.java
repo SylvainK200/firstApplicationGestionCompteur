@@ -304,20 +304,25 @@ public  class MenuPrincipaleController implements Initializable {
     @FXML
     void ajouterPointFourniture(ActionEvent event) {
         JSONObject o = new JSONObject();
-        String walletName = TablesAffichagesPortefeuille.getSelectionModel().getSelectedItem().nom;
-        String username = currentClient.getString("identifiant");
-        o.put("ean",ean_point_fourniture.getValue().getEan());
-        o.put("walletname",walletName);
-        o.put("username",username);
+        if (TablesAffichagesPortefeuille.getSelectionModel().getSelectedItem() !=null){
+            String walletName = TablesAffichagesPortefeuille.getSelectionModel().getSelectedItem().nom;
+            String username = currentClient.getString("identifiant");
+            o.put("ean",ean_point_fourniture.getValue().getEan());
+            o.put("walletname",walletName);
+            o.put("username",username);
 
-        if(Main.getPermission(walletName, username)){
-            Main.logOperation(logger,"Ajout d'un point de fourniture a un portefeuille","");
-            generalMethods.updateObject(o,"wallet/addPointFourniture");
-            initializePointFourniture();
+            if(Main.getPermission(walletName, username)){
+                Main.logOperation(logger,"Ajout d'un point de fourniture a un portefeuille","");
+                generalMethods.updateObject(o,"wallet/addPointFourniture");
+                initializePointFourniture();
+            }else{
+                Main.logOperation(logger,"","Ajout echoue car acces en lecture");
+                Main.afficherAlert("Vous n'avez pas le droit d'ecriture sur ce portefeuille");
+            }
         }else{
-            Main.logOperation(logger,"","Ajout echoue car acces en lecture");
-            Main.afficherAlert("Vous n'avez pas le droit d'ecriture sur ce portefeuille");
+            Main.afficherAlert("Veuillez selectionner un element dans le tableau");
         }
+
 
     }
     private FilteredList<PortefeuilleTable> portefeuilleTables;
