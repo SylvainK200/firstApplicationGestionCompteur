@@ -9,8 +9,10 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.runners.MethodSorters;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
@@ -22,6 +24,7 @@ import javafx.stage.Stage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PrincipalTest  extends  ApplicationTest{
     public FxRobot robot = new FxRobot();
     final String TABINVITATION = "#tabInvitation";
@@ -49,15 +52,15 @@ public class PrincipalTest  extends  ApplicationTest{
     public void connect( String userIdentifier,String userPassword) throws Exception{
         clickOn("#identifiant").write(userIdentifier);
         clickOn("#mot_de_passe").write(userPassword);
-        clickOn("#identifiant").eraseText(5);
-        //clickOn("#connect_button");
-       // WaitForAsyncUtils.waitForFxEvents();
+
+        clickOn("#connect_button");
+        WaitForAsyncUtils.waitForFxEvents();
     }
      @Test
-    public void t2_connection_user() throws Exception{
+    public void t1_connection_user() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         
-        /*clickOn("#tabPointDeFourniture");
+        clickOn("#tabPointDeFourniture");
         clickOn("#menuPointFourniture")
                 .type(KeyCode.DOWN);
 
@@ -80,13 +83,13 @@ public class PrincipalTest  extends  ApplicationTest{
         clickOn("#tabConsommation");
 
         clickOn(TABINVITATION);
-        sleep(2000);*/
+        sleep(2000);
 
     }
-/*
+
 
     @Test
-    public void connect_deconnect() throws Exception {
+    public void t2_connect_deconnect() throws Exception {
         connect(this.userIdentifier,this.userPassword);
         clickOn("#buttonDeconnect");
         verifyThat("#connect_button", NodeMatchers.isVisible());
@@ -94,7 +97,7 @@ public class PrincipalTest  extends  ApplicationTest{
 
     }
     @Test
-    public void t1_creation_compte() {
+    public void t3_creation_compte() {
         //Loading page
         clickOn("#creer_compte");
         WaitForAsyncUtils.waitForFxEvents();
@@ -118,7 +121,7 @@ public class PrincipalTest  extends  ApplicationTest{
     
 
     @Test
-    public void ajoutPortefeuille() throws Exception{
+    public void t4_ajoutPortefeuille() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABPORTEFEUILLE);
         clickOn("#ButtonAjouterPortefeuille");
@@ -149,7 +152,7 @@ public class PrincipalTest  extends  ApplicationTest{
 
 
     @Test
-    public void modifierPortefeuille() throws Exception{
+    public void t5_modifierPortefeuille() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABPORTEFEUILLE);
         TableView n = (TableView) lookup("#TablesAffichagesPortefeuille").query();
@@ -182,7 +185,7 @@ public class PrincipalTest  extends  ApplicationTest{
         clickOn(n2);
     }
     @Test
-    public void ajoutPointDeFourniture() throws Exception{
+    public void t6_ajoutPointDeFourniture() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABPORTEFEUILLE);
         clickOn("#ean_point_fourniture");
@@ -198,7 +201,7 @@ public class PrincipalTest  extends  ApplicationTest{
     }
 
     @Test
-    public void creationInvitation() throws Exception{
+    public void t7_creationInvitation() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn("#tabInvitation");
         clickOn("#ButtonAjouterInvitation");
@@ -221,7 +224,7 @@ public class PrincipalTest  extends  ApplicationTest{
 
 
     @Test
-    public void supprimerInvitation() throws Exception{
+    public void t8_supprimerInvitation() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABINVITATION);
         TableView n = (TableView) lookup("#TableInvitation").query();
@@ -238,7 +241,7 @@ public class PrincipalTest  extends  ApplicationTest{
     }
 
     @Test
-    public void creationInvitation2() throws Exception{
+    public void t9_creationInvitation2() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn("#tabInvitation");
         clickOn("#ButtonAjouterInvitation");
@@ -260,8 +263,8 @@ public class PrincipalTest  extends  ApplicationTest{
     }
 
     @Test
-    public void test_reception_invitation() throws Exception{
-        connect(userInvited,userInvitedPassword);E
+    public void tt1_reception_invitation() throws Exception{
+        connect(userInvited,userInvitedPassword);
         TableView t = (TableView) lookup("#tableInvitation").query();
         Platform.runLater(
                 new Runnable() {
@@ -282,7 +285,7 @@ public class PrincipalTest  extends  ApplicationTest{
     }
 
     @Test
-    public void supprimerPointFourniture() throws Exception{
+    public void tt2_supprimerPointFourniture() throws Exception{
         connect(userIdentifier,userPassword);
         TableView t = (TableView) lookup("#menuPointFourniture").query();
         Platform.runLater(new Runnable() {
@@ -298,7 +301,7 @@ public class PrincipalTest  extends  ApplicationTest{
         Platform.exit();
     }
     @Test
-    public void supprimerPortefeuille() throws Exception{
+    public void tt3_supprimerPortefeuille() throws Exception{
 
         connect(
                 userIdentifier,
@@ -318,14 +321,5 @@ public class PrincipalTest  extends  ApplicationTest{
         sleep(SLEEPINGTIME);
         Platform.exit();
     }
-
-
-
-
-    @Disabled
-    @Test
-    public void modifierInvitation(){
-
-    }*/
 
 }
