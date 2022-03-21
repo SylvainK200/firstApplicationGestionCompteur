@@ -1,7 +1,9 @@
 package controller.ComboBoxClasses;
 
 import org.json.JSONObject;
-
+/**
+ * Il s'agit du combobox qui permettra de traduire une JSONObject Home en objet pour un combobox localisation
+ */
 public class ComboLocalisation {
     public String street;
     public String city;

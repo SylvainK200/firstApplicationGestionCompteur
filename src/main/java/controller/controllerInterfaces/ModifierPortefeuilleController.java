@@ -20,6 +20,9 @@ import static Gui.Main.currentClient;
 import static controller.controllerInterfaces.MenuPrincipaleController.listPortefeuille;
 import static controller.controllerInterfaces.MenuPrincipaleController.portefeuilles;
 
+/**
+ * Classe controlleur de modification de portefeuille
+ */
 public class ModifierPortefeuilleController  implements  Initializable{
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -46,6 +49,10 @@ public class ModifierPortefeuilleController  implements  Initializable{
 
     }
 
+    /**
+     * permet de gerer la validation ou l'enregistrement des modifications faites pour un portefeuille
+     * @param event
+     */
     @FXML
     void valider(ActionEvent event) {
         Main.ajouterInteractionAuClic(button_valider);

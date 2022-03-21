@@ -2,6 +2,9 @@ package controller.ComboBoxClasses;
 
 import org.json.JSONObject;
 
+/**
+ * Il s'agit du combobox qui permettra de traduire une JSONObject Home en objet pour le combobox
+ */
 public class ComboboxHome {
     private Long id;
 

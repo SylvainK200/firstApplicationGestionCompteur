@@ -3,7 +3,9 @@ package controller.ComboBoxClasses;
 
 import org.json.JSONObject;
 
-
+/**
+ * Il s'agit du combobox qui permettra de traduire une JSONObject PointFourniture en objet pour le combobox
+ */
 public class ComboBoxPointFourniture {
     public String ean;
     public String name;

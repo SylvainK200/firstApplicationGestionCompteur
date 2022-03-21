@@ -20,6 +20,10 @@ import java.util.logging.Logger;
 
 import static Gui.Main.currentClient;
 
+
+/**
+ * Controlleur de la page de creation d'un portefeuille
+ */
 public class CreationPortefeuille implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
@@ -54,6 +58,11 @@ public class CreationPortefeuille implements Initializable {
         maisons.setValue(null);
         maisons.setPromptText("Maison");
     }
+
+    /**
+     * Permet d'enregistrer un portefeuille et permet par ailleurs aussi a creer une maison si necessaire
+     * @param event
+     */
 
     @FXML
     void enregistrerPortefeuille(ActionEvent event) {

@@ -10,8 +10,11 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 
-import static controller.ModelTabs.NewContractTable.JSON;
+import static Gui.Main.JSON;
 
+/**
+ * Implementation de l'interface GeneralMethods qui contient des implementations des methodes GeneralMethods
+ */
 public class GeneralMethodsImpl implements GeneralMethods{
     //public  static String API_URL = "https://energy-management-be.herokuapp.com/energy-management/";
     public  static String API_URL = "http://localhost:8085/energy-management/";

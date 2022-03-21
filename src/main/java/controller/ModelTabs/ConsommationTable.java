@@ -6,6 +6,10 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+/**
+ * Classe utilisee pour les tablesviews dans l'onglet Consommation
+ */
+
 public class ConsommationTable {
     public String type_energie;
     public String type_compteur;

@@ -6,6 +6,9 @@ import org.json.JSONObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe permettant l'affichage des portefeuilles
+ */
 public class PortefeuilleTable {
 
     public String nom;

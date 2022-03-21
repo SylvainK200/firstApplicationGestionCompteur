@@ -16,7 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-
+/**
+ * Controlleur de la page de creation de compte
+ */
 public class CreerCompte implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
@@ -50,6 +52,10 @@ public class CreerCompte implements Initializable {
     private Button retour;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
+    /**
+     *
+     * @return renvoie le JSON issu de la recuperation de toutes les donnees de la page
+     */
     JSONObject fabriquerJson(){
         JSONObject json = new JSONObject();
         json.put("address_mail", adresse_mail.getText());
@@ -62,6 +68,10 @@ public class CreerCompte implements Initializable {
         return json;
     }
 
+    /**
+     * permet de creer un compte apres remplissage du formulaire de la page
+     * @param event
+     */
     @FXML
     void creerCompte(ActionEvent event) {
         if (confirmation_mot_de_passe.getText().equals(mot_de_passe.getText()))
@@ -78,6 +88,10 @@ public class CreerCompte implements Initializable {
         }
     }
 
+    /**
+     * permet de rediriger vers la page de login
+     * @param event
+     */
     @FXML
     void retourDeLaCreation(ActionEvent event) {
         Main.stage.close();

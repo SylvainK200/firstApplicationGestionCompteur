@@ -3,6 +3,9 @@ package controller.Methods;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Interface de methodes pour l'acces aux donnees via l'API
+ */
 public interface GeneralMethods {
 
     public  JSONObject createObject(JSONObject object, String url);

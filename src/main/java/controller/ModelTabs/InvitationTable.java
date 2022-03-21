@@ -6,6 +6,9 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+/**
+ * Classe permettant de gerer l'affichage des invitations dans les tablesviews
+ */
 public class InvitationTable {
     public long id;
     public String destinataire;

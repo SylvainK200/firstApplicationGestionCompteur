@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import okhttp3.MediaType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,14 +23,26 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe principale Main
+ */
 public class Main extends Application {
 
     public static JSONObject currentClient ;
     public static Stage  stage = new Stage();
     public static Stage newStage = new Stage();
     public static String firstpage = "login.fxml";
+
+    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     public static GeneralMethods generalMethods = new GeneralMethodsImpl();
     public static Logger LOGGER = Logger.getLogger(Main.class.getName());
+
+    /**
+     *
+     * @param logger il s'agit du logger du controlleur qui voudra afficher des logs
+     * @param operationWarning message warning
+     * @param operationSevere message severe
+     */
     public static void logOperation(Logger logger,String operationWarning, String operationSevere ){
         if(operationWarning.equals("")){
                 logger.log(Level.SEVERE,operationSevere);
@@ -41,10 +54,21 @@ public class Main extends Application {
                 logger.log(Level.WARNING,operationWarning);
             }
     }
+
+    /**
+     *
+     * @param contentText contenu du message d'alert
+     */
     public static void afficherAlert (String contentText){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,contentText, ButtonType.OK);
         alert.showAndWait();;
     }
+
+    /**
+     * Methodes pour lancer la premiere page pour les tests
+     * @param primaryStage Stage pour le lancement des tests
+     * @throws Exception
+     */
     public static void startForTests(Stage primaryStage) throws Exception{
         stage=primaryStage;
         showPages("login.fxml");
@@ -60,6 +84,13 @@ public class Main extends Application {
 
         launch(args);
     }
+
+    /**
+     *
+     * @param walletName nom du portefeuille
+     * @param username nom identifiant l'utilisateur
+     * @return permet d'obtenir la permission sur un portefeuille
+     */
     public static boolean getPermission(String walletName, String username){
         JSONObject permission = generalMethods.findUnique("wallet/permission/"+walletName+"/"+username);
         if(permission.getString("permission").equals("lecture")){
@@ -76,6 +107,12 @@ public class Main extends Application {
         translate.setDuration(Duration.millis(200));
         translate.setNode(b);
     }
+
+    /**
+     * Permet d'ouvir une nouvelle page dont le stage principage est le proprietaire
+     * @param page lien vers le fichier fxml
+     * @param title titre du stage
+     */
     public static void ouvrirNouvellePage(String page,String title){
         Parent newParent = loadPane(page);
         newStage = new Stage();
@@ -90,6 +127,11 @@ public class Main extends Application {
 
         }
            }
+
+    /**
+     * permet d'afficher une nouvelle page
+     * @param page
+     */
     public static void showPages (String page ){
 
         try {

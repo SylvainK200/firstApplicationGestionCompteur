@@ -19,7 +19,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-
+/**
+ * Controlleur de la page de validation des invitations (acceptation ou refus de l'invitation)
+ */
 public class InvitationClientController implements Initializable {
 
     @FXML

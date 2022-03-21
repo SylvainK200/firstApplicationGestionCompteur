@@ -14,6 +14,9 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+/**
+ * Controller permettant de gerer l'ajout des point de fourniture
+ */
 public  class AjouterPointFournitureController  implements Initializable {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());

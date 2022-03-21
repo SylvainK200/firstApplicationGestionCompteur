@@ -2,6 +2,9 @@ package controller.ModelTabs;
 
 import org.json.JSONObject;
 
+/**
+ * Classe permettant l'affichage dans un tableview des points de fourniture
+ */
 public class PointDeFournitureTable {
     public String nom_portefeuille;
     public String type_energy;

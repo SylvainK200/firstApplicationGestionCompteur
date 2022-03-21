@@ -18,6 +18,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+/**
+ * Controlleur de la page d'ajout ou de modification d'une invitation
+ */
+
 public  class AjouterInvitationController  implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML
@@ -62,6 +66,12 @@ public  class AjouterInvitationController  implements Initializable {
     }
 
     public JSONArray portefeuillesDispo;
+
+    /**
+     * Permet d'ajouter l'invitation
+     * @param event
+     *
+     */
     @FXML
     void ajouterInvitation(ActionEvent event) {
         if(MenuPrincipaleController.invitationAModifier!=null){
@@ -161,6 +171,11 @@ public  class AjouterInvitationController  implements Initializable {
         if (b) return s ;
         return "";
     }
+
+    /**
+     * permet d'annuler un ensemble d'ecriture faits ou modification effectuees sur la page
+     * @param event
+     */
     @FXML
     void annuler(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonAnnuler);
@@ -169,6 +184,10 @@ public  class AjouterInvitationController  implements Initializable {
         identifiant.setText("");
     }
 
+    /**
+     * permet de retourner sur la page precedente
+     * @param event
+     */
     @FXML
     void retour(ActionEvent event) {
         Main.ajouterInteractionAuClic(ButtonRetour);

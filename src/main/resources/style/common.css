@@ -1,0 +1,77 @@
+
+.root{
+    -fx-background-color: #fff;
+}
+
+.connect:hover{
+    -fx-background-color:rgb(10, 114, 184);
+    -fx-background-radius: 5px;
+    -fx-text-fill:white;
+}
+
+.connect{
+    -fx-background-color:rgb(255, 255, 255);
+    -fx-border-color:rgb(10, 114, 184);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-text-fill:rgb(10, 114, 184);
+}
+
+
+.cancel:hover{
+    -fx-background-color:rgb(207, 24, 24);
+    -fx-background-radius: 5px;
+    -fx-text-fill:white;
+}
+
+.cancel{
+    -fx-background-color:rgb(255, 255, 255);
+    -fx-border-color:rgb(207, 24, 24);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-text-fill:rgb(207, 24, 24);
+}
+
+
+.link:hover{
+}
+
+.link{
+    -fx-cursor: HAND;
+    -fx-fill: blue;
+}
+
+
+
+.bienvenu
+{
+    -fx-font-weight:bold;
+    -fx-font-size:40px;
+    -fx-font-family:'Abyssinica SIL';
+}
+
+.combo-box{
+    -fx-background-color :  #fff;
+    -fx-border-color :  rgb(10, 114, 184);
+    -fx-border-radius :  5px;
+}
+
+.combo-box:hover{
+    -fx-border-radius :  5px 5px 0px 0px;
+}
+
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: rgb(10, 114, 184);
+    -fx-fill: white;
+    -fx-text-fill:white;
+}
+
+.table-view .column-header .text,
+.table-view .column-header .filler .text,
+.table-view .column-header-background .filler .text{
+    -fx-fill: white;
+    -fx-text-fill:white;
+}

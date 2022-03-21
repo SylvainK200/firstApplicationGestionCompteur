@@ -24,6 +24,9 @@ import java.util.logging.Logger;
 import static Gui.Main.*;
 import static controller.Methods.GeneralMethodsImpl.API_URL;
 
+/**
+ * Page de login controlleur
+ */
 public class Login implements Initializable {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -40,6 +43,11 @@ public class Login implements Initializable {
     }
 
     public static JSONArray invitationsClient = new JSONArray();
+
+    /**
+     * Cette methode permet de gerer l'authentification et aller vers la page invitations recues d'un client ou bien la page de login
+     * @param event
+     */
     @FXML
     void connect(ActionEvent event) {
 
@@ -75,12 +83,21 @@ public class Login implements Initializable {
                 e.printStackTrace();
             }
         }
+
+    /**
+     * permet d'ouvrir la page de creation de compte
+     * @param event
+     */
     @FXML
     void creerCompte(MouseEvent event) {
         Main.stage.close();
         Main.showPages("creer_compte.fxml");
     }
 
+    /**
+     * permet de reinitialiser le mot de passe donc de reinitialiser les informations d'authentification
+     * @param event
+     */
     @FXML
     void retrouverCompte(MouseEvent event) {
         Main.stage.close();

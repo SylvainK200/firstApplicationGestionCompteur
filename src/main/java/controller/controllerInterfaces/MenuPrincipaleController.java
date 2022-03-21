@@ -37,7 +37,9 @@ import java.util.logging.Logger;
 import static Gui.Main.*;
 import static Gui.Main.ajouterInteractionAuClic;
 
-
+/**
+ * Controlleur de la page principale
+ */
 public  class MenuPrincipaleController implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 

@@ -7,6 +7,9 @@ import javafx.scene.chart.XYChart;
 
 import java.util.ArrayList;
 
+/**
+ * Controlleur de la page de visualisation des consommations pour un compteur
+ */
 public class Visualisation {
 
     @FXML

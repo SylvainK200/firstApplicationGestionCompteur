@@ -23,6 +23,9 @@ import java.util.logging.Logger;
 import static controller.Methods.GeneralMethodsImpl.API_URL;
 import static controller.controllerInterfaces.CreerCompte.JSON;
 
+/**
+ * Classe controlleur pour la page de reinitialisation des mots de passe
+ */
 public class RetrouverCompte implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -47,6 +50,10 @@ public class RetrouverCompte implements Initializable {
         Main.showPages("login.fxml");
     }
 
+    /**
+     * permet de mettre a jour le mot de passe de l'utilisateur
+     * @param event
+     */
     @FXML
     void validerMotDePasse(ActionEvent event) {
         currentUser.remove("password");
@@ -82,6 +89,11 @@ public class RetrouverCompte implements Initializable {
         }
 
     }
+
+    /**
+     * permet de verifier si le client a entre la bonne reponse a la question pour la verification de l'identite
+     * @param event
+     */
 
     @FXML
     void verifierQuestion(ActionEvent event) {

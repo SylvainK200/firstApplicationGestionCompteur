@@ -3,6 +3,9 @@ package controller.ModelTabs;
 import javafx.scene.control.CheckBox;
 import org.json.JSONObject;
 
+/**
+ * Classe qui permet de gerer l'affichage des invitations recues par un client
+ */
 public class InvitationClientTable {
 
     public String dateInvitation;
