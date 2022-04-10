@@ -57,14 +57,16 @@ public class CreerCompte implements Initializable {
      * @return renvoie le JSON issu de la recuperation de toutes les donnees de la page
      */
     JSONObject fabriquerJson(){
+        String password = Main.generateHash(mot_de_passe.getText());
         JSONObject json = new JSONObject();
         json.put("address_mail", adresse_mail.getText());
-        json.put("password", mot_de_passe.getText())
+        json.put("password", password)
                 .put("question_secrete",question_secrete.getText())
                 .put("reponse_secrete",reponse_question_secrete.getText())
                 .put("identifiant",identifiant.getText())
                 .put("name",nom.getText())
                 .put("number",number.getText());
+
         return json;
     }
 
@@ -74,8 +76,7 @@ public class CreerCompte implements Initializable {
      */
     @FXML
     void creerCompte(ActionEvent event) {
-        if (confirmation_mot_de_passe.getText().equals(mot_de_passe.getText()))
-        {
+        if (confirmation_mot_de_passe.getText().equals(mot_de_passe.getText())) {
             JSONObject jsonObject= this.fabriquerJson();
             generalMethods.createObject(jsonObject,"user");
             Main.logOperation(logger,"Creation de compte reussie","");

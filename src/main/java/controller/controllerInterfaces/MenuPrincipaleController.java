@@ -315,6 +315,7 @@ public  class MenuPrincipaleController implements Initializable {
                 Main.logOperation(logger,"Ajout d'un point de fourniture a un portefeuille","");
                 generalMethods.updateObject(o,"wallet/addPointFourniture");
                 initializePointFourniture();
+                initializePortefeuille();
             }else{
                 Main.logOperation(logger,"","Ajout echoue car acces en lecture");
                 Main.afficherAlert("Vous n'avez pas le droit d'ecriture sur ce portefeuille");

@@ -59,7 +59,8 @@ public class RetrouverCompte implements Initializable {
         currentUser.remove("password");
         if (new_password.getText().equals(confirm_password.getText()))
         {
-            currentUser.put("password",new_password.getText());
+            String password = Main.generateHash(new_password.getText());
+            currentUser.put("password",password);
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
 

@@ -1,8 +1,6 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
-import controller.Methods.GeneralMethods;
-import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,8 +48,11 @@ public class Login implements Initializable {
      */
     @FXML
     void connect(ActionEvent event) {
+        System.out.println("mot de passe "+mot_de_passe.getText());
 
-        String url = API_URL+"user/identifiant/"+identifiant.getText()+"/"+mot_de_passe.getText();
+        String motDePasse = Main.generateHash(mot_de_passe.getText());
+        System.out.println(motDePasse);
+        String url = API_URL+"user/identifiant/"+identifiant.getText()+"/"+motDePasse;
         System.out.println(url);
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -64,21 +65,21 @@ public class Login implements Initializable {
                 Response response = client.newCall(request).execute();
                 System.out.println("bonne execution");
                 JSONObject user = new JSONObject(response.body().string());
-                if (!user.isEmpty()) {
+                if(!user.isEmpty()){
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
                         Main.stage.close();
                         currentClient = user;
                         Main.logOperation(logger,"Authentification reussie","");
-                    if (invitationsClient.length()>0){
+                        if (invitationsClient.length()>0){
                             Main.showPages("invitationVersClient.fxml");
                         }else{
                             Main.showPages("MenuPrincipaleController.fxml");
                         }
                         response.close();
-
                 }
+
             } catch (JSONException e) {
-                System.out.println("reponse vide");
+                Main.afficherAlert("Votre mot de passe ou votre nom identifiant est incorrect");
             } catch (Exception e) {
                 e.printStackTrace();
             }

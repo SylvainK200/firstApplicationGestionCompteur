@@ -44,4 +44,7 @@ public class PortefeuilleTable {
     public int getNombreCompteur() {
         return nombreCompteur;
     }
+    public void setNombreCompteur(int nombreCompteur){
+        this.nombreCompteur = nombreCompteur;
+    }
 }

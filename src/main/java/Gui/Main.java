@@ -17,11 +17,12 @@ import okhttp3.MediaType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.swing.*;
+import javax.crypto.spec.SecretKeySpec;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static Gui.Encryption.encrypt;
 
 /**
  * Classe principale Main
@@ -36,6 +37,23 @@ public class Main extends Application {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     public static GeneralMethods generalMethods = new GeneralMethodsImpl();
     public static Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private final static String keyCrypt = "randomString1234@";
+    public static String generateHash(String password){
+        String encryptedPassword = password;
+        try{
+        byte[] salt = new String("12345678").getBytes();
+        int iterationCount = 40000;
+        int keyLength = 128;
+        SecretKeySpec key = Encryption.createSecretKey(keyCrypt.toCharArray(), salt, iterationCount, keyLength);
+
+        String originalPassword = password;
+        encryptedPassword = encrypt(originalPassword, key);
+        }
+        catch (Exception e ){
+            e.printStackTrace();
+        }
+    return encryptedPassword;
+    }
 
     /**
      *
@@ -43,6 +61,8 @@ public class Main extends Application {
      * @param operationWarning message warning
      * @param operationSevere message severe
      */
+
+
     public static void logOperation(Logger logger,String operationWarning, String operationSevere ){
         if(operationWarning.equals("")){
                 logger.log(Level.SEVERE,operationSevere);
