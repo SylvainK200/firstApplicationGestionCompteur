@@ -49,6 +49,8 @@ public class PrincipalTest  extends  ApplicationTest{
         Main.startForTests(stage);
     }
 
+
+
     public void connect( String userIdentifier,String userPassword) throws Exception{
         clickOn("#identifiant").write(userIdentifier);
         clickOn("#mot_de_passe").write(userPassword);
@@ -56,8 +58,29 @@ public class PrincipalTest  extends  ApplicationTest{
         clickOn("#connect_button");
         WaitForAsyncUtils.waitForFxEvents();
     }
+    /*
+    @Test
+    public void a1_create_account_user() throws Exception{
+        clickOn("#creer_compte");
+        WaitForAsyncUtils.waitForFxEvents();
+        clickOn("#nom").write(userIdentifier).eraseText(1);
+        clickOn("#number").write("123");
+        clickOn("#identifiant").write(userIdentifier);
+        clickOn("#adresse_mail").write("userIdentifier"+"@gmail.com");
+        clickOn("#mot_de_passe").write(userPassword);
+        clickOn("#confirmation_mot_de_passe").write(userPassword);
+        clickOn("#question_secrete").write("ville de naissance");
+        clickOn("#reponse_question_secrete").write("Alberta");
+        clickOn("#creer_compte");
+        WaitForAsyncUtils.waitForFxEvents();
+        sleep(SLEEPINGTIME);
+       // WaitForAsyncUtils.waitForFxEvents();
+       // connect(userIdentifier, userPassword);
+    }*/
+
+/*
      @Test
-    public void t1_connection_user() throws Exception{
+    public void t2_connection_user() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         
         clickOn("#tabPointDeFourniture");
@@ -89,13 +112,15 @@ public class PrincipalTest  extends  ApplicationTest{
 
 
     @Test
-    public void t2_connect_deconnect() throws Exception {
+    public void t1_connect_deconnect() throws Exception {
         connect(this.userIdentifier,this.userPassword);
         clickOn("#buttonDeconnect");
         verifyThat("#connect_button", NodeMatchers.isVisible());
         sleep(SLEEPINGTIME);
 
     }
+*/
+    /*
     @Test
     public void t3_creation_compte() {
         //Loading page
@@ -114,12 +139,12 @@ public class PrincipalTest  extends  ApplicationTest{
         WaitForAsyncUtils.waitForFxEvents();
         sleep(2000);
         verifyThat("#connect_button", hasText("Se connecter"));
-    }
-
+    }*/
+    
    
 
     
-
+    /*
     @Test
     public void t4_ajoutPortefeuille() throws Exception{
         connect(this.userIdentifier,this.userPassword);
@@ -128,7 +153,7 @@ public class PrincipalTest  extends  ApplicationTest{
         WaitForAsyncUtils.waitForFxEvents();
         clickOn("#nomPortefeuille").write("testPortefeuille");
         clickOn("#typePortefeuille").write("testtype");
-        clickOn("#montantPlafond").write("montantPlafond");
+        clickOn("#montantPlafond").write("7500");
         clickOn("#rue").write("rue-1");
         clickOn("#numero").write("345");
         clickOn("#ville").write("Paris");
@@ -146,13 +171,13 @@ public class PrincipalTest  extends  ApplicationTest{
             }
         });
         sleep(2000);
-        Platform.exit();
+       // Platform.exit();
 
-    }
+    }*/
 
-
+ 
     @Test
-    public void t5_modifierPortefeuille() throws Exception{
+    public void t6_modifierPortefeuille() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABPORTEFEUILLE);
         TableView n = (TableView) lookup("#TablesAffichagesPortefeuille").query();
@@ -180,26 +205,33 @@ public class PrincipalTest  extends  ApplicationTest{
         sleep(SLEEPINGTIME);
         Platform.exit();
     }
+
     public void clickOnAlertInformation(){
         Node n2 = lookup("OK").query();
         clickOn(n2);
     }
+
     @Test
-    public void t6_ajoutPointDeFourniture() throws Exception{
+    public void t1_ajoutPointDeFourniture() throws Exception{
         connect(this.userIdentifier,this.userPassword);
         clickOn(TABPORTEFEUILLE);
         clickOn("#ean_point_fourniture");
         type(KeyCode.DOWN);
+        
+        sleep(SLEEPINGTIME);
+        
+
         type(KeyCode.ENTER);
-        clickOn("#boutonAjouter_pointFourniture");
+        sleep(SLEEPINGTIME);
+       /* clickOn("#boutonAjouter_pointFourniture");
         try{
             clickOnAlertInformation();
         }catch (Exception e){
             Logger.getLogger(this.getClass().getName()).log(Level.WARNING,"No OK found");
         }
-        sleep(SLEEPINGTIME);
+        sleep(SLEEPINGTIME);*/
     }
-
+    /*
     @Test
     public void t7_creationInvitation() throws Exception{
         connect(this.userIdentifier,this.userPassword);
@@ -320,6 +352,6 @@ public class PrincipalTest  extends  ApplicationTest{
         clickOnAlertInformation();
         sleep(SLEEPINGTIME);
         Platform.exit();
-    }
+    }*/
 
 }

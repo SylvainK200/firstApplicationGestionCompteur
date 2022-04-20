@@ -74,7 +74,7 @@ public  class AjouterInvitationController  implements Initializable {
      */
     @FXML
     void ajouterInvitation(ActionEvent event) {
-        if(MenuPrincipaleController.invitationAModifier!=null){
+        if(MenuPrincipaleController.invitationAModifier==null){
         Main.ajouterInteractionAuClic(ButtonValider);
         String role = "lecture";
         boolean ecriture = roleEcriture.isSelected();
@@ -131,12 +131,10 @@ public  class AjouterInvitationController  implements Initializable {
             if (ecriture && lecture){
             role=show("ecriture",ecriture);
         }
-            else 
-            if (lecture){
+            else if (lecture){
             role=show("lecture",lecture);
         }
-            else 
-            if (ecriture){
+            else if (ecriture){
             role= show ("ecriture",ecriture);
         }
         LocalDateTime actualDate = LocalDateTime.now();

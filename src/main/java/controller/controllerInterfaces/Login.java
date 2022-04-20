@@ -63,7 +63,8 @@ public class Login implements Initializable {
                     .build();
             try {
                 Response response = client.newCall(request).execute();
-                System.out.println("bonne execution");
+                System.out.println(response.body());
+
                 JSONObject user = new JSONObject(response.body().string());
                 if(!user.isEmpty()){
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
@@ -79,6 +80,7 @@ public class Login implements Initializable {
                 }
 
             } catch (JSONException e) {
+                e.printStackTrace();
                 Main.afficherAlert("Votre mot de passe ou votre nom identifiant est incorrect");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -101,6 +103,9 @@ public class Login implements Initializable {
      */
     @FXML
     void retrouverCompte(MouseEvent event) {
+        /*JSONObject j = new JSONObject();
+        j.put("name","abdel0");
+        generalMethods.updateObject(new JSONObject(),"user/miseAjour");*/
         Main.stage.close();
         Main.showPages("retrouverCompte.fxml");
     }

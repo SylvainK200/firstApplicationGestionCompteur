@@ -28,9 +28,7 @@ import org.json.JSONObject;
 
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -97,17 +95,43 @@ public  class MenuPrincipaleController implements Initializable {
         JSONArray listOfWallets = new JSONArray();
         JSONArray listOfWallets1 = new JSONArray();
         listOfWallets1 = generalMethods.find("historicalValue/historiqueClient/"+ Main.currentClient.getString("identifiant"));
+        JSONArray jsonArray = new JSONArray();
         listOfWallets1.forEach(wal->{
-            listOfWallets.put(wal);
+            if(wal instanceof JSONObject && ((JSONObject) wal).getJSONObject("supplyPoint").get("pointFourniture") instanceof JSONObject){
+                jsonArray.put(((JSONObject) wal).getJSONObject("supplyPoint").getJSONObject("pointFourniture"));
+            }
+            //System.out.println("size : "+jsonArray.length());
+        });
+        listOfWallets1.forEach(wal->{
+            if(wal instanceof JSONObject && ((JSONObject) wal).getJSONObject("supplyPoint").get("pointFourniture") instanceof JSONObject){
+                listOfWallets.put(wal);
+            }
+            else{
+                long id = ((JSONObject) wal).getJSONObject("supplyPoint").getLong("pointFourniture");
+                // System.out.println("id : " + id);
+                jsonArray.forEach(ptFourniture->{
+                    System.out.println("id : " + ((JSONObject) ptFourniture).getLong("id") + " - id wallet "+id);
+                    if(ptFourniture instanceof JSONObject && ((JSONObject) ptFourniture).getLong("id") == id){
+                        System.out.println("Oui oui");
+                        ((JSONObject) wal).getJSONObject("supplyPoint").remove("pointFourniture");
+                        ((JSONObject)wal).getJSONObject("supplyPoint").put("pointFourniture",ptFourniture);
+                        listOfWallets.put(wal);
+                    }
+                });
+            }
+
         });
 
         items.clear();
+        Set<String> s = new HashSet<>();
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 items.add(new ConsommationTable((JSONObject) j));
-                ComboboxEAN.getItems().add(((JSONObject)j).getJSONObject("supplyPoint").getString("ean_18"));
+                s.add(((JSONObject)j).getJSONObject("supplyPoint").getString("ean_18"));
+
             }
         }
+        ComboboxEAN.getItems().addAll(s);
         consommationTables = new FilteredList<>(items, p->true);
         ComboboxEAN.valueProperty().addListener((ObservableValue<?extends String> observable,
                                                  String oldValue,
@@ -140,8 +164,8 @@ public  class MenuPrincipaleController implements Initializable {
         });
         Visualisation.consommations = consommations;
         Visualisation.numeroCompteur = ComboboxEAN.getValue();
-
-        Main.showPages("visualization.fxml");
+        System.out.println("sizes "+ Visualisation.consommations.size());
+        Main.ouvrirNouvellePage("visualization", "Visualisation");
     }
 
 
