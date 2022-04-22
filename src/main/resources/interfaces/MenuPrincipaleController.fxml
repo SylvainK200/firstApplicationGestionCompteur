@@ -104,7 +104,6 @@
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
-                                <Button fx:id="buttonRechercher" layoutX="832.0" layoutY="44.0" mnemonicParsing="false" onAction="#rechercher" text="rechercher" textFill="#e60606" />
                                 <Button fx:id="ButtonVisualisation" layoutX="652.0" layoutY="534.0" mnemonicParsing="false" onAction="#visualiser" prefHeight="18.0" prefWidth="225.0" styleClass="connect" text="Visualisation par graphe" />
                             </children>
                         </AnchorPane>

@@ -48,24 +48,15 @@ public class Login implements Initializable {
      */
     @FXML
     void connect(ActionEvent event) {
-        System.out.println("mot de passe "+mot_de_passe.getText());
-
         String motDePasse = Main.generateHash(mot_de_passe.getText());
-        System.out.println(motDePasse);
         String url = API_URL+"user/identifiant/"+identifiant.getText()+"/"+motDePasse;
-        System.out.println(url);
-            OkHttpClient client = new OkHttpClient().newBuilder()
-                    .build();
 
-            Request request = new Request.Builder()
-                    .url(url)
-                    .method("GET", null)
-                    .build();
-            try {
-                Response response = client.newCall(request).execute();
-                System.out.println(response.body());
-
-                JSONObject user = new JSONObject(response.body().string());
+       if (identifiant.getText().isBlank() || mot_de_passe.getText().isBlank()){
+           Main.afficherAlert("Veuillez remplir les champs d'authentification");
+           return ;
+       }
+       try {
+                JSONObject user = generalMethods.signin(identifiant.getText(), motDePasse);
                 if(!user.isEmpty()){
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
                         Main.stage.close();
@@ -76,7 +67,6 @@ public class Login implements Initializable {
                         }else{
                             Main.showPages("MenuPrincipaleController.fxml");
                         }
-                        response.close();
                 }
 
             } catch (JSONException e) {
@@ -107,6 +97,6 @@ public class Login implements Initializable {
         j.put("name","abdel0");
         generalMethods.updateObject(new JSONObject(),"user/miseAjour");*/
         Main.stage.close();
-        Main.showPages("retrouverCompte.fxml");
+        Main.showPages("recover_password.fxml");
     }
 }

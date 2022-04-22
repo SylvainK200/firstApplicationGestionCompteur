@@ -22,14 +22,12 @@ public class Visualisation {
         series.setName("consommations");
 
         consommations.forEach(conso->{
-            System.out.println("consommation : "+ conso.getQuantiteConsommee());
-            series.getData().add(new XYChart.Data(
+             series.getData().add(new XYChart.Data(
                     conso.getDate_lecture(),
                     Double.parseDouble(conso.getQuantiteConsommee())
                     )
             );
         });
-        System.out.println("size : " +consommations.size());
         linechart.setTitle("Consommation du compteur d'EAN: " + numeroCompteur);
         linechart.getData().add(series);
     }

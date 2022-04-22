@@ -95,10 +95,10 @@ public  class MenuPrincipaleController implements Initializable {
         JSONArray listOfWallets = new JSONArray();
         JSONArray listOfWallets1 = new JSONArray();
         listOfWallets1 = generalMethods.find("historicalValue/historiqueClient/"+ Main.currentClient.getString("identifiant"));
-        JSONArray jsonArray = new JSONArray();
+        Set<JSONObject> jsonArray = new HashSet<>();
         listOfWallets1.forEach(wal->{
             if(wal instanceof JSONObject && ((JSONObject) wal).getJSONObject("supplyPoint").get("pointFourniture") instanceof JSONObject){
-                jsonArray.put(((JSONObject) wal).getJSONObject("supplyPoint").getJSONObject("pointFourniture"));
+                jsonArray.add(((JSONObject) wal).getJSONObject("supplyPoint").getJSONObject("pointFourniture"));
             }
             //System.out.println("size : "+jsonArray.length());
         });
@@ -110,9 +110,8 @@ public  class MenuPrincipaleController implements Initializable {
                 long id = ((JSONObject) wal).getJSONObject("supplyPoint").getLong("pointFourniture");
                 // System.out.println("id : " + id);
                 jsonArray.forEach(ptFourniture->{
-                    System.out.println("id : " + ((JSONObject) ptFourniture).getLong("id") + " - id wallet "+id);
                     if(ptFourniture instanceof JSONObject && ((JSONObject) ptFourniture).getLong("id") == id){
-                        System.out.println("Oui oui");
+
                         ((JSONObject) wal).getJSONObject("supplyPoint").remove("pointFourniture");
                         ((JSONObject)wal).getJSONObject("supplyPoint").put("pointFourniture",ptFourniture);
                         listOfWallets.put(wal);
@@ -127,7 +126,7 @@ public  class MenuPrincipaleController implements Initializable {
         for (Object j : listOfWallets){
             if (j instanceof JSONObject){
                 items.add(new ConsommationTable((JSONObject) j));
-                s.add(((JSONObject)j).getJSONObject("supplyPoint").getString("ean_18"));
+                s.add(""+((JSONObject)j).getJSONObject("supplyPoint").getInt("id"));
 
             }
         }
@@ -141,7 +140,7 @@ public  class MenuPrincipaleController implements Initializable {
                 if(newValue == null || newValue.isEmpty()){
                     return true;
                 }
-                if(consommationTable.getEan().toLowerCase().contains(newValue.toLowerCase())) return true;
+                if(consommationTable.getNumero_compteur().toLowerCase().contains(newValue.toLowerCase())) return true;
                 return false;
             });
             TableConsommation.getItems().clear();
@@ -234,6 +233,19 @@ public  class MenuPrincipaleController implements Initializable {
         JSONArray listOfWallets  = new JSONArray();
         JSONArray listOfWallets1 ;
         listOfWallets1 = generalMethods.find("wallet/visibleWallet/identifiant/"+ currentClient.getString("identifiant"));
+
+        Set<JSONObject> jsonArray = new HashSet<>();
+        listOfWallets1.forEach(wal->{
+            if(wal instanceof JSONObject && ((JSONObject) wal).get("pointFournitures") instanceof JSONArray){
+                ((JSONObject) wal).getJSONArray("pointFournitures").forEach(pt -> {
+                    if (pt instanceof JSONObject){
+                        jsonArray.add((JSONObject) pt);
+                    }
+                });
+            }
+           });
+
+
         listOfWallets1.forEach(w->{
             listOfWallets.put((JSONObject)w);
         });
@@ -247,9 +259,17 @@ public  class MenuPrincipaleController implements Initializable {
             if(((JSONObject)wallet).getJSONArray("pointFournitures").length()>0){
                 JSONArray pointFournitures = ((JSONObject)wallet).getJSONArray("pointFournitures");
                 pointFournitures.forEach(point ->{
-                    System.out.println("point : "+point + "\n"+ " wallet : " +wallet);
-                    items.add(new PointDeFournitureTable((JSONObject) point , (JSONObject) wallet));
-                });
+                    if(point instanceof  JSONObject){
+                        items.add(new PointDeFournitureTable((JSONObject) point , (JSONObject) wallet));
+                    }
+                    else {
+                        jsonArray.forEach(pt ->{
+                            if (point != null && pt.getInt("id")==(int)point){
+                                items.add(new PointDeFournitureTable(pt,(JSONObject)wallet));
+                            }
+                        });
+                    }
+                    });
             }
         });
         pointFournitureTables = new FilteredList<>(items, p->true);
@@ -628,6 +648,7 @@ public  class MenuPrincipaleController implements Initializable {
     void ajouterInvitation(ActionEvent event) {
         listWalletUsable = listOfWallets;
         Main.ajouterInteractionAuClic(ButtonAjouterInvitation);
+        invitationAModifier = null;
         Main.ouvrirNouvellePage("AjouterInvitation","Ajouter Invitation");
 
     }
@@ -656,8 +677,11 @@ public  class MenuPrincipaleController implements Initializable {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE,"Modification des invitations");
         }
 
-
-        Main.ouvrirNouvellePage("ModifierInvitation","Modifier Invitation");
+        if(invitationAModifier != null){
+            Main.ouvrirNouvellePage("ModifierInvitation","Modifier Invitation");
+        }else{
+            Main.afficherAlert("Veuillez selectionner une ligne a modifier");
+        }
     }
 
     @FXML

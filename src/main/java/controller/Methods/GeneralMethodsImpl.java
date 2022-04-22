@@ -1,14 +1,19 @@
 package controller.Methods;
 
+import Gui.Main;
 import javafx.scene.control.Alert;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.swing.*;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static Gui.Main.JSON;
 
@@ -22,7 +27,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
     @Override
     public JSONObject createObject(JSONObject contract, String url) {
 
-        System.out.println("CREATE : Contact de la route "+url);
         JSONObject resp = new JSONObject();
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -45,7 +49,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
 
     public JSONObject updateObject(JSONObject contract,String url) {
 
-        System.out.println("UPDATE : Contact de la route "+url);
         JSONObject resp = new JSONObject();
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -75,7 +78,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
 
     public JSONObject deleteObject (String url) {
 
-        System.out.println("DELETE : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
@@ -93,7 +95,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONObject findUnique(String url){
-        System.out.println("FINDUNIQUE : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
@@ -104,7 +105,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
         try {
             Response response = client.newCall(request).execute();
             String res = response.body().string();
-            System.out.println("resultat "+res);
             if (response.isSuccessful() && res!="")
             {
                 result= new JSONObject(res);
@@ -118,7 +118,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     public JSONArray find(String url){
-        System.out.println("FIND : Contact de la route "+url);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
@@ -129,34 +128,6 @@ public class GeneralMethodsImpl implements GeneralMethods{
         try {
             Response response = client.newCall(request).execute();
             String res = response.body().string();
-            System.out.println(res);
-            if (res !="")
-            {
-                result= new JSONArray(res);
-            }
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    /*@Override
-    public JSONArray findManyWithBody(JSONObject body, String url){
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
-        RequestBody formBody = RequestBody.create(JSON, body.toString());
-
-        Request request = new Request.Builder()
-                .url(API_URL+url)
-                .method("GET",formBody)
-                .build();
-        JSONArray result = null;
-        try {
-            Response response = client.newCall(request).execute();
-            String res = response.body().string();
-            System.out.println(res);
             if (res !="")
             {
                 result= new JSONArray(res);
@@ -170,30 +141,48 @@ public class GeneralMethodsImpl implements GeneralMethods{
     }
 
     @Override
-    public JSONObject findWithBody(JSONObject body, String url){
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
-        RequestBody formBody = RequestBody.create(JSON, body.toString());
+    public JSONObject signin(String identifiant, String password) {
+        password = password.replace("/", "-");
+        String url = "" ;
+        url = API_URL + "user/identifiant/"+identifiant+"/"+password;
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
 
         Request request = new Request.Builder()
-                .url(API_URL+url)
-                .method("GET",formBody)
+                .url(url)
+                .method("GET", null)
                 .build();
-        JSONObject result = null;
+
         try {
             Response response = client.newCall(request).execute();
-            String res = response.body().string();
-            System.out.println(res);
-            if (res !="")
-            {
-                result= new JSONObject(res);
-            }
+            JSONObject user = new JSONObject(response.body().string());
+            response.close();
+            return user;
+        } catch (JSONException e) {
+            Main.afficherAlert("Vos identifiants semblent incorrets! Verifiez les et reessayer.");
+            this.log(this.getClass().getName(), "GeneralMethodsImpl.java -> login()");
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+
+        return null;
     }
-*/
+
+    @Override
+    public void log(String classname,String logs){
+        Logger logger = Logger.getLogger(classname);
+        logOperation(logger, logs, "");
+    }
+
+    public void logOperation(Logger logger, String operationWarning, String operationSevere) {
+        if(operationWarning.equals("")){
+            logger.log(Level.SEVERE,operationSevere);
+        }
+        else if (operationSevere == ""){
+            logger.log(Level.WARNING,operationWarning);
+        }else if (!operationSevere.equals("") && !operationWarning.equals("")){
+            logger.log(Level.SEVERE,operationSevere);
+            logger.log(Level.WARNING,operationWarning);
+        }
+    }
 }

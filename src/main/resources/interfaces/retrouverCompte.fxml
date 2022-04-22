@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="494.0" prefWidth="534.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.RetrouverCompte">
+<AnchorPane prefHeight="554.0" prefWidth="702.0" style="-fx-background-color: #fff;" stylesheets="../style/common.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerInterfaces.RetrouverCompte"
+>
    <children>
-      <Button fx:id="verify_question" layoutX="248.0" layoutY="282.0" mnemonicParsing="false" onAction="#verifierQuestion" styleClass="modifier" text="verifier question" />
-      <Button fx:id="quitter" layoutX="291.0" layoutY="445.0" mnemonicParsing="false" onAction="#quitterPage" prefHeight="33.0" prefWidth="158.0" styleClass="annuler" text="Quitter" />
-      <Label layoutX="17.0" layoutY="166.0" styleClass="labels" text="Question secrete" />
-      <Label layoutX="20.0" layoutY="230.0" styleClass="labels" text="reponse secrete" />
-      <Label layoutX="20.0" layoutY="331.0" styleClass="labels" text="Nouveau mot de passe" />
-      <Label layoutX="22.0" layoutY="370.0" styleClass="labels" text="Confirmer mot de passe" />
-      <TextArea fx:id="question_secrete" layoutX="227.0" layoutY="128.0" prefHeight="69.0" prefWidth="200.0" stylesheets="@../style/autres.css" />
-      <TextArea fx:id="reponse_secrete" layoutX="227.0" layoutY="204.0" prefHeight="70.0" prefWidth="200.0" stylesheets="@../style/autres.css" />
-      <Button fx:id="valider" layoutX="80.0" layoutY="443.0" mnemonicParsing="false" onAction="#validerMotDePasse" prefHeight="33.0" prefWidth="158.0" styleClass="ajouter" text="valider" />
-      <Text layoutX="27.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bienvenu" text="Reinitialiser mot de passe">
+      <TextField fx:id="reponse" alignment="TOP_LEFT" layoutX="131.0" layoutY="323.0" prefHeight="41.0" prefWidth="428.0" promptText="Reponse à question secrète" AnchorPane.rightAnchor="143.0" />
+      <PasswordField fx:id="mot_de_passe" layoutX="363.0" layoutY="390.0" prefHeight="24.0" prefWidth="197.0" promptText="Mot de passe" />
+      <Label fx:id="password_label" layoutX="130.0" layoutY="391.0" text="Nouveau Mot de passe">
          <font>
-            <Font name="Algerian" size="32.0" />
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="renitialise" layoutX="133.0" layoutY="446.0" mnemonicParsing="false" onAction="#validerMotDePasse" prefHeight="26.0" prefWidth="428.0" styleClass="connect" text="Reinitialiser" textAlignment="CENTER" />
+      <Text fx:id="login" layoutX="359.0" layoutY="521.0" onMouseClicked="#quitterPage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Retourner à la page de Login" wrappingWidth="197.0" />
+      <Text layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reinitialiser votre mot de passe" textAlignment="CENTER" wrappingWidth="702.0">
+         <font>
+            <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Label layoutX="19.0" layoutY="98.0" styleClass="labels" text="Identifiant" />
-      <TextField fx:id="identifiant" layoutX="227.0" layoutY="94.0" prefHeight="26.0" prefWidth="200.0" styleClass="formulaire" stylesheets="@../style/autres.css" />
-      <PasswordField fx:id="new_password" layoutX="227.0" layoutY="327.0" prefHeight="26.0" prefWidth="200.0" promptText="Entrer mot de passe" styleClass="formulaire" stylesheets="@../style/autres.css" />
-      <PasswordField fx:id="confirm_password" layoutX="227.0" layoutY="366.0" prefHeight="26.0" prefWidth="200.0" promptText="Confirmer mot de passe" styleClass="formulaire" stylesheets="@../style/autres.css" />
+      <Text layoutX="138.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous etes arrivé ici par erreur ?" textAlignment="CENTER" wrappingWidth="223.0" />
+      <Label fx:id="question" alignment="CENTER" contentDisplay="CENTER" layoutX="132.0" layoutY="233.0" prefHeight="79.0" prefWidth="428.0" text="Que repondez vous à la question " AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="142.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="120.0" text="Identifiant">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="identifiant" alignment="TOP_LEFT" layoutX="235.0" layoutY="118.0" prefHeight="24.0" prefWidth="178.0" promptText="Identifiant" />
+      <Button fx:id="verifier" layoutX="432.0" layoutY="140.0" mnemonicParsing="false" onAction="#verifierQuestion" prefHeight="26.0" prefWidth="129.0" styleClass="connect" text="Verifier" textAlignment="CENTER" />
+      <Label layoutX="132.0" layoutY="169.0" text="Type">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="typeUser" layoutX="235.0" layoutY="166.0" prefHeight="26.0" prefWidth="178.0" />
+
+
    </children>
-   <stylesheets>
-      <URL value="@../style/autres.css" />
-      <URL value="@../style/login.css" />
-   </stylesheets>
 </AnchorPane>

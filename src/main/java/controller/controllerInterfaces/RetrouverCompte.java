@@ -1,13 +1,12 @@
 package controller.controllerInterfaces;
 
 import Gui.Main;
+import controller.Methods.GeneralMethodsImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -26,11 +25,15 @@ import static controller.controllerInterfaces.CreerCompte.JSON;
 /**
  * Classe controlleur pour la page de reinitialisation des mots de passe
  */
-public class RetrouverCompte implements Initializable {
-    private Logger logger = Logger.getLogger(this.getClass().getName());
-
+public class RetrouverCompte {
+    @FXML
+    public Label password_label;
+    public PasswordField mot_de_passe;
     @FXML
     private TextField identifiant;
+
+    @FXML
+    private TextArea question_secrete;
     @FXML
     private TextArea reponse_secrete;
 
@@ -44,23 +47,25 @@ public class RetrouverCompte implements Initializable {
     private Button valider;
     private JSONObject currentUser;
 
+    GeneralMethodsImpl generalMethods = new GeneralMethodsImpl();
+    public void initialize(){
+        mot_de_passe.setDisable(true);
+        confirm_password.setDisable(true);
+        valider.setDisable(true);
+    }
     @FXML
     void quitterPage(ActionEvent event) {
         Main.stage.close();
         Main.showPages("login.fxml");
+
     }
 
-    /**
-     * permet de mettre a jour le mot de passe de l'utilisateur
-     * @param event
-     */
     @FXML
     void validerMotDePasse(ActionEvent event) {
         currentUser.remove("password");
         if (new_password.getText().equals(confirm_password.getText()))
         {
-            String password = Main.generateHash(new_password.getText());
-            currentUser.put("password",password);
+            currentUser.put("password",new_password.getText());
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
 
@@ -72,7 +77,7 @@ public class RetrouverCompte implements Initializable {
             try {
                 Response response = client.newCall(request).execute();
                 if (response.isSuccessful()){
-                    Main.logOperation(logger,"Reinitialisation du mot de passe reussie","");
+                    generalMethods.log(this.getClass().getName(), "Enregistrement terminé.");
                     Main.stage.close();
                     Main.showPages("login.fxml");
 
@@ -80,21 +85,15 @@ public class RetrouverCompte implements Initializable {
                 response.close();
             }
             catch (Exception e){
-                Main.logOperation(logger,"","Erreur de reinitialisation du mot de passe");
+                e.printStackTrace();
             }
 
         }else
         {
-            Main.logOperation(logger,"","Votre mot de passe et sa confirmation sont differents");
-         Main.afficherAlert("Votre mot de passe et sa confirmation sont differents");
+            Main.afficherAlert("Le mot de passe et sa confirmation sont differents");
         }
 
     }
-
-    /**
-     * permet de verifier si le client a entre la bonne reponse a la question pour la verification de l'identite
-     * @param event
-     */
 
     @FXML
     void verifierQuestion(ActionEvent event) {
@@ -111,7 +110,7 @@ public class RetrouverCompte implements Initializable {
             currentUser= user;
             if (user.get("reponse_secrete").equals(reponse_secrete.getText()))
             {
-                Main.logOperation(logger,"verification de la question et sa reponse reussie ","");
+
                 new_password.setDisable(false);
                 confirm_password.setDisable(false);
                 valider.setDisable(false);
@@ -119,17 +118,9 @@ public class RetrouverCompte implements Initializable {
             response.close();
 
         }catch (Exception e ){
-            Main.logOperation(logger,"","Echec de verification de question et son mot de passe");
+            e.printStackTrace();
         }
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-            Main.logOperation(logger,"Ouverture de la page de reinitialisation du mot de passe ","");
-            new_password.setDisable(true);
-            confirm_password.setDisable(true);
-            valider.setDisable(true);
-
-    }
 }

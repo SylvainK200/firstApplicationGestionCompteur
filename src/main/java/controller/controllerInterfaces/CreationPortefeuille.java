@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -67,20 +68,32 @@ public class CreationPortefeuille implements Initializable {
     @FXML
     void enregistrerPortefeuille(ActionEvent event) {
         JSONObject portefeuille = new JSONObject();
-        if (maisons.getValue()!=null){
-            portefeuille.put("name",nomPortefeuille.getText());
-            portefeuille.put("type",typePortefeuille.getText());
-            portefeuille.put("amout_ceiling",montantPlafond.getText());
-            portefeuille.put("client",currentClient.getString("identifiant"));
-            JSONObject home = new JSONObject();
-            home.put("id",maisons.getValue().getId());
-            home.put("street",maisons.getValue().getStreet());
-            home.put("city",maisons.getValue().getCity());
-            home.put("postal_code",maisons.getValue().getPostal_code());
-            home.put("number",maisons.getValue().getNumber());
-            portefeuille.put("home",home);
+        List<PortefeuilleTable> listport = MenuPrincipaleController.portefeuilles;
+        boolean goodName = true;
+        int i = 0;
+        while (i<listport.size() && goodName){
+            if(listport.get(i).getNom().equals(nomPortefeuille.getText())){
+                goodName = false;
+                Main.afficherAlert("Ce nom existe deja");
+            }
+            i++;
+        }
+        if (goodName){
+            if (maisons.getValue()!=null){
+                portefeuille.put("name",nomPortefeuille.getText());
+                portefeuille.put("type",typePortefeuille.getText());
+                portefeuille.put("amout_ceiling",montantPlafond.getText());
+                portefeuille.put("client",currentClient.getString("identifiant"));
+                JSONObject home = new JSONObject();
+                home.put("id",maisons.getValue().getId());
+                home.put("street",maisons.getValue().getStreet());
+                home.put("city",maisons.getValue().getCity());
+                home.put("postal_code",maisons.getValue().getPostal_code());
+                home.put("number",maisons.getValue().getNumber());
+                portefeuille.put("home",home);
 
-        }else{
+            }
+            else {
             JSONObject home = new JSONObject();
             home.put("street",rue.getText());
             home.put("number",Integer.parseInt(numero.getText()));
@@ -103,6 +116,7 @@ public class CreationPortefeuille implements Initializable {
             MenuPrincipaleController.portefeuilles.add(new PortefeuilleTable(createdPortefeuille));
         }
     }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,5 +124,6 @@ public class CreationPortefeuille implements Initializable {
         for (int i = 0; i<homes.length(); i++){
             maisons.getItems().add(new ComboLocalisation((JSONObject) homes.get(i)));
         }
+
     }
 }
