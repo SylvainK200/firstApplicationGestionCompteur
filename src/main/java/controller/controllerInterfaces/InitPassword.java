@@ -19,11 +19,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class InitPassword implements Initializable {
-    @FXML
-    private Text login;
-
-    @FXML
-    private Label password_label;
 
     @FXML
     private PasswordField mot_de_passe;

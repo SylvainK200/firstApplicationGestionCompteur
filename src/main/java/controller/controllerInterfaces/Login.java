@@ -58,6 +58,7 @@ public class Login implements Initializable {
        try {
                 JSONObject user = generalMethods.signin(identifiant.getText(), motDePasse);
                 if(!user.isEmpty()){
+                    System.out.println(user);
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
                         Main.stage.close();
                         currentClient = user;
@@ -93,9 +94,6 @@ public class Login implements Initializable {
      */
     @FXML
     void retrouverCompte(MouseEvent event) {
-        /*JSONObject j = new JSONObject();
-        j.put("name","abdel0");
-        generalMethods.updateObject(new JSONObject(),"user/miseAjour");*/
         Main.stage.close();
         Main.showPages("recover_password.fxml");
     }

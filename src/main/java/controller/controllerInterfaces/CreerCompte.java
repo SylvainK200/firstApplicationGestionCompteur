@@ -45,11 +45,7 @@ public class CreerCompte implements Initializable {
     @FXML
     private TextField reponse_question_secrete;
 
-    @FXML
-    private Button creer_compte;
     private GeneralMethods generalMethods = new GeneralMethodsImpl();
-    @FXML
-    private Button retour;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     /**
