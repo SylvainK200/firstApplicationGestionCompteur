@@ -65,8 +65,7 @@ public  class MenuPrincipaleController implements Initializable {
     private ComboBox<String> ComboboxEAN;
     @FXML
     private TableView<ConsommationTable> TableConsommation;
-    @FXML
-    private Button buttonRechercher;
+
     @FXML
     private TableColumn<ConsommationTable, String> numero_compteur2;
     @FXML
@@ -84,6 +83,7 @@ public  class MenuPrincipaleController implements Initializable {
 
 
     public void initializeConsommations(){
+        ComboboxEAN.setPromptText("Numero Compteur");
         date_lecture.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("date_lecture"));
         fournisseur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("fournisseur"));
         type_compteur.setCellValueFactory(new PropertyValueFactory<ConsommationTable,String>("type_compteur"));
@@ -150,10 +150,7 @@ public  class MenuPrincipaleController implements Initializable {
         TableConsommation.getItems().addAll(consommationTables);
 
     }
-    @FXML
-    void rechercher(ActionEvent event) {
-        Main.ajouterInteractionAuClic(buttonRechercher);
-    }
+
     @FXML
     void visualiser(ActionEvent event) {
         ArrayList<ConsommationTable> consommations = new ArrayList<>();

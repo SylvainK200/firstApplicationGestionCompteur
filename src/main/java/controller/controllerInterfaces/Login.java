@@ -63,11 +63,16 @@ public class Login implements Initializable {
                         Main.stage.close();
                         currentClient = user;
                         Main.logOperation(logger,"Authentification reussie","");
-                        if (invitationsClient.length()>0){
-                            Main.showPages("invitationVersClient.fxml");
-                        }else{
-                            Main.showPages("MenuPrincipaleController.fxml");
+                        try{
+                            if (invitationsClient.length()>0){
+                                Main.showPages("invitationVersClient.fxml");
+                            }else{
+                                Main.showPages("MenuPrincipaleController.fxml");
+                            }
+                        }catch (Exception e){
+                            Main.afficherAlert("Une erreur a ete produite ");
                         }
+
                 }
 
             } catch (JSONException e) {
