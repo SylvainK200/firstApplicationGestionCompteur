@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PrincipalTest  extends  ApplicationTest{
-    public FxRobot robot = new FxRobot();
+   /*public FxRobot robot = new FxRobot();
     final String TABINVITATION = "#tabInvitation";
     final String TABPORTEFEUILLE = "#tabPortefeuille";
     final String TABPOINTDEFOURNITURE = "#tabPointDeFourniture";
@@ -175,7 +175,7 @@ public class PrincipalTest  extends  ApplicationTest{
 
     }*/
 
- 
+ /*
     @Test
     public void t6_modifierPortefeuille() throws Exception{
         connect(this.userIdentifier,this.userPassword);
@@ -229,7 +229,7 @@ public class PrincipalTest  extends  ApplicationTest{
         }catch (Exception e){
             Logger.getLogger(this.getClass().getName()).log(Level.WARNING,"No OK found");
         }
-        sleep(SLEEPINGTIME);*/
+        sleep(SLEEPINGTIME);
     }
     /*
     @Test

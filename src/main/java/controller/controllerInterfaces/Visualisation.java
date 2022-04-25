@@ -28,7 +28,7 @@ public class Visualisation {
                     )
             );
         });
-        linechart.setTitle("Consommation du compteur d'EAN: " + numeroCompteur);
+        linechart.setTitle("Consommation du compteur d'EAN: " + consommations.get(0).getNumero_compteur());
         linechart.getData().add(series);
     }
 

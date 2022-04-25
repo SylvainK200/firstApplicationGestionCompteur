@@ -57,7 +57,7 @@ public class Login implements Initializable {
        }
        try {
                 JSONObject user = generalMethods.signin(identifiant.getText(), motDePasse);
-                if(!user.isEmpty()){
+                if(user!= null && !user.isEmpty()){
                     System.out.println(user);
                         invitationsClient = generalMethods.find("invite/receive/user/"+user.getString("identifiant")+"/envoyee");
                         Main.stage.close();

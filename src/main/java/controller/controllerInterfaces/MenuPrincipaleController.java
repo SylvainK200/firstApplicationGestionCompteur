@@ -589,14 +589,34 @@ public  class MenuPrincipaleController implements Initializable {
         destinataire.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("destinataire"));
         portefeuille_invitation.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("portefeuille"));
         statut.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
+        Set<JSONObject> jsonArray = new HashSet<>();
 
         JSONArray invitations = generalMethods.find("invite/user/statut/"+Main.currentClient.getString("identifiant")+"/"+"envoyee");
+        invitations.forEach(inv->{
+            if(inv instanceof JSONObject && ((JSONObject) inv).get("wallet") instanceof JSONObject){
+                jsonArray.add(((JSONObject) inv).getJSONObject("wallet"));
+            }
+        });
         invitationEnvoyes.clear();
         for (int i =0;i<invitations.length();i++){
             // formation de chaque ligne du tableau a remplir
             JSONObject client = invitations.getJSONObject(i);
             if (!client.isEmpty()){
-                invitationEnvoyes.add(new InvitationTable(client,true));
+                if(client.get("wallet") instanceof JSONObject) {
+                    invitationEnvoyes.add(new InvitationTable(client,true));
+                }else{
+
+                    int id = client.getInt("wallet");
+                    jsonArray.forEach(
+                            wal ->{
+                                if (wal.getInt("id") == id){
+                                    client.remove("wallet");
+                                    client.put("wallet", wal);
+                                }
+                            }
+                    );
+                    invitationEnvoyes.add(new InvitationTable(client,true));
+                }
             }
         }
         TableInvitation.getItems().addAll(invitationEnvoyes);
@@ -632,11 +652,31 @@ public  class MenuPrincipaleController implements Initializable {
         statut_recu.setCellValueFactory(new PropertyValueFactory<InvitationTable,String>("statut"));
         invitationRecues.clear();
         JSONArray invitations = generalMethods.find("invite/user/statut/" + Main.currentClient.getString("identifiant")+"/"+"recu");
+        Set<JSONObject> jsonArray = new HashSet<>();
+        invitations.forEach(inv->{
+            if(inv instanceof JSONObject && ((JSONObject) inv).get("wallet") instanceof JSONObject){
+                jsonArray.add(((JSONObject) inv).getJSONObject("wallet"));
+            }
+        });
         for (int i =0;i<invitations.length();i++){
             JSONObject invitation = invitations.getJSONObject(i);
 
             if (!invitation.isEmpty()){
-                invitationRecues.add(new InvitationTable(invitation,false));
+                if(invitation.get("wallet") instanceof JSONObject) {
+                    invitationRecues.add(new InvitationTable(invitation,false));
+                }else{
+                    int id = invitation.getInt("wallet");
+                    jsonArray.forEach(
+                            wal ->{
+                                if (wal.getInt("id") == id){
+                                    invitation.remove("wallet");
+                                    invitation.put("wallet", wal);
+                                }
+                            }
+                    );
+
+                    invitationRecues.add(new InvitationTable(invitation,false));
+                }
             }
             tableInvitationRecu.getItems().addAll(invitationRecues);
         }
