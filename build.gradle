@@ -70,7 +70,7 @@ configurations {
 
 jar {
     manifest {
-        attributes["Main-Class"] = 'Gui.Main'
+        attributes["Main-Class"] = 'Gui.Main2'
     }
     duplicatesStrategy = 'include'
     // This line of code recursively collects and copies all of a project's files
